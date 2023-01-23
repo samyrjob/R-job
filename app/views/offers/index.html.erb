@@ -1,0 +1,17 @@
+<h1 class="title-index"><strong>Our unique selection of flats</strong></h1>
+
+
+
+      <div class="flat-cards">
+        <% @offers.each do |offer| %>
+            <div class="card"> <%= link_to offer do %>
+              <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-index-body">
+                <h3 class="card-index-title"><%= offer.function %></h3>
+              </div>
+            <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+</div>
