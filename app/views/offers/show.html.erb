@@ -2,7 +2,7 @@
   <div class= "container-flat-show">
     <div class="card-flat">
       <div class="img-card-elf">
-        <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
+        <%# <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
       </div>
       <div class="card-flat-infos">
         <div class="card-flat-infos-title">
@@ -14,7 +14,40 @@
       </div>
     </div>
   </div>
+</div>
 
   <div class="container-form-booking <%= 'inactive' unless @application.errors.any? %>" data-display-booking-target="form">
+    <% if student_signed_in? %>
 
-</div>
+    <div class="form-booking">
+      <%= simple_form_for [@offer, @application] do |f| %>
+        <%= f.input :description, as: :text %>
+        <div class= container_total_price>
+          <div class="d-flex">
+            <%= f.button :submit, value: "Apply", class: "btn btn btn-primary text-white px-3 py-2  fs-10 mt-3 mx-1"%>
+            <%= link_to "List of flats", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+          </div>
+          <div data-total-price-target="totalPriceDiv" class= price></div>
+        </div>
+      <% end %>
+    </div>
+
+    <% else %>
+      <div class="col pt-1" data-controller="popup">
+        <div class="d-flex">
+          <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button"> Apply now! </button>
+          <%= link_to "Retour à la liste", offers_path, class: "btn btn-info" %>
+        </div>
+
+        <div href="#" class="yeahh d-none" data-popup-target="link">
+          <h2>Oups... You should be connected to apply for this fabulous offer</h2>
+          <div>
+            <a class="button-login" href="http://localhost:3000/students/sign_in">Log in now</a>
+            <button class="btn btn-primary" data-action="click->popup#reset"> Ok </button>
+          </div>
+        </div>
+        <div class="opaq opacity-50 d-none" data-popup-target="panel">
+        </div>
+      </div>
+    <%end%>
+  </div>
