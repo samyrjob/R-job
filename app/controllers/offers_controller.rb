@@ -22,9 +22,9 @@ class OffersController < ApplicationController
   end
 
 
-  # private
+  private
 
-  # def offer_params
-  #   params.require(:flat).permit(:name, :description, :price_per_day, :town, :photo)
-  # end
+  def offer_params
+    params.require(:offer).permit(:description, :function, :photo)
+  end
 end

@@ -1,0 +1,31 @@
+<div class = "navbar">
+
+  <div class= "navbar-logo">
+  </div>
+
+  <div class="navbar-content">
+
+    <%= link_to "/flats" do %>
+      <div class = "flat-navbar"><p>Flats</p></div>
+    <% end %>
+
+    <% unless company_signed_in? || student_signed_in? %>
+      <h5>ENTREPRISE</h5>
+      <%= link_to "/companies/sign_in" do %>
+      <div class= "sign-navbar"><p>Sign in</p></div>
+      <% end %>
+      <h5>ETUDIANT</h5>
+      <%= link_to "/students/sign_in" do %>
+      <div class= "sign-navbar"><p>Sign in</p></div>
+      <% end %>
+    <% end %>
+
+
+
+
+  </div>
+
+  <div class="navbar-avatar">
+  </div>
+
+</div>

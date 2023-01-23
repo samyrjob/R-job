@@ -1,12 +1,47 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar {
+  display: flex;
+  background-color: $purple;
+  overflow: hidden;
+  width: 100%;
+  height: 100px;
+  padding: 0px;
+  .navbar-logo {
+    background-image: url("accomodate-logo.png");
+    background-size: cover;
+    background-position: center;
+    width: 100px;
+    height: 100%;
+  }
+
+  .navbar-content {
+    display: flex;
+    width: 75%;
+    height: 100px;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    .flat-navbar {
+      margin: 0px 15px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+  }
+
+  .navbar-avatar {
+    width: 100px;
+    height: 100%;
+    background-image: url("avatar.png");
+    background-size: cover;
+    background-position: center;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+
+.navbar p {
+  color: $white;
+  font-size: 12px;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
