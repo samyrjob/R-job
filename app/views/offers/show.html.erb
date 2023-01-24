@@ -23,9 +23,10 @@
 
 
     <%= link_to "List of flats", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
-    <%= link_to "Apply", new_offer_application_path(@offer), class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+    <%= link_to "Apply", new_student_offer_application_path(@offer), class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
 
-
+    <% elsif company_signed_in? %>
+      <%= link_to "Retour à la liste", offers_path, class: "btn btn-info" %>
     <% else %>
       <div class="col pt-1" data-controller="popup">
         <div class="d-flex">

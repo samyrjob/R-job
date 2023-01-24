@@ -3,7 +3,7 @@
 
 
 
-<%= simple_form_for [@offer, @application] do |f| %>
+<%= simple_form_for ([:student, @offer, @application]) do |f| %>
   <%= f.input :description, as: :text %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
