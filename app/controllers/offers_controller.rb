@@ -1,7 +1,6 @@
 class OffersController < ApplicationController
-  skip_before_action :authenticate_company!, only: %i[index show]
-  before_action :authenticate_company!, only: %i[new]
-  skip_before_action :authenticate_student!, only: %i[index show]
+  skip_before_action :authenticate_company!, only: %i[index show new create]
+  skip_before_action :authenticate_student!, only: %i[index show new create]
   # ,  :raise => false
 
   def index
@@ -16,20 +15,29 @@ class OffersController < ApplicationController
   end
 
 
-  def new
-    @offer = Offer.new
-  end
+  # def new
+  #   @offer = Offer.new
+  # end
+
+  # def create
+  #   @offer = Offer.new(offer_params)
+  #   @offer.company = current_company
+
+  #   if @offer.save
+  #     redirect_to offer_path(@offer), notice: "your application has been sent !"
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+
+  # end
 
 
   private
 
   def offer_params
-    params.require(:offer).permit(:description, :function, :photo)
+    params.require(:offer).permit(:description, :function, :company_id)
   end
 
-  def set_offer
-    @offer = Offer.find(params[:id])
-  end
 
 
 end

@@ -1,5 +1,7 @@
 <h1 class="title-index"><strong>Our unique selection of flats</strong></h1>
-
+ <% if company_signed_in? %>
+    <%= link_to "Publish an offer", new_company_offer_path, class: "btn btn-info" %>
+ <% end %>
 
 
       <div class="flat-cards">
