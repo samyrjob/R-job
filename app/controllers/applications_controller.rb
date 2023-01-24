@@ -1,20 +1,26 @@
 class ApplicationsController < ApplicationController
   before_action :authenticate_student!, only: %i[create show]
+  skip_before_action :authenticate_company!, only: %i[new]
 
 
 
   def create
-    @offer= Offer.find(params[:offer_id])
+    @offer = Offer.find(params[:offer_id])
     @application = Application.new(application_params)
     @application.student = current_student # user est associé à la création du booking (renter vient de la db)
     @application.offer = @offer
 
     if @application.save
-      redirect_to application_path(@application), notice: "Your location's request has been confirmed"
+      redirect_to application_path(@application), notice: "your application has been sent !"
     else
       render "offers/show", status: :unprocessable_entity
     end
-    
+
+  end
+
+  def new
+    @application = Application.new
+    @offer= Offer.find(params[:offer_id])
   end
 
   def show
