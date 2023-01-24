@@ -28,6 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'devise'
+gem 'devise_token_auth'
 
 gem "cloudinary"
 

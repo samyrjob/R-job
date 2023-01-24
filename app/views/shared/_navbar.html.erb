@@ -5,11 +5,11 @@
 
   <div class="navbar-content">
 
-    <%= link_to "/flats" do %>
-      <div class = "flat-navbar"><p>Flats</p></div>
+    <%= link_to "/offers" do %>
+      <div class = "flat-navbar"><p>Offers</p></div>
     <% end %>
 
-    <% unless company_signed_in? || student_signed_in? %>
+    <% unless student_signed_in? || company_signed_in? %>
       <h5>ENTREPRISE</h5>
       <%= link_to "/companies/sign_in" do %>
       <div class= "sign-navbar"><p>Sign in</p></div>
@@ -18,7 +18,16 @@
       <%= link_to "/students/sign_in" do %>
       <div class= "sign-navbar"><p>Sign in</p></div>
       <% end %>
+      <% else %>
+        <% if student_session%>
+          <%= link_to "log out", destroy_student_session_path , class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+        <% else %>
+          <%= link_to "log out", destroy_company_session_path , class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+        <% end %>
     <% end %>
+
+
+
 
 
 

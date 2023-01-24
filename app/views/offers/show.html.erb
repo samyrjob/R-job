@@ -16,21 +16,15 @@
   </div>
 </div>
 
-  <div class="container-form-booking <%= 'inactive' unless @application.errors.any? %>" data-display-booking-target="form">
+  <div class="container-form-booking" data-display-booking-target="form">
     <% if student_signed_in? %>
 
-    <div class="form-booking">
-      <%= simple_form_for [@offer, @application] do |f| %>
-        <%= f.input :description, as: :text %>
-        <div class= container_total_price>
-          <div class="d-flex">
-            <%= f.button :submit, value: "Apply", class: "btn btn btn-primary text-white px-3 py-2  fs-10 mt-3 mx-1"%>
-            <%= link_to "List of flats", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
-          </div>
-          <div data-total-price-target="totalPriceDiv" class= price></div>
-        </div>
-      <% end %>
-    </div>
+
+
+
+    <%= link_to "List of flats", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+    <%= link_to "Apply", new_offer_application_path(@offer), class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+
 
     <% else %>
       <div class="col pt-1" data-controller="popup">
