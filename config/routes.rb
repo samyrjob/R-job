@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   namespace :company do # permet de faire sous catégories de user
     resources :offers, only: %i[new create]
+    resource :profile, only: :show
+    resource :dashboard, only: :show
     resources :applications, only: [] do
       member do
         get :accept
@@ -16,7 +18,9 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :student do # permet de faire sous catégories de user
+  namespace :student do # permet de faire sous catégories de user resource :profile, only: :show
+    resource :profile, only: :show
+    resource :dashboard, only: :show
     resources :offers, only: [] do
       resources :applications, only: %i[new create]
     end

@@ -32,11 +32,6 @@ class OffersController < ApplicationController
   # end
 
 
-  private
-
-  def offer_params
-    params.require(:offer).permit(:description, :function, :company_id)
-  end
 
 
 
