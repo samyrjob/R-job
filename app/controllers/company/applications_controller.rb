@@ -1,6 +1,5 @@
 class Company::ApplicationsController < ApplicationController
-  skip_before_action :authenticate_company!, only: %i[accept decline ]
-  skip_before_action :authenticate_student!, only: %i[accept decline ]
+
 
 
 

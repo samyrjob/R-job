@@ -5,4 +5,5 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   has_many :applications
+  has_many :savedoffers
 end

@@ -1,6 +1,5 @@
 class ApplicationsController < ApplicationController
-  before_action :authenticate_student!, only: %i[create show]
-  skip_before_action :authenticate_company!, only: %i[new show create]
+ 
   # before_action :authenticate_company!, only: %i[new create]
 
 

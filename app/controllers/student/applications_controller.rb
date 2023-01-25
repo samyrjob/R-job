@@ -1,6 +1,5 @@
 class Student::ApplicationsController < ApplicationController
-  skip_before_action :authenticate_student!, only: %i[new create]
-  skip_before_action :authenticate_company!, only: %i[new show create]
+
 
   def create
     @offer = Offer.find(params[:offer_id])

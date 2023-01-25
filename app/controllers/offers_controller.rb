@@ -1,11 +1,11 @@
 class OffersController < ApplicationController
-  skip_before_action :authenticate_company!, only: %i[index show new create]
-  skip_before_action :authenticate_student!, only: %i[index show new create]
+
   # ,  :raise => false
 
   def index
 
       @offers = Offer.all
+
 
   end
 
