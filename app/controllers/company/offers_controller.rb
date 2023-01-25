@@ -1,6 +1,6 @@
 class Company::OffersController < ApplicationController
-  skip_before_action :authenticate_company!, only: %i[create new ]
-  skip_before_action :authenticate_student!, only: %i[index show new create]
+
+
 
 
   def new
@@ -18,6 +18,11 @@ class Company::OffersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
 
+  end
+
+  def show
+    @offer = Offer.find(params[:id])
+    @offers = Offer.all
   end
 
   private

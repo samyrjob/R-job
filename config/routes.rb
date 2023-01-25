@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
 
   namespace :company do # permet de faire sous catégories de user
-    resources :offers, only: %i[new create]
+    resources :offers, only: %i[new create show]
     resource :profile, only: :show
     resource :dashboard, only: :show
     resources :applications, only: [] do
@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   namespace :student do # permet de faire sous catégories de user resource :profile, only: :show
     resource :profile, only: :show
     resource :dashboard, only: :show
-    resources :offers, only: [] do
+    resources :offers, only: [:show] do
       resources :applications, only: %i[new create]
+      resources :savedoffers, only: %i[create update]
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

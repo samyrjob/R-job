@@ -16,6 +16,30 @@
           </div>
       </div>
   </div>
+  <div class="card">
+    <h1 class="ms-5 mt-3"> Offres sauvegardées</h1>
+      <div class="row ms-3">
+          <div class="wrapper mt-5">
+            <% @savedoffers.each do |savedoffer| %>
+               <%= link_to student_offer_path(Offer.find(savedoffer.offer_id)) , class: "card m-2 position-relative" do %>
+                  <div class="card" style ="object-fit-content">
+                    <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
+                    <div class="card-body m-1">
+                      <h3 class="card-title"><%= Offer.find(savedoffer.offer_id).function %></h3>
+                      <p> By : <%= Company.find(Offer.find(savedoffer.offer_id).company_id)%></p>
+                   </div>
+                  </div>
+                <% end %>
+             <% end %>
+          </div>
+
+          <div class="col-2">
+            <div style="margin: 40%; width: 100%;">
+              <%= link_to("voir liste des offres", offers_path, {class: "btn btn-success text-decoration-none"}) %>
+            </div>
+          </div>
+      </div>
+  </div>
 </div>
 
 

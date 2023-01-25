@@ -6,6 +6,23 @@
 
       <div class="flat-cards">
         <% @offers.each do |offer| %>
+            <% if student_signed_in? %>
+            <div class="card"> <%= link_to "http://localhost:3000/student/offers/#{offer.id}" do %>
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-index-body">
+                <h3 class="card-index-title"><%= offer.function %></h3>
+              </div>
+            <% end %>
+            </div>
+            <% elsif company_signed_in? %>
+            <div class="card"> <%= link_to "http://localhost:3000/company/offers/#{offer.id}" do %>
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-index-body">
+                <h3 class="card-index-title"><%= offer.function %></h3>
+              </div>
+            <% end %>
+            </div>
+            <% else %>
             <div class="card"> <%= link_to offer do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-index-body">
@@ -13,7 +30,8 @@
               </div>
             <% end %>
             </div>
-        <% end %>
+            <%end%>
+         <% end %>
       </div>
     </div>
 </div>

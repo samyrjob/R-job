@@ -1,0 +1,28 @@
+<div class="main-container" data-controller="display-booking">
+  <div class= "container-flat-show">
+    <div class="card-flat">
+      <div class="img-card-elf">
+        <%# <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
+      </div>
+      <div class="card-flat-infos">
+        <div class="card-flat-infos-title">
+          <h2><%= @offer.function %></h2>
+        </div>
+        <div class="card-elves-infos-content">
+          <p><i class="fas fa-info-circle"></i> <%= @offer.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container-form-booking" data-display-booking-target="form">
+    <% if company_signed_in? %>
+
+
+
+
+    <%= link_to "List of flats", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+
+    <%end%>
+  </div>
