@@ -1,0 +1,78 @@
+<div class="container p-2 mt-3 mb-3" >
+  <div class="card">
+    <h1 class="ms-5 mt-3"> Offres pour lesquelles j'ai postulé</h1>
+      <div class="row ms-3">
+          <div class="col-8">
+            <% @applications.each do |application| %>
+              <%= application.offer.function %>
+              <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
+            <% end %>
+          </div>
+
+          <div class="col-2">
+            <div style="margin: 40%; width: 100%;">
+              <%= link_to("voir liste des offres", offers_path, {class: "btn btn-success text-decoration-none"}) %>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="container-profile">
+
+  <div class= "container mb-5" >
+    <div class="container m-3">
+      <h2> Mes demandes Candidatures</h2>
+      <div class="wrapper mt-5">
+        <% @applications.each do |application| %>
+        <% if application.status == "declined" %>
+            <%= link_to offer_path(Offer.find(application.offer_id)) , class: "card m-2 position-relative" do %>
+
+                <div class="card opacity-50" style ="object-fit-content">
+                  <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
+                  <div class="card-body m-1">
+                    <h3 class="card-title"><%= Offer.find(application.offer_id).function %></h3>
+                    <p><%= Company.find(Offer.find(application.offer_id).company_id)%></p>
+                  </div>
+                </div>
+
+                <div class = "position-absolute top-0 end-0">
+                  <span class="badge rounded-pill bg-danger">Refusé</span>
+                </div>
+
+              <% end %>
+        <% elsif  application.status == "pending" %>
+        <div class="card m-2 position-relative" style ="object-fit-content"><%= link_to offer_path(Offer.find(application.offer_id)) , class: "card" do %>
+
+              <div class = "position-absolute top-0 end-0">
+              <span class="badge rounded-pill bg-secondary"> En attente </span>
+              </div>
+
+              <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
+              <div class="card-body m-1">
+                <h3 class="card-title"><%= Offer.find(application.offer_id).function %></h3>
+                <p><%= Company.find(Offer.find(application.offer_id).company_id)%></p>
+              </div>
+            <% end %>
+            </div>
+          <%  else application.status == "accepted" %>
+            <div class="card m-2 position-relative" style ="object-fit-content"><%= link_to offer_path(Offer.find(application.offer_id)) , class: "card" do %>
+
+              <div class = "position-absolute top-0 end-0">
+              <span class="badge rounded-pill bg-success"> Accepté </span>
+              </div>
+
+              <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
+              <div class="card-body m-1">
+                <h3 class="card-title"><%= Offer.find(application.offer_id).function %></h3>
+                <p><%= Company.find(Offer.find(application.offer_id).company_id)%></p>
+              </div>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
