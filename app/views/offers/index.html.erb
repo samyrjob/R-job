@@ -7,7 +7,7 @@
       <div class="flat-cards">
         <% @offers.each do |offer| %>
             <% if student_signed_in? %>
-            <div class="card"> <%= link_to "http://localhost:3000/student/offers/#{offer.id}" do %>
+            <div class="card"> <%= link_to student_offer_path(offer) do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-index-body">
                 <h3 class="card-index-title"><%= offer.function %></h3>
@@ -15,7 +15,7 @@
             <% end %>
             </div>
             <% elsif company_signed_in? %>
-            <div class="card"> <%= link_to "http://localhost:3000/company/offers/#{offer.id}" do %>
+            <div class="card"> <%= link_to company_offer_path(offer) do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-index-body">
                 <h3 class="card-index-title"><%= offer.function %></h3>
