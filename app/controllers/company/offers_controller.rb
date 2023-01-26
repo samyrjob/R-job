@@ -10,6 +10,7 @@ class Company::OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
+    @offer.image.attach(params[:offer][:image])
     @offer.company = current_company
 
     if @offer.save
@@ -28,7 +29,7 @@ class Company::OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:description, :function, :company_id)
+    params.require(:offer).permit(:description, :function, :company_id, :image)
   end
 
 end
