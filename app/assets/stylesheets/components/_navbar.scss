@@ -6,7 +6,6 @@
   height: 100px;
   padding: 0px;
   .navbar-logo {
-    background-image: url("accomodate-logo.png");
     background-size: cover;
     background-position: center;
     width: 100px;
@@ -33,7 +32,6 @@
   .navbar-avatar {
     width: 100px;
     height: 100%;
-    background-image: url("avatar.png");
     background-size: cover;
     background-position: center;
   }
@@ -44,4 +42,3 @@
   color: $white;
   font-size: 12px;
 }
-
