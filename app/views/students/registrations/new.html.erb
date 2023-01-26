@@ -16,6 +16,21 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last_name"} %>
+    <%= f.input :profile,
+                collection: Student::PROFILES,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "profile"} %>
+    <%= f.input :school,
+                collection: Student::BUSINESSCHOOLS,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "school", class: 'businessman'} %>
+    <%= f.input :school,
+                collection: Student::ENGINEERSCHOOLS,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "school", class: 'engineerman'} %>
     <%= f.input :photo,
                  as: :file,
                 required: true,
@@ -36,3 +51,53 @@
 <% end %>
 
 <%= render "students/shared/links" %>
+
+ <p> The value of the option selected is:
+        <span id="GFG_Span"></span>
+    </p>
+
+
+
+
+<style>
+
+/* .student_school {
+  display: none;
+} */
+
+</style>
+
+
+<script >
+var e = document.getElementById("student_profile");
+ var span = document.getElementById("GFG_Span");
+//  var doc = document.getElementsByClassName('businessman')
+//  var doc2 = document.getElementsByClassName('engineerman')
+// var n = document.getElementsByClassName("student_school");
+var tablo = document.getElementsByClassName("student_school")
+function onChange() {
+  document.getElementsByClassName("student_school")[0].classList.add("d-none")
+  document.getElementsByClassName("student_school")[1].classList.add("d-none")
+  var value = e.value;
+  var text = e.options[e.selectedIndex].text;
+  console.log(value);
+  span.textContent = text;
+  if (text == "Engineer School") {
+    document.getElementsByClassName("student_school")[1].classList.toggle("d-none")
+  }
+   if (text == "Business School") {
+    document.getElementsByClassName("student_school")[0].classList.toggle("d-none")
+  }
+
+// if (n.classList.contains(".businessman")) {
+//     var m = n.getAttribute("class");
+//     console.log(m);
+// }
+}
+e.onchange = onChange;
+onChange();
+
+
+
+
+</script>

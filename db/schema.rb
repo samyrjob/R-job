@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_25_115406) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_26_112047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_115406) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.text "description"
+    t.string "structure"
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
@@ -78,6 +80,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_115406) do
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "town"
+    t.float "salary"
+    t.date "start_date"
+    t.date "end_date"
+    t.date "end_activation"
+    t.string "status"
     t.index ["company_id"], name: "index_offers_on_company_id"
   end
 
@@ -108,6 +116,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_115406) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.text "description"
+    t.string "status"
+    t.string "tongues"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end

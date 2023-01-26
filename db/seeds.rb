@@ -19,8 +19,13 @@ Company.destroy_all
 
 puts "create students and companies"
 
-samy = Student.new(email: "samy@hotmail.fr", password: "password", last_name: "Rjob", first_name: "Samy", school: "audencia", profile: "business")
-danone = Company.new(email: "danone@hotmail.fr", password: "password", name: "danone", sector: "luxe")
+samy = Student.new(email: "samy@hotmail.fr", password: "password", last_name: "Rjob", first_name: "Samy", school: "Audencia", profile: "Business School", tongues: "Anglais", description: "Je serai un stagiaire studieux et investi ! Prenez moi plsss")
+jacy = Student.new(email: "jacy@hotmail.fr", password: "password", last_name: "Cy", first_name: "ja", school: "INSA", profile: "Engineer School", tongues: "Allemand", description: "Je parle allemand, y'a aucune raison que vous me preniez pas")
+
+danone = Company.new(email: "danone@hotmail.fr", password: "password", name: "danone", sector: "Banque/Assurance", descrption: "leader sur le marché mondial des yaourts,
+  notre vocation consiste en le bien être éternel des gens", structure: "PME")
+celio = Company.new(email: "celio@hotmail.fr", password: "password", name: "celio", sector: "Ventes", descrption: "Celio, marque de grande vente de fabrique de vêtements, présente partout en
+  Europe !", structure: "Grande société mondiale")
 
 
 puts "create offers"
@@ -28,6 +33,12 @@ puts "create offers"
 offer1 = Offer.create!(
   company: danone,
   company_id: danone.id,
+  start_date: "2023-03-24",
+  end_date: "2023-10-24",
+  salary: 800.59,
+  town: "Berlin",
+  end_activation: "2023-02-23",
+  status: "archived",
   function: "Conseiller client",
   description: "Venez découvrir notre appartement de 65m² situé au 1er étage d’un immeuble récent de bon standing.
 
@@ -68,9 +79,15 @@ offer1.photo.attach(io: file, filename: "flat1test.jpg", content_type: "image/jp
 
 
 offer2 = Offer.create!(
-  company: danone,
-  company_id: danone.id,
+  company: celio,
+  company_id: celio.id,
   function: "Stage directeur",
+  start_date: "2023-05-24",
+  end_date: "2023-11-24",
+  salary: 800,
+  town: "Lisbonne",
+  end_activation: "2023-02-24",
+  status: "archived",
   description: "Nous sommes à 2 pas de Graslin, place emblématique de la ville de NANTES. Face au musée DOBREE, quartier calme, espaces verts...Le logement au 5 ème et dernier étage( ascenseur jusqu'au 4 ème) a été entièrement rénové. Lumineux, exposé Sud, vous profitez de superbes vues sur les toits de Nantes et sur la Loire. Belle chambre indépendante équipée en suite parentale. La cuisine est aménagée et équipée.
   Le logement
   Pour le petit déjeuner vous avez à votre disposition, café et thé.
@@ -85,9 +102,15 @@ offer2.photo.attach(io: file, filename: "flat2test.jpg", content_type: "image/jp
 
 
 offer3 = Offer.create!(
-  company: danone,
-  company_id: danone.id,
+  company: celio,
+  company_id: celio.id,
   function: "stage esclavage",
+  start_date: "2024-06-25",
+  end_date: "2024-12-25",
+  salary: 1500.50,
+  town: "Barcelone",
+  end_activation: "2024-03-25",
+  status: "online",
   description: "itué dans le très résidentiel quartier Guist’hau, à quelques minutes à pieds du centre historique de Nantes, le Clair Obscur est un appartement à la décoration et aux prestations haut de gamme.
   Le logement
   Le temps d'une nuit ... ou de plusieurs, laissez-vous gagner par la volupté de l'espace balnéo, cédez à la tentation d'un moment cocooning devant la cheminée et rêvez dans le lit rond... peut-être à la recherche de la clef des trois mystères du Clair Obscur....
@@ -107,6 +130,12 @@ offer4 = Offer.create!(
   company: danone,
   company_id: danone.id,
   function: "balayeur",
+  start_date: "2023-06-25",
+  end_date: "2023-12-25",
+  salary: 500.50,
+  town: "Paris",
+  end_activation: "2023-03-25",
+  status: "online",
   description: "Nous vous accueillons avec plaisir dans ce gîte de charme qui jouit d’un cadre exceptionnel, au bord de la rivière.
   Découvrez un logement douillet et confortable, appréciez la beauté du paysage et profitez de la détente offerte par le SPA.
   Le logement
@@ -163,6 +192,19 @@ Application.create!(
   student:        samy,
   description: "je suis motivé bordel communauté !!!!!!!"
 )
+
+Application.create!(
+  offer:      offer2,
+  student:        jacy,
+  description: "Prenez moi et vous aurez pas de sort"
+)
+
+Application.create!(
+  offer:      offer4,
+  student:        jacy,
+  description: "je suis motivé donc prenez-moi et vous aurez pas de sort"
+)
+
 
 
 

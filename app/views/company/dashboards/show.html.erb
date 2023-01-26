@@ -33,7 +33,7 @@
         <div class="wrapper mt-5">
         <% @applications.each do |application| %>
           <% if application.status == "pending" %>
-            <%= link_to offer_path(Offer.find(application.offer_id)) , class: "card m-2" do %>
+            <%= link_to company_offer_path(Offer.find(application.offer_id)) , class: "card m-2" do %>
                 <div class="card" style ="object-fit-content">
                   <div class="card-body m-1">
                     M. <%= Student.find(application.student_id).last_name %> souhaite postuler :
@@ -47,7 +47,7 @@
                 </div>
             <% end %>
           <% elsif application.status == "accepted"%>
-            <%= link_to offer_path(Offer.find(application.offer_id)) , class: "card m-2 position-relative" do %>
+            <%= link_to company_offer_path(Offer.find(application.offer_id)) , class: "card m-2 position-relative" do %>
                 <div class="card" style ="object-fit-content">
                   <div class="card-body m-1">
                     <%= Offer.find(application.offer_id).function %> est convoité par M. <%= Student.find(application.student_id).last_name %>
