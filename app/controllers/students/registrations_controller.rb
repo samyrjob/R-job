@@ -7,24 +7,25 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   before_action :configure_permitted_parameters
 
-  
 
+
+
+
+    def create
+
+    end
 
   protected
 
   def configure_permitted_parameters
-    attributes = [:first_name, :last_name, :email, :photo]
+    # @profile = params.require(:student).permit(:profile)
+    attributes = [:first_name, :last_name, :email, :photo, :profile ,:school]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end
 
   # GET /resource/sign_up
   # def new
-  #   super
-  # end
-
-  # POST /resource
-  # def create
   #   super
   # end
 

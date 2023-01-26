@@ -18,6 +18,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "sector"} %>
+      <%= f.input :structure,
+                collection: Company::STRUCTURES,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "structure"} %>
      <%= f.input :name,
                 required: true,
                 autofocus: true,

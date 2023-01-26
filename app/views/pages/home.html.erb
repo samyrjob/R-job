@@ -39,3 +39,19 @@
 
   </div>
 </div>
+
+
+<Select>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</Select>
+
+
+
+<script>
+jQuery('#Example').change(function(){
+    var value = jQuery('#Example').val(); //it gets you the value of selected option
+    console.log(value); // you can see your sected values in console, Eg 1,2,3
+});
+</script>
