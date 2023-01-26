@@ -43,7 +43,9 @@
 </div>
 <%#
 <%= image_tag(current_student.photo.key, , height: 50, crop: :fill) %>
- <%= cl_image_tag  current_student.photo.key%>
+<%# <% if current_student.attach.photo? %>
+ <%# <%= cl_image_tag  current_student.photo.key%>
+<%# <% end %>
 
 <div class="container-profile">
 
