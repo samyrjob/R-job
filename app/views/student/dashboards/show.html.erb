@@ -41,7 +41,9 @@
       </div>
   </div>
 </div>
-
+<%#
+<%= image_tag(current_student.photo.key, , height: 50, crop: :fill) %>
+ <%= cl_image_tag  current_student.photo.key%>
 
 <div class="container-profile">
 
@@ -100,3 +102,11 @@
     </div>
   </div>
 </div>
+
+
+<style>
+.image-event-show {
+  width: 100px;
+  height: 100px;
+}
+</style>

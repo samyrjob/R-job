@@ -4,7 +4,9 @@
       <div class="row ms-3">
           <div class="col-8">
             <% @offers.each do |offer| %>
-            <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
+            <% if offer.image.attached? %>
+              <%= image_tag offer.image.variant(resize: "100x100")  %>
+            <% end %>
               <%=offer.function %>
             <% end %>
           </div>
