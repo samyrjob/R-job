@@ -29,8 +29,7 @@ gem "jbuilder"
 
 gem 'devise'
 gem 'devise_token_auth'
-gem 'avatars_for_rails'
-gem "rmagick", "~> 2.13.1"
+
 
 gem "cloudinary"
 

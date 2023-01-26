@@ -27,6 +27,7 @@ puts "create offers"
 
 offer1 = Offer.create!(
   company: danone,
+  company_id: danone.id,
   function: "Conseiller client",
   description: "Venez découvrir notre appartement de 65m² situé au 1er étage d’un immeuble récent de bon standing.
 
@@ -68,6 +69,7 @@ offer1.photo.attach(io: file, filename: "flat1test.jpg", content_type: "image/jp
 
 offer2 = Offer.create!(
   company: danone,
+  company_id: danone.id,
   function: "Stage directeur",
   description: "Nous sommes à 2 pas de Graslin, place emblématique de la ville de NANTES. Face au musée DOBREE, quartier calme, espaces verts...Le logement au 5 ème et dernier étage( ascenseur jusqu'au 4 ème) a été entièrement rénové. Lumineux, exposé Sud, vous profitez de superbes vues sur les toits de Nantes et sur la Loire. Belle chambre indépendante équipée en suite parentale. La cuisine est aménagée et équipée.
   Le logement
@@ -84,6 +86,7 @@ offer2.photo.attach(io: file, filename: "flat2test.jpg", content_type: "image/jp
 
 offer3 = Offer.create!(
   company: danone,
+  company_id: danone.id,
   function: "stage esclavage",
   description: "itué dans le très résidentiel quartier Guist’hau, à quelques minutes à pieds du centre historique de Nantes, le Clair Obscur est un appartement à la décoration et aux prestations haut de gamme.
   Le logement
@@ -102,6 +105,7 @@ offer3.photo.attach(io: file, filename: "flat3test.jpg", content_type: "image/jp
 
 offer4 = Offer.create!(
   company: danone,
+  company_id: danone.id,
   function: "balayeur",
   description: "Nous vous accueillons avec plaisir dans ce gîte de charme qui jouit d’un cadre exceptionnel, au bord de la rivière.
   Découvrez un logement douillet et confortable, appréciez la beauté du paysage et profitez de la détente offerte par le SPA.
