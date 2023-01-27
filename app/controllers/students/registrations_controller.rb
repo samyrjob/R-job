@@ -1,25 +1,43 @@
 # frozen_string_literal: true
 
 class Students::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
 
-  before_action :configure_permitted_parameters
+  before_action :configure_permitted_parameters, only: [:create, :update]
 
 
 
 
 
     def create
+      @student = Student.new(sign_up_params)
 
+      respond_to do |format|
+        if @student.save
+          format.html { redirect_to '/', notice: 'Your Account was successfully created' }
+          format.json { render :@student.json }
+        else
+          format.html { render :new }
+          format.json { render json: @student.errors, status: :unprocessable_entity }
+        end
+      end
+
+    end
+
+
+    private
+
+    def sign_up_params
+        params.require(:student).permit(:email, :first_name, :last_name, :photo, :profile, :school, :tongues, :password, :password_confirmation)
     end
 
   protected
 
   def configure_permitted_parameters
     # @profile = params.require(:student).permit(:profile)
-    attributes = [:first_name, :last_name, :email, :photo, :profile ,:school]
+    attributes = [:first_name, :last_name, :email, :photo, :profile, :school, :tongues, :password, :password_confirmation]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end

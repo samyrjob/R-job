@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -20,17 +20,22 @@
                 collection: Student::PROFILES,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "profile"} %>
+                input_html: { autocomplete: "profile"}%>
     <%= f.input :school,
                 collection: Student::BUSINESSCHOOLS,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "school", class: 'businessman'} %>
+                input_html: { autocomplete: "school", class: 'businessman'}%>
     <%= f.input :school,
                 collection: Student::ENGINEERSCHOOLS,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "school", class: 'engineerman'} %>
+                input_html: { autocomplete: "school", class: 'engineerman'}%>
+    <%= f.input :tongues,
+                collection: Student::TONGUES,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "tongues"}%>
     <%= f.input :photo,
                  as: :file,
                 required: true,
@@ -52,7 +57,7 @@
 
 <%= render "students/shared/links" %>
 
- <p> The value of the option selected is:
+ <%# <p class="forfunction"> The value of the option selected is:
         <span id="GFG_Span"></span>
     </p>
 
@@ -61,33 +66,31 @@
 
 <style>
 
-/* .student_school {
+.forfunction{
   display: none;
-} */
-
-</style>
+}
+</style> %>
 
 
 <script >
 var e = document.getElementById("student_profile");
- var span = document.getElementById("GFG_Span");
-//  var doc = document.getElementsByClassName('businessman')
-//  var doc2 = document.getElementsByClassName('engineerman')
-// var n = document.getElementsByClassName("student_school");
-var tablo = document.getElementsByClassName("student_school")
+//  var span = document.getElementById("GFG_Span");
+
+var tablo = document.getElementsByClassName("student_school");
 function onChange() {
-  document.getElementsByClassName("student_school")[0].classList.add("d-none")
-  document.getElementsByClassName("student_school")[1].classList.add("d-none")
+  tablo[0].classList.add("d-none")
+  tablo[1].classList.add("d-none")
+
   var value = e.value;
   var text = e.options[e.selectedIndex].text;
-  console.log(value);
-  span.textContent = text;
+  // span.textContent = text;
   if (text == "Engineer School") {
     document.getElementsByClassName("student_school")[1].classList.toggle("d-none")
   }
-   if (text == "Business School") {
+  else {
     document.getElementsByClassName("student_school")[0].classList.toggle("d-none")
   }
+
 
 // if (n.classList.contains(".businessman")) {
 //     var m = n.getAttribute("class");
@@ -96,8 +99,4 @@ function onChange() {
 }
 e.onchange = onChange;
 onChange();
-
-
-
-
 </script>
