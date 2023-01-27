@@ -1,39 +1,45 @@
 # frozen_string_literal: true
 
 class Students::RegistrationsController < Devise::RegistrationsController
-  before_action :sign_up_params, only: [:create]
+  # before_action :sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
 
-  before_action :configure_permitted_parameters, only: [:create, :update]
+  before_action :configure_permitted_parameters
 
 
 
 
+    # def create
+    #   @student = Student.new(sign_up_params)
+    #   # session[:id] = @student.id
+    #   respond_to do |format|
+    #     if @student.save
+    #       format.html { redirect_to student_dashboard_path(@student), notice: 'Your Account was successfully created' }
+    #       format.json { render :@student.json }
+    #     else
+    #       format.html { render :new }
+    #       format.json { render json: @student.errors, status: :unprocessable_entity }
+    #     end
+    #   end
 
-    def create
-      @student = Student.new(sign_up_params)
+    # end
 
-      respond_to do |format|
-        if @student.save
-          format.html { redirect_to '/', notice: 'Your Account was successfully created' }
-          format.json { render :@student.json }
-        else
-          format.html { render :new }
-          format.json { render json: @student.errors, status: :unprocessable_entity }
-        end
-      end
 
+
+    protected
+
+    # def sign_up_params
+    #     params.require(:student).permit(:email, :first_name, :last_name, :photo, :profile, :school, :tongues, :password, :password_confirmation, :student_id)
+    # end
+
+    def after_sign_up_path_for(resource)
+      student_dashboard_path(resource)
     end
 
-
-    private
-
-    def sign_up_params
-        params.require(:student).permit(:email, :first_name, :last_name, :photo, :profile, :school, :tongues, :password, :password_confirmation)
+    def after_inactive_sign_up_path_for(resource)
+      student_dashboard_path(resource)
     end
-
-  protected
 
   def configure_permitted_parameters
     # @profile = params.require(:student).permit(:profile)
@@ -84,9 +90,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

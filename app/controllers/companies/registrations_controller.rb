@@ -18,6 +18,17 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end
 
+
+
+  def after_sign_up_path_for(resource)
+    company_dashboard_path(resource)
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    company_dashboard_path(resource)
+  end
+
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -52,8 +63,8 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
 
+  # The path used after sign up.
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
@@ -64,10 +75,6 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
