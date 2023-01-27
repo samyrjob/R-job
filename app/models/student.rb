@@ -22,4 +22,22 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :tongues, presence: true, inclusion: { in: TONGUES }
+
+  # EMAIL_REGEX = /\A[^@\s]+@[^@\s]+\z/
+  # validates_format_of :email, with: EMAIL_REGEX
+
+#   GMAIL_DOMAINS = %w{gmail.com googlemail.com hotmail.fr hotmail.com }
+
+# validates :email_is_gmail
+
+# private
+# def email_is_gmail
+#   GMAIL_DOMAINS.each do |domain|
+#     return true if email.end_with?('@' + domain)
+#   end
+# end
+
+
+
+
 end
