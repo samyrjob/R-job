@@ -16,10 +16,10 @@ class Student < ApplicationRecord
 
   has_many :applications, dependent: :destroy
   has_many :savedoffers, dependent: :destroy
-  validates :profile, presence: true,inclusion: { in: PROFILES }
+  validates :profile, presence: true, inclusion: { in: PROFILES }
   validates :school, presence: true, inclusion: { in: SCHOOLS }
   has_one_attached :photo
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :tongues, inclusion: { in: TONGUES }
+  validates :tongues, presence: true, inclusion: { in: TONGUES }
 end
