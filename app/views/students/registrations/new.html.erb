@@ -52,9 +52,9 @@
 
 <%= render "students/shared/links" %>
 
-  <p class="forfunction"> The value of the option selected is:
+  <%# <p class="forfunction"> The value of the option selected is:
         <span id="GFG_Span"></span>
-    </p>
+    </p> %>
 
 
 
@@ -71,7 +71,7 @@
 <script >
 var e = document.getElementById("student_profile");
 var a = document.getElementById("student_school")
- var span = document.getElementById("GFG_Span");
+//  var span = document.getElementById("GFG_Span");
 
 var tablo = document.getElementsByClassName("student_school");
 
@@ -82,7 +82,7 @@ function onChange() {
   var value = e.value;
   var text = e.options[e.selectedIndex].text;
   var jo = a.options[a.selectedIndex].text
-  span.textContent = text;
+  // span.textContent = text;
 
   // if (text == "Business School") {
   //   document.getElementsByClassName("student_school")[0].classList.toggle("d-none")

@@ -2,11 +2,20 @@
 
 
 
-<p>
-First Name : <%= @student.first_name%>
-Last Name : <%= @student.last_name%>
-Email : <%= @student.email%>
-School : <%= @student.school%>
+<div>
+First Name : <%= @student.first_name%> <br>
+Last Name : <%= @student.last_name%> <br>
+Email : <%= @student.email%> <br>
+School : <%= @student.school%> <br>
 
 Langues parlées : <%= @student.tongues %>
-</p>
+</div>
+
+
+<%= simple_form_for ([@student, ]) do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.input :shool %>
+  <%= f.button :submit %>
+<% end %>

@@ -4,4 +4,6 @@ class Student::ProfilesController < ApplicationController
     @student = current_student
   end
 
-end 
+  
+
+end
