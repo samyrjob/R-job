@@ -4,7 +4,10 @@ class Student::DashboardsController < ApplicationController
   def show
 
     @applications = @student.applications
-    @savedoffers = Savedoffer.where(student_id: @student.id)
+    # @offers = Offer.where(:saved = true)
+    # @savedoffers = Savedoffer.where(student_id: @student.id)
+    # @savedoffers = @student.savedoffers.distinct.pluck(:offer_id)
+    @savedoffers = @student.savedoffers.where(:saved => true).distinct.pluck(:offer_id)
   end
 
   private

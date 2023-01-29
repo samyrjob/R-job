@@ -8,6 +8,7 @@ class Students::SessionsController < Devise::SessionsController
   #   super
   # end
 
+ 
   # POST /resource/sign_in
 
   # DELETE /resource/sign_out

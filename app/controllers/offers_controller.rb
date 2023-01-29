@@ -4,8 +4,21 @@ class OffersController < ApplicationController
 
   def index
 
+    if params[:query].present?
+      sql_query = <<~SQL
+      offers.town ILIKE :query
+      OR offers.function ILIKE :query
+      OR companies.name ILIKE :query
+      OR companies.sector ILIKE :query
+    SQL
+      @offers = Offer.joins(:company).where(sql_query, query: "%#{params[:query]}%")
+    else
       @offers = Offer.all
+    end
 
+    @search = Search.new
+    @towns = Offer.select(:town).map(&:town).uniq
+    @sectors = Company.select(:sector).map(&:sector).uniq
 
   end
 

@@ -1,0 +1,22 @@
+<h1>Search results</h1>
+
+<% if @search.search_offers.empty? %>
+
+<p>No records found</p>
+
+<% else %>
+
+<% @search.search_offers.each do |p| %>
+<br>
+
+<div class="div">
+<h1><%= p.function %></h1>
+  <p> Sector <%= p.company.sector %></p>
+ <p> ville  <%= p.town %></p>
+<p> durée en mois <%= p.duration %></p>
+<p> Start_date <%= p.start_date %></p>
+<p> Salary <%= p.salary %></p>
+</div>
+
+<% end %>
+<% end %>

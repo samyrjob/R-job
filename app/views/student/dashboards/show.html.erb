@@ -21,12 +21,12 @@
       <div class="row ms-3">
           <div class="wrapper mt-5">
             <% @savedoffers.each do |savedoffer| %>
-               <%= link_to student_offer_path(Offer.find(savedoffer.offer_id)) , class: "card m-2 position-relative" do %>
+               <%= link_to student_offer_path(Offer.find(savedoffer)) , class: "card m-2 position-relative" do %>
                   <div class="card" style ="object-fit-content">
                     <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
                     <div class="card-body m-1">
-                      <h3 class="card-title"><%= Offer.find(savedoffer.offer_id).function %></h3>
-                      <p> By : <%= Company.find(Offer.find(savedoffer.offer_id).company_id)%></p>
+                      <h3 class="card-title"><%= Offer.find(savedoffer).function %></h3>
+                      <p> By : <%= Company.find(Offer.find(savedoffer).company_id)%></p>
                    </div>
                   </div>
                 <% end %>

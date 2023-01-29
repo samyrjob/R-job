@@ -22,15 +22,10 @@
                 autofocus: true,
                 input_html: { autocomplete: "profile"}%>
     <%= f.input :school,
-                collection: Student::BUSINESSCHOOLS,
+                collection: ["", "", "", "", "", "", "", "", "", ""],
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "school", class: 'businessman'}%>
-    <%= f.input :school,
-                collection: Student::ENGINEERSCHOOLS,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "school", class: 'engineerman'}%>
+                input_html: { autocomplete: "school", class: 'businessman'} %>
     <%= f.input :tongues,
                 collection: Student::TONGUES,
                 required: true,
@@ -57,14 +52,14 @@
 
 <%= render "students/shared/links" %>
 
- <%# <p class="forfunction"> The value of the option selected is:
+  <p class="forfunction"> The value of the option selected is:
         <span id="GFG_Span"></span>
     </p>
 
 
 
 
-<style>
+<%# <style>
 
 .forfunction{
   display: none;
@@ -72,24 +67,99 @@
 </style> %>
 
 
+
 <script >
 var e = document.getElementById("student_profile");
-//  var span = document.getElementById("GFG_Span");
+var a = document.getElementById("student_school")
+ var span = document.getElementById("GFG_Span");
 
 var tablo = document.getElementsByClassName("student_school");
+
 function onChange() {
-  tablo[0].classList.add("d-none")
-  tablo[1].classList.add("d-none")
+
+
 
   var value = e.value;
   var text = e.options[e.selectedIndex].text;
-  // span.textContent = text;
+  var jo = a.options[a.selectedIndex].text
+  span.textContent = text;
+
+  // if (text == "Business School") {
+  //   document.getElementsByClassName("student_school")[0].classList.toggle("d-none")
+  // }
+  // else {
+  //   document.getElementsByClassName("student_school")[0].classList.toggle("d-none")
+  // }
+
   if (text == "Engineer School") {
-    document.getElementsByClassName("student_school")[1].classList.toggle("d-none")
+    a.options[1].value = 'INSA'
+    a.options[2].value = 'Polytech'
+    a.options[3].value = 'CENTRALES SUPELEC'
+    a.options[4].value = 'POLYTECHNIQUE'
+    a.options[5].value = 'ECOLE DES MINES'
+    a.options[6].value = 'ECOLE CENTRALES'
+    a.options[7].value = 'ENSAE PARIS'
+    a.options[8].value = 'CENTRALES LYON'
+    a.options[9].value = 'CENTRALES PARIS'
+    a.options[10].value = 'CENTRALES RENNES'
+    a.options[1].textContent = 'INSA'
+    a.options[2].textContent = 'Polytech'
+    a.options[3].textContent = 'CENTRALES SUPELEC'
+    a.options[4].textContent = 'POLYTECHNIQUE'
+    a.options[5].textContent = 'ECOLE DES MINES'
+    a.options[6].textContent = 'ECOLE CENTRALES'
+    a.options[7].textContent = 'ENSAE PARIS'
+    a.options[8].textContent = 'CENTRALES LYON'
+    a.options[9].textContent = 'CENTRALES PARIS'
+    a.options[10].textContent = 'CENTRALES RENNES'
   }
-  else {
-    document.getElementsByClassName("student_school")[0].classList.toggle("d-none")
+  else if (text == "Business School") {
+    a.options[1].value = 'Audencia'
+    a.options[2].value = 'Essec'
+    a.options[3].value = 'EDHEC'
+    a.options[4].value = 'EM Lyon'
+    a.options[5].value = 'RSB'
+    a.options[6].value = 'Kedge Business school'
+    a.options[7].value = 'IMT TELECOM'
+    a.options[8].value = 'ESCP'
+    a.options[9].value = 'HEC'
+    a.options[10].value = 'ICN BS'
+    a.options[1].textContent = 'Audencia'
+    a.options[2].textContent = 'Essec'
+    a.options[3].textContent = 'EDHEC'
+    a.options[4].textContent = 'EM Lyon'
+    a.options[5].textContent = 'RSB'
+    a.options[6].textContent = 'Kedge Business school'
+    a.options[7].textContent = 'IMT TELECOM'
+    a.options[8].textContent = 'ESCP'
+    a.options[9].textContent = 'HEC'
+    a.options[10].textContent = 'ICN BS'
   }
+   else {
+    a.options[1].value = 'Sciences Po Rennes'
+    a.options[2].value = 'Fac de Nanterres'
+    a.options[3].value = 'Université de Nantes'
+    a.options[4].value = 'Université de Caen'
+    a.options[5].value = 'Sciences po Paris'
+    a.options[6].value = 'IAE PARIS'
+    a.options[7].value = 'IAE REGION'
+    a.options[8].value = 'Fac de Metz'
+    a.options[9].value = 'Ecole des beaux-arts'
+    a.options[10].value = 'Ecoles des arts'
+    a.options[1].textContent = 'Sciences Po Rennes'
+    a.options[2].textContent = 'Fac de Nanterres'
+    a.options[3].textContent = 'Université de Nantes'
+    a.options[4].textContent = 'Université de Caen'
+    a.options[5].textContent = 'Sciences po Paris'
+    a.options[6].textContent = 'IAE PARIS'
+    a.options[7].textContent = 'IAE REGION'
+    a.options[8].textContent = 'Fac de Metz'
+    a.options[9].textContent = 'Ecole des beaux-arts'
+    a.options[10].textContent = 'Ecole des arts'
+  }
+
+
+
 
 
 // if (n.classList.contains(".businessman")) {
@@ -99,4 +169,6 @@ function onChange() {
 }
 e.onchange = onChange;
 onChange();
+
+
 </script>
