@@ -4,12 +4,17 @@ Rails.application.routes.draw do
   devise_for :companies, controllers: {
     registrations: 'companies/registrations'
   }
-  
+
   devise_for :students, controllers: {
     registrations: 'students/registrations'
   }
 
+
+
+
   resources :offers, only: %i[index show]
+  resources :searches, only: %i[create show ]
+
 
 
   namespace :company do # permet de faire sous catégories de user

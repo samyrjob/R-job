@@ -10,9 +10,7 @@ class Company::OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @offer.images.attach(params[:offer][:image])
     @offer.company = current_company
-
     if @offer.save
       redirect_to "/", notice: "your application has been sent !"
     else
@@ -29,7 +27,7 @@ class Company::OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:description, :function, :image)
+    params.require(:offer).permit(:description, :function, :town, :salary, :duration, :start_date)
   end
 
 end

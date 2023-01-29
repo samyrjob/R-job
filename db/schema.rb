@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_26_112047) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_29_062524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,9 +83,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_112047) do
     t.string "town"
     t.float "salary"
     t.date "start_date"
-    t.date "end_date"
     t.date "end_activation"
     t.string "status"
+    t.integer "duration"
     t.index ["company_id"], name: "index_offers_on_company_id"
   end
 
@@ -97,6 +97,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_112047) do
     t.boolean "saved", default: false
     t.index ["offer_id"], name: "index_savedoffers_on_offer_id"
     t.index ["student_id"], name: "index_savedoffers_on_student_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "keywords"
+    t.string "sector"
+    t.string "town"
+    t.string "start_date"
+    t.integer "min_duration"
+    t.integer "max_duration"
+    t.float "min_salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|

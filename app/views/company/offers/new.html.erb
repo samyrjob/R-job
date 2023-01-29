@@ -6,9 +6,9 @@
 <%= simple_form_for ([@company, @offer]) do |f| %>
   <%= f.input :function %>
   <%= f.input :description, as: :text %>
-  <%= f.input :image, as: :file %>
+  <%= f.input :town %>
+  <%= f.input :salary, as: :float %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :duration, as: :integer %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
-
-
-

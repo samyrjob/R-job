@@ -3,6 +3,50 @@
     <%= link_to "Publish an offer", new_company_offer_path, class: "btn btn-info" %>
  <% end %>
 
+<br>
+
+ <%= form_with url: offers_path, method: :get, class: "d-flex me-1" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an offer"
+  %>
+  <%= submit_tag "Search", class: "btn btn-info" %>
+<% end %>
+
+
+<%= form_for @search, html: {class: "pure-form"} do |f| %>
+  <div class="field">
+    <%=f.label :keywords %> <br>
+    <%= f.text_field :keywords %>
+  </div>
+  <div class="field">
+    <%=f.label :sector %> <br>
+    <%=f.select :sector, options_for_select(@sectors), :include_blank => true %>
+  </div>
+   <div class="field">
+    <%=f.label :town %> <br>
+    <%=f.select :town, options_for_select(@towns), :include_blank => true %>
+  </div>
+   <div class="field">
+    <% f.label :start_date %> <br>
+    <% f.date_field :start_date %>
+  </div>
+  <div class="field">
+  <p><%= f.label :min_duration, "Min Duration" %> - <%= f.number_field :min_duration, size: 10 %> </p>
+  <p><%= f.label :max_duration, "Max Duration" %> - <%= f.number_field :max_duration, size: 10 %> </p>
+  </div>
+  <div class="field">
+  <p><%= f.label :min_salary, "Min salary" %> - <%= f.number_field :min_salary, size: 10, step: :any %> </p>
+  </div>
+
+  <%# Admin?    : <%= f.check_box :admin %>
+  <div class="actions"><%= f.submit "Search", class: "pure-button pure-button-primary"%></div>
+<% end %>
+
+
+
+<br>
 
       <div class="flat-cards">
         <% @offers.each do |offer| %>

@@ -27,6 +27,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
 
 
+
     protected
 
     # def sign_up_params
