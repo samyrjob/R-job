@@ -11,11 +11,3 @@ School : <%= @student.school%> <br>
 Langues parlées : <%= @student.tongues %>
 </div>
 
-
-<%= simple_form_for ([@student, ]) do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :shool %>
-  <%= f.button :submit %>
-<% end %>

@@ -1,0 +1,52 @@
+.cover-index {
+  background-image: url("building.jpg");
+  height: 150px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .search {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    i {
+      position: absolute;
+      top: 18px;
+      left: 11px;
+    }
+  }
+}
+
+.pagination {
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.card {
+  display: flex;
+  margin-bottom: 0.9375rem;
+  font-size: .9375rem;
+  line-height: 1.5;
+  a {
+    text-decoration: none;
+  }
+  .description-side{
+    display: block;
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    li {
+      list-style: none;
+      border-bottom: none;
+    }
+  }
+}

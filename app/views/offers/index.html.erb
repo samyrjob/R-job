@@ -1,48 +1,75 @@
-<h1 class="title-index"><strong>Our unique selection of flats</strong></h1>
+<div class="cover-index">
+  <div class="search">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <%= form_with url: offers_path, method: :get, class: "d-flex me-1 pt-2 relative mx-auto text-gray-600" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none",
+        placeholder: ""
+      %>
+      <%= submit_tag "Go", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
+ <div class="col pt-1" data-controller="search">
+        <div class="d-flex" style="padding:10px">
+          <button class="btn btn-primary btn-lg" data-action="click->search#panel" data-search-target="button" style="margin-top: 10px"> Recherche avancée</button>
+        </div>
+
+        <div href="#" class="yeahh d-none" data-search-target="link" style="padding: 10px">
+          <%= form_for @search, html: {class: "pure-form"} do |f| %>
+            <div class="field">
+              <%=f.label :Mots_Clefs %> <br>
+              <%= f.text_field :keywords %>
+            </div>
+            <div class="field">
+              <%=f.label :Secteur %> <br>
+              <%=f.select :sector, options_for_select(@sectors), :include_blank => true %>
+            </div>
+            <div class="field">
+              <%=f.label :Ville %> <br>
+              <%=f.select :town, options_for_select(@towns), :include_blank => true %>
+            </div>
+            <div class="field">
+              <%= f.label :Date_de_début %> <br>
+              <%= f.date_field :start_date %>
+            </div>
+            <div class="field">
+            <p><%= f.label :min_duration, "Durée minimale" %> - <%= f.number_field :min_duration, size: 10 %> </p>
+            <p><%= f.label :max_duration, "Durée maximale" %> - <%= f.number_field :max_duration, size: 10 %> </p>
+            </div>
+            <div class="field">
+            <p><%= f.label :min_salary, "Salaire minimum" %> - <%= f.number_field :min_salary, size: 10, step: :any %> </p>
+            </div>
+
+            <%# Admin?    : <%= f.check_box :admin %>
+            <div class="actions"><%= f.submit "Search", class: "btn btn-primary"%></div>
+          <% end %>
+        <button class="btn btn-success" data-action="click->search#reset" style="margin-top: 10px"> Retour </button>
+        </div>
+        <div class="opaq opacity-50 d-none" data-search-target="panel"></div>
+  </div>
+
+
+<%# <%= Offer.count%>
+
+
+
+
+<div>
+
  <% if company_signed_in? %>
-    <%= link_to "Publish an offer", new_company_offer_path, class: "btn btn-info" %>
+    <%= link_to "Publish an offer", new_company_offer_path, class: "btn btn-success" %>
  <% end %>
+
+
+</div>
 
 <br>
 
- <%= form_with url: offers_path, method: :get, class: "d-flex me-1" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find an offer"
-  %>
-  <%= submit_tag "Search", class: "btn btn-info" %>
-<% end %>
 
-
-<%= form_for @search, html: {class: "pure-form"} do |f| %>
-  <div class="field">
-    <%=f.label :keywords %> <br>
-    <%= f.text_field :keywords %>
-  </div>
-  <div class="field">
-    <%=f.label :sector %> <br>
-    <%=f.select :sector, options_for_select(@sectors), :include_blank => true %>
-  </div>
-   <div class="field">
-    <%=f.label :town %> <br>
-    <%=f.select :town, options_for_select(@towns), :include_blank => true %>
-  </div>
-   <div class="field">
-    <% f.label :start_date %> <br>
-    <% f.date_field :start_date %>
-  </div>
-  <div class="field">
-  <p><%= f.label :min_duration, "Min Duration" %> - <%= f.number_field :min_duration, size: 10 %> </p>
-  <p><%= f.label :max_duration, "Max Duration" %> - <%= f.number_field :max_duration, size: 10 %> </p>
-  </div>
-  <div class="field">
-  <p><%= f.label :min_salary, "Min salary" %> - <%= f.number_field :min_salary, size: 10, step: :any %> </p>
-  </div>
-
-  <%# Admin?    : <%= f.check_box :admin %>
-  <div class="actions"><%= f.submit "Search", class: "pure-button pure-button-primary"%></div>
-<% end %>
 
 
 
@@ -50,32 +77,222 @@
 
       <div class="flat-cards">
         <% @offers.each do |offer| %>
+           <% if @offers.to_a.index(offer) % 2 == 0 %>
             <% if student_signed_in? %>
             <div class="card"> <%= link_to student_offer_path(offer) do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
-              <div class="card-index-body">
-                <h3 class="card-index-title"><%= offer.function %></h3>
+              <div class="card-logo">
+                <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+              </div>
+              <div class="description-side">
+                <h3><%= offer.function %></h3>
+                <div>
+                <p><%= Company.find(offer.company_id).name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if offer.duration?  %>
+                     <p>Stage <%= offer.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if offer.town?  %>
+                     <p><%= offer.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
               </div>
             <% end %>
             </div>
             <% elsif company_signed_in? %>
-            <div class="card"> <%= link_to company_offer_path(offer) do %>
-              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
-              <div class="card-index-body">
-                <h3 class="card-index-title"><%= offer.function %></h3>
+              <div class="card"> <%= link_to company_offer_path(offer) do %>
+                <div class="card-logo">
+                  <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                </div>
+                <div class="description-side">
+                  <h3><%= offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if offer.duration?  %>
+                      <p>Stage <%= offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if offer.town?  %>
+                      <p><%= offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+              <% end %>
               </div>
-            <% end %>
-            </div>
             <% else %>
-            <div class="card"> <%= link_to offer do %>
+              <div class="card"> <%= link_to offer do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
-              <div class="card-index-body">
-                <h3 class="card-index-title"><%= offer.function %></h3>
-              </div>
-            <% end %>
+                <div class="card-logo">
+                    <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                </div>
+                <div class="description-side">
+                    <h3><%= offer.function %></h3>
+                    <div>
+                    <p><%= Company.find(offer.company_id).name %></h3></p>
+                    </div>
+                    <ul>
+                      <li>
+                        <% if offer.duration?  %>
+                        <p>Stage <%= offer.duration %> mois</p>
+                        <% end %>
+                      </li>
+                      <li>
+                        <% if offer.town?  %>
+                        <p><%= offer.town %></p>
+                        <% end %>
+                      </li>
+                      <li>
+                          <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                            <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                          <% else %>
+                            <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                          <% end %>
+                      </li>
+                    </ul>
+                </div>
+              <% end %>
             </div>
             <%end%>
+          <% else %>
+             <% if student_signed_in? %>
+            <div class="card" style="background: #EEF1F6;"> <%= link_to student_offer_path(offer) do %>
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-logo">
+                    <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                </div>
+              <div class="description-side">
+                <h3><%= offer.function %></h3>
+                <div>
+                <p><%= Company.find(offer.company_id).name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if offer.duration?  %>
+                     <p>Stage <%= offer.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if offer.town?  %>
+                     <p><%= offer.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+            </div>
+            <% elsif company_signed_in? %>
+              <div class="card" style="background: #EEF1F6;"> <%= link_to company_offer_path(offer) do %>
+                <div class="card-logo">
+                    <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                </div>
+                <div class="description-side">
+                  <h3><%= offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if offer.duration?  %>
+                      <p>Stage <%= offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if offer.town?  %>
+                      <p><%= offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+              <% end %>
+              </div>
+            <% else %>
+              <div class="card" style="background: #EEF1F6;"> <%= link_to offer do %>
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+                <div class="card-logo">
+                    <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                </div>
+                <div class="description-side">
+                  <h3><%= offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if offer.duration?  %>
+                      <p>Stage <%= offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if offer.town?  %>
+                      <p><%= offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+              <% end %>
+              </div>
+            <%end%>
+
+          <% end %>
          <% end %>
       </div>
     </div>
 </div>
+
+<%= will_paginate @offers %>
+<%# <%= paginate @offers1%>
+
+<script>
+console.log("zehma")
+var elem = document.getElementsByClassName("previous_page");
+var elem2 = document.getElementsByClassName("next_page");
+
+elem[0].textContent = 'Précédent'
+elem2[0].textContent = 'Suivant'
+
+</script>
