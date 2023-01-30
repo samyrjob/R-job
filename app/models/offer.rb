@@ -8,7 +8,6 @@ class Offer < ApplicationRecord
   validates :start_date, presence: true
   validates :salary, presence: true
   validates :duration, presence: true
-  has_one_attached :image
-
-
+  has_one_attached :photo
+  # self.per_page = 7
 end

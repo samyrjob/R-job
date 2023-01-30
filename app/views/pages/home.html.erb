@@ -1,41 +1,150 @@
 <div class = "home-banner">
-
-  <%= link_to "Explore flats !", offers_path, class: "home-button" %>
-
 </div>
 
-<div class = "card-home">
-  <div class = "container-home">
-
-    <div class = "card-home-column">
-      <div class = "image-card-home1">
-      </div>
-      <div class = "text-card-home-top">
-        <h3>Discover other horizons</h3>
-        <p>Stay in a new space with absolute comfort</p>
-      </div>
+<div class= "carre">
+  <div class= "carre1">
+    <div class="contentcarre">
+      <h1>Ton stage à l'étranger en quelques clics !</h1>
+      <p>Cultive, créé et profite de ta nouvelle expérience internationale</p>
+      <a href="https://ftb.tzportal.io/fr/jobs" target="_blank" class="home-button">Voir les offres </a>
     </div>
+  </div>
 
-     <div class = "card-home-column">
-      <div class = "image-card-home2">
-      </div>
-      <div class = "text-card-home-top">
-        <h3>Travel easily</h3>
-        <p>In just a few clicks you accommodate yourself</p>
-      </div>
-    </div>
 
-     <div class = "card-home-column">
-      <div class = "image-card-home3">
+  <div class="carre2">
+    <div class="partners-double">
+      <div class="first">
+        <div class="container-partner">
+          <div class="logoss">
+            <div class="container-schools">
+              <div class="grid-logos1">
+                <%= image_tag("ememlyon.png", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("audenciafond.jfif", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("icntrue.jfif", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("sorbonne.jpg", {:style => "width:50px;height:50px;", class:"logos"}) %>
+              </div>
+              <div class="grid-logos1">
+                <%= image_tag("kedgemarseille.png", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("ipagipag.svg", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("hec.png", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("insa.png", {:style => "width:50px;height:50px;", class:"logos"}) %>
+              </div>
+               <div class="grid-logos2">
+                <%= image_tag("ememlyon.png", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("audenciafond.jfif", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("icntrue.jfif", {:style => "width:50px;height:50px;", class:"logos"}) %>
+              </div>
+              <div class="grid-logos2">
+                <%= image_tag("kedgemarseille.png", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("ipagipag.svg", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("hec.png", {:style => "width:50px;height:50px;", class:"logos"}) %>
+              </div>
+              <div class="grid-logos2">
+                <%= image_tag("sorbonne.jpg", {:style => "width:50px;height:50px;", class:"logos"}) %>
+                <%= image_tag("insa.png", {:style => "width:50px;height:50px;", class:"logos"}) %>
+              </div>
+            </div>
+          </div>
+          <div class="description">
+            <p>Vos écoles sont attractives à l'international !</p>
+            <div class="buttoncard">
+              <a href="https://ftb.tzportal.io/fr/login" target="_blank" class="blog">Mon Espace Etudiant</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class = "text-card-home-top">
-        <div>
-          <h3>Stay safe</h3>
-          <p>Stay in a new space with safety and measures</p>
+      <div class="second">
+        <div class="container-partner">
+          <div class="videoimage">
+            <%= video_tag("videoexpeplus.mp4", {:size => "342x216",:poster => "poster.png", :autoplay => true, :muted => true, :controls => true, :type => "video/mp4", class:"togo"})%>
+            <%= image_tag("poster.png", {class:"poster"})%>
+          </div>
+          <div class="description">
+            <p>Entreprises de la French Tech ou Autres ...</p>
+            <div class="buttoncard">
+              <a href="https://app-v4.tool4staffing.com/fr/login" target="_blank" class="blog">Mon Espace Entreprise</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="container-slider">
+        <div class="slider">
+          <div class="slides">
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+
+            <%# slides %>
+            <div class="slide first">
+              <%= image_tag("bcntruetrue.png") %>
+            </div>
+            <div class="slide">
+              <%= image_tag("lisbonnetrue.png") %>
+            </div>
+            <div class="slide">
+              <%= image_tag("fontaintrue.png") %>
+            </div>
+            <div class="slide">
+              <%= image_tag("dublintrue.png") %>
+            </div>
+
+            <div class="navigation-auto">
+              <div class="auto-btn1"></div>
+              <div class="auto-btn2"></div>
+              <div class="auto-btn3"></div>
+              <div class="auto-btn4"></div>
+            </div>
+
+          </div>
+
+          <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+          </div>
+
+        </div>
+      </div>
 
 
+    </div>
   </div>
+
+
+<div class="home-banner1">
 </div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  var counter = 1;
+  setInterval(function(){
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if(counter > 4){
+      counter = 1;
+    }
+  }, 5000);
+
+// const videoPlayer = document.querySelector('.video-player')
+// const video = videoPlayer.querySelector('.togo')
+// const PlayButton = videoPlayer.querySelector('.play-button')
+
+// PlayButton.addEventListener('click', (e) => {
+//   if (video.paused){
+//     video.play()
+//     e.target.textContent = 'I I'
+//   } else {
+//     video.pause()
+//     e.target.textContent = '>'
+//   }
+// })
+
+</script>
