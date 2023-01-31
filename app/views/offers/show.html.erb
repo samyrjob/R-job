@@ -1,28 +1,25 @@
-<div class="main-container" data-controller="display-booking">
+<div class="main-container">
   <div class= "container-flat-show">
     <div class="card-flat">
-      <div class="img-card-elf">
-        <%# <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
-      </div>
       <div class="card-flat-infos">
-        <div class="card-flat-infos-title">
+        <div class="card-title">
           <h2><%= @offer.function %> - <%= @offer.company.name %> </h2>
         </div>
         <div class="card-shower-offer">
-          <div class="description-show">
+          <div class="description2">
             <div class="picture">
-              <%= image_tag("hec.png", {:style => "width:57px;height:57px;", class:"logos"}) %>
+              <%= image_tag( @offer.company.photo, {:style => "width:57px;height:57px;", class:"logos"}) %>
             </div>
             <div class="list3">
               <ul>
-                      <li>
-                        <p> <%= @offer.town%> </p>
+                      <li class="li1">
+                        <i class="fa-solid fa-location-dot"></i> <p> <%= @offer.town%> </p>
                       </li>
-                      <li>
-                        <p> <%= @offer.salary %> </p>
+                      <li class="li1">
+                        <i class="fa-solid fa-euro-sign"></i><p> <%= @offer.salary %>€ </p>
                       </li>
-                      <li>
-                        <p> <%= @month %>, <%=@offer.start_date.year%></p>
+                      <li class="li1">
+                        <i class="fa-sharp fa-solid fa-calendar-days" style="margin-right:2px;"></i><p> <%= @month %> <%=@offer.start_date.year%></p>
                       </li>
               </ul>
             </div>
@@ -30,15 +27,15 @@
           <div class= "picture-cardshow">
           </div>
         </div>
-        <div class="card-elves-infos-content">
-          <p><i class="fas fa-info-circle"></i> <%= @offer.description %></p>
+        <div class="card-description-offre">
+          <p> <%= @offer.description %></p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="container-form-booking" data-display-booking-target="form">
+  <div class="container-form-booking">
 
 
 
@@ -48,8 +45,8 @@
 
       <div class="col pt-1" data-controller="popup">
         <div class="d-flex">
-          <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button"> Apply now! </button>
-          <%= link_to "Retour à la liste", offers_path, class: "btn btn-info" %>
+          <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button"> Postuler </button>
+          <%= link_to "Liste des offres", offers_path, class: "btn btn-success" %>
         </div>
 
         <div href="#" class="yeahh d-none" data-popup-target="link">

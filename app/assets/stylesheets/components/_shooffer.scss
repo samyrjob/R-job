@@ -1,0 +1,70 @@
+.card-shower-offer {
+
+  display: flex;
+  justify-content: space-evenly;
+
+  .picture {
+    display: flex;
+    justify-content: center;
+  }
+
+  .list3 {
+    position: relative;
+    left: 6px;
+    margin-top: 0px;
+    opacity: .7;
+    font-size: small;
+    ul {
+      margin: 0;
+    padding-left: 0;
+    line-height: 1.4rem;
+
+    }
+
+   li p {
+    margin: 0;
+   }
+  }
+}
+
+.picture-cardshow {
+  height: 135px;
+  width: 225px;
+  background-image: url("rectangle.png");
+  background-size: cover;
+  background-position: center;
+}
+
+
+.list3 ul li  {
+  list-style: none;
+}
+
+.description2 {
+  .picture {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+}
+
+.card-title {
+  padding: 10px;
+  margin: 10px;
+}
+
+
+.li1 {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.card-description-offre {
+  padding: 10px;
+  margin: 10px;
+  text-align: justify;
+  margin-top: 30px;
+}
+
+
