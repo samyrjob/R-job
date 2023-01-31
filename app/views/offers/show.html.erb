@@ -6,7 +6,29 @@
       </div>
       <div class="card-flat-infos">
         <div class="card-flat-infos-title">
-          <h2><%= @offer.function %></h2>
+          <h2><%= @offer.function %> - <%= @offer.company.name %> </h2>
+        </div>
+        <div class="card-shower-offer">
+          <div class="description-show">
+            <div class="picture">
+              <%= image_tag("hec.png", {:style => "width:57px;height:57px;", class:"logos"}) %>
+            </div>
+            <div class="list3">
+              <ul>
+                      <li>
+                        <p> <%= @offer.town%> </p>
+                      </li>
+                      <li>
+                        <p> <%= @offer.salary %> </p>
+                      </li>
+                      <li>
+                        <p> <%= @month %>, <%=@offer.start_date.year%></p>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div class= "picture-cardshow">
+          </div>
         </div>
         <div class="card-elves-infos-content">
           <p><i class="fas fa-info-circle"></i> <%= @offer.description %></p>

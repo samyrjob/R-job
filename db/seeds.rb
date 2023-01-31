@@ -22,11 +22,16 @@ puts "create students and companies"
 samy = Student.new(email: "samy@hotmail.fr", password: "password", last_name: "Rjob", first_name: "Samy", school: "Audencia", profile: "Business School", tongues: "Anglais", description: "Je serai un stagiaire studieux et investi ! Prenez moi plsss")
 jacy = Student.new(email: "jacy@hotmail.fr", password: "password", last_name: "Cy", first_name: "ja", school: "INSA", profile: "Engineer School", tongues: "Allemand", description: "Je parle allemand, y'a aucune raison que vous me preniez pas")
 
-danone = Company.new(email: "danone@hotmail.fr", password: "password", name: "danone", sector: "Banque/Assurance", descrption: "leader sur le marché mondial des yaourts,
+danone = Company.new(email: "danone@hotmail.fr", password: "password", name: "danone", sector: "Banque/Assurance", description: "leader sur le marché mondial des yaourts,
   notre vocation consiste en le bien être éternel des gens", structure: "PME")
-celio = Company.new(email: "celio@hotmail.fr", password: "password", name: "celio", sector: "Ventes", descrption: "Celio, marque de grande vente de fabrique de vêtements, présente partout en
+celio = Company.new(email: "celio@hotmail.fr", password: "password", name: "celio", sector: "Ventes", description: "Celio, marque de grande vente de fabrique de vêtements, présente partout en
   Europe !", structure: "Grande société mondiale")
 
+file = File.open(Rails.root.join('db/seeds/images/ey.png'))
+danone.photo.attach(io: file, filename: "ey.png", content_type: "image/png")
+
+file = File.open(Rails.root.join('db/seeds/images/celio.png'))
+celio.photo.attach(io: file, filename: "celio.png", content_type: "image/png")
 
 puts "create offers"
 
@@ -34,7 +39,7 @@ offer1 = Offer.create!(
   company: danone,
   company_id: danone.id,
   start_date: "2023-03-24",
-  end_date: "2023-10-24",
+  duration: 10,
   salary: 800.59,
   town: "Berlin",
   end_activation: "2023-02-23",
@@ -74,8 +79,7 @@ offer1 = Offer.create!(
 )
 
 
-file = File.open(Rails.root.join('db/seeds/images/flat1test.jpg'))
-offer1.photo.attach(io: file, filename: "flat1test.jpg", content_type: "image/jpeg")
+
 
 
 offer2 = Offer.create!(
@@ -83,7 +87,7 @@ offer2 = Offer.create!(
   company_id: celio.id,
   function: "Stage directeur",
   start_date: "2023-05-24",
-  end_date: "2023-11-24",
+  duration: 12,
   salary: 800,
   town: "Lisbonne",
   end_activation: "2023-02-24",
@@ -97,8 +101,7 @@ offer2 = Offer.create!(
 )
 
 
-file = File.open(Rails.root.join('db/seeds/images/flat2test.jpg'))
-offer2.photo.attach(io: file, filename: "flat2test.jpg", content_type: "image/jpeg")
+
 
 
 offer3 = Offer.create!(
@@ -106,7 +109,7 @@ offer3 = Offer.create!(
   company_id: celio.id,
   function: "stage esclavage",
   start_date: "2024-06-25",
-  end_date: "2024-12-25",
+  duration: 11,
   salary: 1500.50,
   town: "Barcelone",
   end_activation: "2024-03-25",
@@ -122,8 +125,7 @@ offer3 = Offer.create!(
 )
 
 
-file = File.open(Rails.root.join('db/seeds/images/flat3test.jpg'))
-offer3.photo.attach(io: file, filename: "flat3test.jpg", content_type: "image/jpeg")
+
 
 
 offer4 = Offer.create!(
@@ -131,7 +133,7 @@ offer4 = Offer.create!(
   company_id: danone.id,
   function: "balayeur",
   start_date: "2023-06-25",
-  end_date: "2023-12-25",
+  duration: 4,
   salary: 500.50,
   town: "Paris",
   end_activation: "2023-03-25",
@@ -171,8 +173,7 @@ offer4 = Offer.create!(
 )
 
 
-file = File.open(Rails.root.join('db/seeds/images/flat4test.jpg'))
-offer4.photo.attach(io: file, filename: "flat4test.jpg", content_type: "image/jpeg")
+
 
 
 
