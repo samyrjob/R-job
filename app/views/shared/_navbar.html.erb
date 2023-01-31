@@ -3,6 +3,8 @@
   <nav class="navbar-content">
     <ul class="nav_links">
       <li><a href="#" class="blog">Blog</a></li>
+      <% if %>
+      <li><%= link_to "Se déconnecter", destroy_company_session_path, target: '_blank', class: 'blog'%></li>
       <%# <li><a href="#" class="company">Blog</a></li>
       <li><a href="#" class="student">Blog</a></li> %>
       <li>
