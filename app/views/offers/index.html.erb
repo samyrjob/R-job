@@ -82,7 +82,9 @@
             <div class="card"> <%= link_to student_offer_path(offer) do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-logo">
-                <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                  <% if offer.company.photo.present? %>
+                    <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                  <% end %>
               </div>
               <div class="description-side">
                 <h3><%= offer.function %></h3>
@@ -114,7 +116,9 @@
             <% elsif company_signed_in? %>
               <div class="card"> <%= link_to company_offer_path(offer) do %>
                 <div class="card-logo">
-                  <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                  <% if offer.company.photo.present? %>
+                    <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                  <% end %>
                 </div>
                 <div class="description-side">
                   <h3><%= offer.function %></h3>
@@ -147,7 +151,9 @@
               <div class="card"> <%= link_to offer do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
                 <div class="card-logo">
-                    <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <% if offer.company.photo.present? %>
+                      <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <% end %>
                 </div>
                 <div class="description-side">
                     <h3><%= offer.function %></h3>
@@ -182,7 +188,9 @@
             <div class="card" style="background: #EEF1F6;"> <%= link_to student_offer_path(offer) do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-logo">
-                    <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                     <% if offer.company.photo.present? %>
+                      <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <% end %>
                 </div>
               <div class="description-side">
                 <h3><%= offer.function %></h3>
@@ -214,7 +222,9 @@
             <% elsif company_signed_in? %>
               <div class="card" style="background: #EEF1F6;"> <%= link_to company_offer_path(offer) do %>
                 <div class="card-logo">
-                    <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <% if offer.company.photo.present? %>
+                      <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <% end %>
                 </div>
                 <div class="description-side">
                   <h3><%= offer.function %></h3>
@@ -247,7 +257,9 @@
               <div class="card" style="background: #EEF1F6;"> <%= link_to offer do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
                 <div class="card-logo">
-                    <%= image_tag offer.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <% if offer.company.photo.present? %>
+                      <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <% end %>
                 </div>
                 <div class="description-side">
                   <h3><%= offer.function %></h3>

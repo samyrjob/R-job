@@ -37,12 +37,15 @@
   line-height: 1.5;
   a {
     text-decoration: none;
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
   }
   .description-side{
     display: block;
     ul {
-      display: flex;
-      justify-content: space-evenly;
+      padding-left: 0;
+
     }
     li {
       list-style: none;
@@ -50,3 +53,12 @@
     }
   }
 }
+
+
+.avatar {
+  border-radius: 0;
+  width: 100%;
+}
+
+
+

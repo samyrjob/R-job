@@ -1,40 +1,18 @@
-<div class = "navbar">
-
-  <div class= "navbar-logo">
-  </div>
-
-  <div class="navbar-content">
-
-    <%= link_to "/offers" do %>
-      <div class = "flat-navbar"><p>Offers</p></div>
-    <% end %>
-
-    <% unless student_signed_in? || company_signed_in? %>
-      <h5>ENTREPRISE</h5>
-      <%= link_to "/companies/sign_in" do %>
-      <div class= "sign-navbar"><p>Sign in</p></div>
-      <% end %>
-      <h5>ETUDIANT</h5>
-      <%= link_to "/students/sign_in" do %>
-      <div class= "sign-navbar"><p>Sign in</p></div>
-      <% end %>
-      <% else %>
-        <% if student_session%>
-          <%= link_to "log out", destroy_student_session_path , class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
-        <% else %>
-          <%= link_to "log out", destroy_company_session_path , class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
-        <% end %>
-    <% end %>
-
-
-
-
-
-
-
-  </div>
-
-  <div class="navbar-avatar">
-  </div>
-
+<div class= "navbar">
+  <%= image_tag("logoblanc.png", :alt => "logo", :class => "logo")%>
+  <nav class="navbar-content">
+    <ul class="nav_links">
+      <li><a href="#" class="blog">Blog</a></li>
+      <%# <li><a href="#" class="company">Blog</a></li>
+      <li><a href="#" class="student">Blog</a></li> %>
+      <li>
+        <a href="#" style="--bs-link-hover-color: #4FEC97;">Se connecter <i class="fa-sharp fa-solid fa-caret-down"></i></a>
+        <ul class="dropdown">
+          <%# <li><a href="https://ftb.tzportal.io/fr/login" target="_blank">Etudiant</a></li> %>
+          <li><%= link_to "Etudiant", student_session_path, target: '_blank' %></li>
+          <li><%= link_to "Entreprise", company_session_path, target: '_blank' %></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 </div>
