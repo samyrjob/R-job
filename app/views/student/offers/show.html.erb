@@ -1,55 +1,80 @@
-<div class="main-container" data-controller="display-booking">
+<div class="main-container">
   <div class= "container-flat-show">
     <div class="card-flat">
-      <div class="img-card-elf">
-        <%# <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
-      </div>
       <div class="card-flat-infos">
-        <div class="card-flat-infos-title">
-          <h2><%= @offer.function %></h2>
+        <div class="card-title">
+          <h2><%= @offer.function %> - <%= @offer.company.name %> </h2>
         </div>
-        <div class="card-elves-infos-content">
-          <p><i class="fas fa-info-circle"></i> <%= @offer.description %></p>
+        <div class="card-shower-offer">
+          <div class="description2">
+            <div class="picture">
+              <%= image_tag( @offer.company.photo, {:style => "width:57px;height:57px;", class:"logos"}) %>
+            </div>
+            <div class="list3">
+              <ul>
+                      <li class="li1">
+                        <i class="fa-solid fa-location-dot"></i> <p> <%= @offer.town%> </p>
+                      </li>
+                      <li class="li1">
+                        <i class="fa-solid fa-euro-sign"></i><p> <%= @offer.salary %>€ </p>
+                      </li>
+                      <li class="li1">
+                        <i class="fa-sharp fa-solid fa-calendar-days" style="margin-right:2px;"></i><p> <%= @month %> <%=@offer.start_date.year%></p>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div class= "picture-cardshow">
+          </div>
+        </div>
+        <div class="card-description-offre">
+          <p> <%= @offer.description %></p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="container-form-booking" data-display-booking-target="form">
+  <div class="container-form-apply" data-display-booking-target="form">
     <% if student_signed_in? %>
 
 
 
-
-    <%= link_to "List of flats", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
-    <%= link_to "Apply", new_student_offer_application_path(@offer), class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
-
+    <div class="deuxbuttons">
+      <%= link_to "Postuler", new_student_offer_application_path(@offer), class: "btn btn-primary px-3 py-2  fs-10 mt-3" %>
+      <%= link_to "Liste des offres", offers_path, class: "btn btn-primary px-3 py-2  fs-10 mt-3" %>
+    </div>
 
     <% if @savedoffer2 == nil %>
       <%= simple_form_for ([:student, @offer, @savedoffer1]) do |f| %>
-        <%= f.label :saved %>
-        <%= f.check_box :saved%>
-        <%= f.button :submit, value: "Save"%>
+        <div style="display:none">
+          <%= f.label :saved %>
+          <%= f.check_box :saved%>
+        </div>
+        <%= f.button :submit, value: "Sauvegarder", class: "btn btn-success"%>
       <% end %>
       <% elsif @savedoffer2 != nil && @savedoffer2.saved == true %>
         <%= simple_form_for ([:student, @offer, @savedoffer2]) do |f| %>
+        <div style="display:none">
           <%= f.label :saved %>
           <%= f.check_box :saved%>
-          <%= f.button :submit, value: "Unsave"%>
+        </div>
+          <%= f.button :submit, value: "Retirer", class: "btn btn-success"%>
         <% end %>
       <% else @savedoffer2 != nil && @savedoffer2.saved == false %>
         <%= simple_form_for ([:student, @offer, @savedoffer2]) do |f| %>
-          <%= f.label :saved %>
-          <%= f.check_box :saved%>
-          <%= f.button :submit, value: "save"%>
+          <div style="display:none">
+            <%= f.label :saved %>
+            <%= f.check_box :saved%>
+          </div>
+          <%= f.button :submit, value: "Sauvegarder", class: "btn btn-success"%>
         <% end %>
     <% end %>
 
 
-    <% if @savedoffer2 != nil %>
-    <%= @savedoffer2.saved? %>
-    <% end %>
+    <%# <% if @savedoffer2 != nil %>
+    <%# <%= @savedoffer2.saved? %>
+    <%# <% end %>
 
 
 
@@ -61,14 +86,14 @@
     <% else %>
       <div class="col pt-1" data-controller="popup">
         <div class="d-flex">
-          <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button"> Apply now! </button>
+          <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button"> Postuler </button>
           <%= link_to "Retour à la liste", offers_path, class: "btn btn-info" %>
         </div>
 
         <div href="#" class="yeahh d-none" data-popup-target="link">
-          <h2>Oups... You should be connected to apply for this fabulous offer</h2>
+          <h2>Oups... Tu dois être connecté pour postuler à cette fabuleuse offre</h2>
           <div>
-            <a class="button-login" href="http://localhost:3000/students/sign_in">Log in now</a>
+            <a class="button-login" href="http://localhost:3000/students/sign_in">Connexion</a>
             <button class="btn btn-primary" data-action="click->popup#reset"> Ok </button>
           </div>
         </div>

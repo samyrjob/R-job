@@ -6,7 +6,7 @@
     <div class="contentcarre">
       <h1>Ton stage à l'étranger en quelques clics !</h1>
       <p>Cultive, créé et profite de ta nouvelle expérience internationale</p>
-      <%= link_to "Voir les offres", offers_path, target: '_blank', class: 'home-button' %>
+      <%= link_to "Voir les offres", offers_path, class: 'home-button' %>
     </div>
   </div>
 
@@ -48,7 +48,7 @@
           <div class="description">
             <p>Vos écoles sont attractives à l'international !</p>
             <div class="buttoncard">
-              <a href="https://ftb.tzportal.io/fr/login" target="_blank" class="blog">Mon Espace Etudiant</a>
+              <%= link_to "Mon espace Etudiant", new_student_session_path, class: 'blog'%>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
           <div class="description">
             <p>Entreprises de la French Tech ou Autres ...</p>
             <div class="buttoncard">
-              <a href="https://app-v4.tool4staffing.com/fr/login" target="_blank" class="blog">Mon Espace Entreprise</a>
+              <%= link_to "Mon espace Entreprise", new_company_session_path, class: 'blog'%>
             </div>
           </div>
         </div>

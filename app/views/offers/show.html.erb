@@ -35,29 +35,24 @@
   </div>
 </div>
 
-  <div class="container-form-booking">
 
 
-
-
-
-
-
+  <div class="container-form-applyn">
       <div class="col pt-1" data-controller="popup">
         <div class="d-flex">
           <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button"> Postuler </button>
           <%= link_to "Liste des offres", offers_path, class: "btn btn-success" %>
         </div>
-
-        <div href="#" class="yeahh d-none" data-popup-target="link">
-          <h2>Oups... You should be connected to apply for this fabulous offer</h2>
-          <div>
-            <a class="button-login" href="http://localhost:3000/students/sign_in">Log in now</a>
-            <button class="btn btn-primary" data-action="click->popup#reset"> Ok </button>
+        <div class="yeahd">
+          <div href="#" class="yeahh d-none" data-popup-target="link">
+            <h2>Oups... You should be connected to apply for this fabulous offer</h2>
+            <div class="deuxbouttons">
+              <a class="blog" href="http://localhost:3000/students/sign_in">Se connecter maintenant</a>
+              <button class="btn btn-primary" data-action="click->popup#reset"> Ok </button>
+            </div>
           </div>
         </div>
         <div class="opaq opacity-50 d-none" data-popup-target="panel">
         </div>
       </div>
-
   </div>

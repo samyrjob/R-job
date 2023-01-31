@@ -1,13 +1,16 @@
 <h1>Profil de l'utilisateur </h1>
 
 
+<h2>Profil</h2>
 
-<div>
-First Name : <%= @student.first_name%> <br>
-Last Name : <%= @student.last_name%> <br>
-Email : <%= @student.email%> <br>
-School : <%= @student.school%> <br>
 
-Langues parlées : <%= @student.tongues %>
+<div class="containun">
+  <div class="imageun">
+    <%= image_tag( 'avatar.png', {:style => "width:57px;height:57px;", class:"logos"}) %>
+  </div>
+  <div class="descriptionun">
+    <h5><%= @student.first_name%> <%= @student.last_name%></h5><br>
+    <div class="ef"><%= @student.school%></div> <br>
+    <div class="eg"><%= @student.description %></div>
+  </div>
 </div>
-
