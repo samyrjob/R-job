@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   devise_for :companies, controllers: {
-    registrations: 'companies/registrations'
+    registrations: 'companies/registrations', sessions: 'companies/sessions'
   }
+
 
   devise_for :students, controllers: {
     registrations: 'students/registrations'

@@ -83,7 +83,7 @@
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-logo">
                   <% if offer.company.photo.present? %>
-                    <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <%= image_tag offer.company.photo%>
                   <% end %>
               </div>
               <div class="description-side">
@@ -117,7 +117,7 @@
               <div class="card"> <%= link_to company_offer_path(offer) do %>
                 <div class="card-logo">
                   <% if offer.company.photo.present? %>
-                    <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                    <%= image_tag offer.company.photo%>
                   <% end %>
                 </div>
                 <div class="description-side">
@@ -152,7 +152,7 @@
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
                 <div class="card-logo">
                     <% if offer.company.photo.present? %>
-                      <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                      <%= image_tag offer.company.photo%>
                     <% end %>
                 </div>
                 <div class="description-side">
@@ -189,7 +189,7 @@
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-logo">
                      <% if offer.company.photo.present? %>
-                      <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                      <%= image_tag offer.company.photo%>
                     <% end %>
                 </div>
               <div class="description-side">
@@ -223,7 +223,7 @@
               <div class="card" style="background: #EEF1F6;"> <%= link_to company_offer_path(offer) do %>
                 <div class="card-logo">
                     <% if offer.company.photo.present? %>
-                      <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                      <%= image_tag offer.company.photo%>
                     <% end %>
                 </div>
                 <div class="description-side">
@@ -258,7 +258,7 @@
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
                 <div class="card-logo">
                     <% if offer.company.photo.present? %>
-                      <%= image_tag offer.company.photo, height: 80, crop: :fill, class:"avatar"%>
+                      <%= image_tag offer.company.photo%>
                     <% end %>
                 </div>
                 <div class="description-side">
