@@ -44,9 +44,14 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     # @profile = params.require(:student).permit(:profile)
-    attributes = [:first_name, :last_name, :email, :photo, :profile, :school, :tongues, :password, :password_confirmation]
+    attributes = [:first_name, :last_name, :email, :photo, :profile, :school, :tongues, :password, :password_confirmation, :description]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
+  end
+
+  def after_update_path_for(resource)
+    flash[:notice] = "Account succesfully updated"
+    student_profile_path
   end
 
   # GET /resource/sign_up

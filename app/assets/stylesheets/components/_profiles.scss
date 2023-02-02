@@ -1,6 +1,5 @@
 .containun {
   display: flex;
-padding: 10px;
 justify-content: space-evenly;
 align-items: center;
 margin: 10px;
@@ -16,5 +15,86 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
   }
   .eg {
     font-size: 10px;
+    width: 253px;
+  }
+
+  i {
+    cursor: pointer;
+  }
+}
+
+.formun {
+  height: fit-content;
+  background-color: white;
+  display: flex;
+  width: 355px;
+  position: relative;
+  bottom: 98px;
+  margin: 10px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  justify-content: space-evenly;
+
+  form {
+    line-height: 0;
+  }
+
+  .nomprenom{
+
+    display: flex;
+  }
+}
+
+#student_first_name {
+
+  font-size: 17px;
+  width: 150px;
+}
+
+.student_last_name {
+  margin-left: 12px;
+}
+#student_last_name {
+
+  font-size: 17px;
+  width: 150px;
+}
+
+#student_description {
+  width: 268px;
+  height: auto;
+}
+
+#student_current_password {
+  width: auto;
+}
+
+.opaqe {
+  height: 449px;
+  background-color: #f8f9fa;
+  opacity: 50%;
+  position: relative;
+  top: -179px;
+}
+
+.form-label {
+  display: none;
+}
+
+
+.form-control{
+ font-size: 9px;
+ padding: 0;
+}
+
+.form-text {
+  font-size: 11px;
+}
+.form-actions {
+
+  .btn {
+    font-size: 11px;
   }
 }

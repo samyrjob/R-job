@@ -4,13 +4,93 @@
 <h2>Profil</h2>
 
 
-<div class="containun">
-  <div class="imageun">
-    <%= image_tag( 'avatar.png', {:style => "width:57px;height:57px;", class:"logos"}) %>
+  <div class="containun">
+    <div class="imageun">
+      <%= image_tag( 'avatar.png', {:style => "width:57px;height:57px;", class:"logos"}) %>
+    </div>
+    <div class="descriptionun">
+      <div style="display: flex;justify-content: space-between;">
+        <h5><%= @student.first_name%> <%= @student.last_name%></h5><br>
+        <button href="" id="yeatrois" type="button" style="border-color:transparent"><i  class="fa-solid fa-pen" style="font-size: 10px;" ></i></button>
+      </div>
+      <div class="ef"><%= @student.school%></div> <br>
+      <div class="eg"><%= @student.description %></div>
+    </div>
   </div>
-  <div class="descriptionun">
-    <h5><%= @student.first_name%> <%= @student.last_name%></h5><br>
-    <div class="ef"><%= @student.school%></div> <br>
-    <div class="eg"><%= @student.description %></div>
+  <div class="formun" style="display:none">
+    <%= simple_form_for(@student, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "formd"}) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+
+        <% if devise_mapping.confirmable? && @student.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= @student.unconfirmed_email %></p>
+        <% end %>
+          <div class="nomprenom">
+            <%= f.input :first_name,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "first_name"} %>
+            <%= f.input :last_name,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "last_name"} %>
+          </div>
+        <%= f.input :description, as: :text,  required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "description"} %>
+        <%# <%= f.input :profile,
+                    collection: Student::PROFILES,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "profile"}%>
+        <%# <%= f.input :school,
+                    collection: ["", "", "", "", "", "", "", "", "", ""],
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "school", class: 'businessman'} %>
+        <%# <%= f.input :tongues,
+                    collection: Student::TONGUES,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "tongues"}%>
+        <%# <%= f.input :password,
+                    hint: "leave it blank if you don't want to change it",
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%# <%= f.input :password_confirmation,
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :current_password,
+                    # hint: "Rentre ton mot de passe et confirme les changements",
+                    required: true,
+                    input_html: { autocomplete: "current-password" }, class: "mess" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-</div>
+
+<%# <div class="opaqe" style="display:none">
+</div> %>
+
+
+
+<script>
+
+document.querySelector('#yeatrois').addEventListener('click', myFunction);
+
+function myFunction() {
+  document.querySelector('.formun').style.display = 'block';
+
+}
+</script>
+
+
+<style>
+.off {
+  display: none;
+}
+</style>

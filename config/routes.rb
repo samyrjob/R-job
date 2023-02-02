@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   }
 
 
-
+  resources :students do
+    member do
+      patch 'student/profiles',         action: :profiles,  as: :profiles
+    end
+  end
 
   resources :offers, only: %i[index show]
   resources :searches, only: %i[create show ]
