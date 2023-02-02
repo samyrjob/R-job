@@ -8,8 +8,6 @@ class Student < ApplicationRecord
 
   PROFILES = ['Business School', 'Engineer School', 'Universités / Sciences Politiques']
 
-  # BUSINESSCHOOLS = ['Audencia', 'Kedge', 'Essec', 'HEC', 'Em Lyon']
-  # ENGINEERSCHOOLS = ['INSA','Centrale','Mines','Polytechnique']
 
   # SCHOOLS = BUSINESSCHOOLS + ENGINEERSCHOOLS
 

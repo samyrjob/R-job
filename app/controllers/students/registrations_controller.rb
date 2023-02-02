@@ -25,6 +25,28 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
     # end
 
+  def update
+    @student = current_student
+
+
+    if @student.update(update_params)
+      redirect_to student_profile_path(@student)
+    else
+
+      # redirect_to student_profile_path(@student),  error: "An error message for the user"
+      redirect_to student_profile_path(@student) , :flash => { :error => "Insufficient rights!" }
+
+    end
+
+  end
+
+
+
+
+  def update_params
+    params.require(:student).permit(:first_name, :last_name, :description, :profile, :school)
+  end
+
 
 
 
@@ -52,6 +74,10 @@ class Students::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     flash[:notice] = "Account succesfully updated"
     student_profile_path
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
   # GET /resource/sign_up

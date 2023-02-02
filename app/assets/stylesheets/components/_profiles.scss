@@ -29,7 +29,7 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
   display: flex;
   width: 355px;
   position: relative;
-  bottom: 98px;
+  bottom: 99px;
   margin: 10px;
   display: flex;
   padding: 10px;
@@ -41,35 +41,9 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
     line-height: 0;
   }
 
-  .nomprenom{
 
-    display: flex;
-  }
 }
 
-#student_first_name {
-
-  font-size: 17px;
-  width: 150px;
-}
-
-.student_last_name {
-  margin-left: 12px;
-}
-#student_last_name {
-
-  font-size: 17px;
-  width: 150px;
-}
-
-#student_description {
-  width: 268px;
-  height: auto;
-}
-
-#student_current_password {
-  width: auto;
-}
 
 .opaqe {
   height: 449px;
@@ -79,22 +53,91 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
   top: -179px;
 }
 
-.form-label {
-  display: none;
+
+
+
+
+
+#formd {
+  .nomprenom{
+
+    display: flex;
+  }
+
+  .form-label {
+    display: none;
+  }
+
+  .form-control{
+   font-size: 9px;
+   padding: 0;
+  }
+
+  #student_description {
+    width: 268px;
+    height: auto;
+  }
+  #student_first_name {
+
+    font-size: 17px;
+    width: 150px;
+  }
+
+  .student_last_name {
+    margin-left: 12px;
+  }
+  #student_last_name {
+
+    font-size: 17px;
+    width: 150px;
+  }
+
+  #student_school {
+  font-size: 12px;
+  padding: 0;
+  width: 60%;
+  }
+#student_profile{
+  font-size: 12px;
+  padding: 0;
+  width: 60%;
 }
 
-
-.form-control{
- font-size: 9px;
- padding: 0;
-}
-
-.form-text {
-  font-size: 11px;
-}
-.form-actions {
-
-  .btn {
+  #student_current_password {
+    width: auto;
+  }
+  .form-text {
     font-size: 11px;
+      margin-top: 1.25rem;
+  }
+
+  .form-actions {
+
+    .btn {
+      font-size: 11px;
+    }
+  }
+}
+
+
+#yeaquatre{
+  border-color: transparent;
+  margin-left: 3px;
+  height: 22px;
+  /* color: black; */
+  background-color: $light-gray;
+}
+
+
+.yh {
+  display: flex;
+  .mb-3{
+    width: 103%;
+  }
+  i {
+    font-size: 8px;
+    position: relative;
+    /* left: 20px; */
+    right: 129px;
   }
 }
