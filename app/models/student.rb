@@ -20,6 +20,7 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :tongues, presence: true, inclusion: { in: TONGUES }
+  has_many_attached :dossiers
 
   # EMAIL_REGEX = /\A[^@\s]+@[^@\s]+\z/
   # validates_format_of :email, with: EMAIL_REGEX
