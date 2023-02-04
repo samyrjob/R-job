@@ -44,7 +44,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
 
   def update_params
-    params.require(:student).permit(:first_name, :last_name, :description, :profile, :school)
+    params.require(:student).permit(:first_name, :last_name, :description, :profile, :school, :photo)
   end
 
 

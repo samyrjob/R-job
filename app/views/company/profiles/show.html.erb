@@ -7,51 +7,37 @@
   <div class="containun">
     <div class="imageun">
       <%# <%= image_tag( 'avatar.png', {:style => "width:57px;height:57px;", class:"logos"}) %>
-      <% if %>
+      <%= image_tag @company.photo,{:style => "width:57px;height:57px;", class:"logos"} %>
     </div>
     <div class="descriptionun">
       <div style="display: flex;justify-content: space-between;">
-        <h5><%= @student.first_name%> <%= @student.last_name%></h5><br>
+        <h5>Bienvenu chez <%= @company.name%></h5><br>
         <button href="" id="yeatrois" type="button" style="border-color:transparent"><i  class="fa-solid fa-pen" style="font-size: 10px;" ></i></button>
       </div>
-      <div class="ef"><%= @student.profile%></div> <br>
-      <div class="ef"><%= @student.school%></div> <br>
-      <div class="eg"><%= @student.description %></div>
+      <div class="ef"><%= @company.sector%></div> <br>
+      <div class="eg"><%= @company.description %></div>
     </div>
   </div>
   <div class="formun" style="display:none">
-    <%= simple_form_for(@student, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "formd"}) do |f| %>
+    <%= simple_form_for(@company, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "formd"}) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
 
-        <% if devise_mapping.confirmable? && @student.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= @student.unconfirmed_email %></p>
+        <% if devise_mapping.confirmable? && @company.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= @company.unconfirmed_email %></p>
         <% end %>
-          <div class="nomprenom">
-            <%= f.input :first_name,
+
+            <%= f.input :name,
                     required: false,
                     autofocus: true,
                     input_html: { autocomplete: "first_name"} %>
-            <%= f.input :last_name,
+            <%= f.input :sector,
                     required: false,
                     autofocus: true,
                     input_html: { autocomplete: "last_name"} %>
             <button href="" id="yeaquatre" type="button" style="border-color:transparent"><i class="fa fa-times" aria-hidden="true"></i></button>
-          </div>
-        <%= f.input :profile,
-                    collection: Student::PROFILES,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "profile"}%>
-        <div class="yh">
-          <%= f.input :school,
-                      collection: ["", "", "", "", "", "", "", "", "", ""],
-                      required: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "school", class: 'businessman'} %>
-          <i class="fa-sharp fa-solid fa-asterisk"></i>
-        </div>
+          
         <%= f.input :description, as: :text,  required: false,
                     autofocus: true,
                     input_html: { autocomplete: "description"} %>

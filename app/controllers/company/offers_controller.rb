@@ -24,6 +24,11 @@ class Company::OffersController < ApplicationController
     @offers = Offer.all
   end
 
+
+  def update
+  end
+
+  
   private
 
   def offer_params

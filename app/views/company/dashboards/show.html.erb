@@ -1,21 +1,89 @@
+<div class="top-dshc">
+  <div>
+    <h5 style="margin:5%">Dashboard <%=@company.name%></h5>
+  </div>
+  <div class="publii">
+    <%= link_to("Créer une annonce", new_company_offer_path, {class: "btn btn-success text-decoration-none"}) %>
+  </div>
+</div>
+
 <div class="container p-2 mt-3 mb-3" >
   <div class="card">
-    <h1 class="ms-5 mt-3">Mes offres de stage</h1>
-      <div class="row ms-3">
-          <div class="col-8">
-            <% @offers.each do |offer| %>
-            <% if offer.image.attached? %>
-              <%= image_tag offer.image.variant(resize: "100x100")  %>
+    <h4 class="ms-5 mt-3">Annonces déposées(<%= @offers.count%>)</h4>
+       <div class="flat-cards">
+        <% @offers.each do |offer| %>
+           <% if @offers.to_a.index(offer) % 2 == 0 %>
+            <div class="card"> <%= link_to company_offer_path(offer) do %>
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-logo">
+                  <% if offer.company.photo.present? %>
+                    <%= image_tag offer.company.photo%>
+                  <% end %>
+              </div>
+              <div class="description-side">
+                <h3><%= offer.function %></h3>
+                <div>
+                <p><%= Company.find(offer.company_id).name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if offer.duration?  %>
+                     <p>Stage <%= offer.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if offer.town?  %>
+                     <p><%= offer.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
+              </div>
             <% end %>
-              <%=offer.function %>
-            <% end %>
-          </div>
-
-          <div class="col-2">
-            <div style="margin: 40%; width: 100%;">
-              <%= link_to("Publier une offre", new_company_offer_path, {class: "btn btn-success text-decoration-none"}) %>
             </div>
-          </div>
+             <% else %>
+            <div class="card" style="background: #EEF1F6;"> <%= link_to company_offer_path(offer) do %>
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-logo">
+                     <% if offer.company.photo.present? %>
+                      <%= image_tag offer.company.photo%>
+                    <% end %>
+              </div>
+              <div class="description-side">
+                <h3><%= offer.function %></h3>
+                <div>
+                <p><%= Company.find(offer.company_id).name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if offer.duration?  %>
+                     <p>Stage <%= offer.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if offer.town?  %>
+                     <p><%= offer.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
   </div>
 </div>

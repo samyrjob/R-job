@@ -1,22 +1,95 @@
-<h1>Search results</h1>
+<h3 style="padding:10px">Résultats de recherche</h3>
 
 <% if @search.search_offers.empty? %>
 
-<p>No records found</p>
+<p>Aucun résultat</p>
 
 <% else %>
 
-<% @search.search_offers.each do |p| %>
-<br>
+<%# <% @search.search_offers.each do |p| %>
+<%# <div class="div">
+<h1><%= p.function %>
+  <%# <p> Sector <%= p.company.sector %>
+ <%# <p> ville  <%= p.town %>
+<%# <p> durée en mois <%= p.duration %>
+<%# <p> Start_date <%= p.start_date %>
+<%# <p> Salary <%= p.salary %>
 
-<div class="div">
-<h1><%= p.function %></h1>
-  <p> Sector <%= p.company.sector %></p>
- <p> ville  <%= p.town %></p>
-<p> durée en mois <%= p.duration %></p>
-<p> Start_date <%= p.start_date %></p>
-<p> Salary <%= p.salary %></p>
-</div>
+<div class="flat-cards">
+        <%  @search.search_offers.each do |search| %>
+           <% if  @search.search_offers.to_a.index(search) % 2 == 0 %>
+            <div class="card"> <%= link_to offer_path(search) do %>
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-logo">
+                  <% if search.company.photo.present? %>
+                    <%= image_tag search.company.photo%>
+                  <% end %>
+              </div>
+              <div class="description-side">
+                <h3><%= search.function %></h3>
+                <div class="companame">
+                  <p><%= search.company.name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if search.duration?  %>
+                     <p>Stage <%= search.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if search.town?  %>
+                     <p><%= search.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - Offer.find_by(:function => search.function ).created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date -  Offer.find_by(:function => search.function ).created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date -  Offer.find_by(:function => search.function ).created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+            </div>
+          <%else%>
+          <div class="card", style="background: #EEF1F6;"> <%= link_to offer_path(search) do %>
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-logo">
+                  <% if search.company.photo.present? %>
+                    <%= image_tag search.company.photo%>
+                  <% end %>
+              </div>
+              <div class="description-side">
+                <h3><%= search.function %></h3>
+                <div class="companame">
+                  <p><%= search.company.name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if search.duration?  %>
+                     <p>Stage <%= search.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if search.town?  %>
+                     <p><%= search.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - Offer.find_by(:function => search.function ).created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date -  Offer.find_by(:function => search.function ).created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date -  Offer.find_by(:function => search.function ).created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
 
-<% end %>
-<% end %>
+
+
+<%end %>

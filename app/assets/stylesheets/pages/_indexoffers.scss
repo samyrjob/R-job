@@ -35,21 +35,32 @@
   margin-bottom: 0.9375rem;
   font-size: .9375rem;
   line-height: 1.5;
+
   a {
     text-decoration: none;
     display: flex;
     padding: 10px;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    // color: black;
   }
   .description-side{
     display: block;
+    width: 200px;
+    h3 {
+      font-size: 20px;
+    }
     ul {
       padding-left: 0;
+      width: 200px;
+      justify-content: space-between;
 
     }
     li {
       list-style: none;
       border-bottom: none;
+      p {
+        font-size: 12px;
+      }
     }
   }
 }
@@ -60,5 +71,36 @@
   width: 100%;
 }
 
+.yeahhh {
+
+  label {
+   font-size: 14px;
+ }
+
+ #search_min_duration{
+  width: 20%;
+  font-size: 14px;
+ }
 
 
+ #search_max_duration{
+  width: 20%;
+  font-size: 14px;
+ }
+ #search_min_salary{
+  width: 30%;
+  font-size: 14px;
+ }
+ #search_start_date{
+  margin-bottom: 10px;
+ }
+
+ .actions {
+  .btn {
+    font-size: 14px;
+ }
+}
+ button {
+  font-size: 14px;
+ }
+}

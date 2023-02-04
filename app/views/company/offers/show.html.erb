@@ -9,7 +9,7 @@
           <h2><%= @offer.function %></h2>
         </div>
         <div class="card-elves-infos-content">
-          <p><i class="fas fa-info-circle"></i> <%= @offer.description %></p>
+          <p><%= @offer.description %></p>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
 
 
 
-
+    <%= link_to "modifier", "#", class: "btn btn-info px-3 py-2  fs-10 mt-3"%>
     <%= link_to "List of flats", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
 
     <%end%>

@@ -8,6 +8,24 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
 
 
+  def update
+    @company = current_company
+
+
+    if @company.update(update_params)
+      redirect_to company_profile_path(@company)
+    else
+
+      # redirect_to student_profile_path(@student),  error: "An error message for the user"
+      redirect_to company_profile_path(@company) , :flash => { :error => "Insufficient rights!" }
+
+    end
+
+  end
+
+  def update_params
+    params.require(:company).permit(:name, :sector, :description)
+  end
 
 
   protected
@@ -28,7 +46,14 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     company_dashboard_path(resource)
   end
 
+  def after_update_path_for(resource)
+    flash[:notice] = "Account succesfully updated"
+    company_profile_path
+  end
 
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
   # GET /resource/sign_up
   # def new
   #   super
