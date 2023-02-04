@@ -1,13 +1,19 @@
 <h1>Mon profil</h1>
 
 
-
+<%if @student.dossiers.attached?%>
+  <%= @student.dossiers.each do |dossier|%>
+    <%= link_to dossier.filename, rails_blob_path(dossier, disposition: "preview")%> <br>
+  <% end %>
+<% end %>
 
 
   <div class="containun">
     <div class="imageun">
       <%# <%= image_tag( 'avatar.png', {:style => "width:57px;height:57px;", class:"logos"}) %>
-      <% if %>
+      <% if  @student.photo.image?%>
+        <%= image_tag(@student.photo, style: "width:82px") %>
+      <% end %>
     </div>
     <div class="descriptionun">
       <div style="display: flex;justify-content: space-between;">
@@ -52,6 +58,11 @@
                       input_html: { autocomplete: "school", class: 'businessman'} %>
           <i class="fa-sharp fa-solid fa-asterisk"></i>
         </div>
+        <%= f.input :photo,
+                    as: :file,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "photo"} %>
         <%= f.input :description, as: :text,  required: false,
                     autofocus: true,
                     input_html: { autocomplete: "description"} %>
