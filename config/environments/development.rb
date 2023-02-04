@@ -61,7 +61,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.active_storage.service = :cloudinary
+  # config.active_storage.service = :cloudinary
 
   #localtunnel
 

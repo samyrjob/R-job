@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 
   namespace :company do # permet de faire sous catégories de user
-    resources :offers, only: %i[new create show]
+    resources :offers, only: %i[new create show update]
     resource :profile, only: :show
     resource :dashboard, only: :show
     resources :applications, only: [] do

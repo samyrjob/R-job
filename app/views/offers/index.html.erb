@@ -15,10 +15,10 @@
 
  <div class="col pt-1" data-controller="search">
         <div class="d-flex" style="padding:10px">
-          <button class="btn btn-primary btn-lg" data-action="click->search#panel" data-search-target="button" style="margin-top: 10px"> Recherche avancée</button>
+          <button class="btn btn-primary btn-lg" data-action="click->search#panel" data-search-target="button" style="margin-top: 10px;font-size: 15px;"> Recherche avancée</button>
         </div>
 
-        <div href="#" class="yeahh d-none" data-search-target="link" style="padding: 10px">
+        <div href="#" class="yeahhh d-none" data-search-target="link" style="padding: 10px">
           <%= form_for @search, html: {class: "pure-form"} do |f| %>
             <div class="field">
               <%=f.label :Mots_Clefs %> <br>
@@ -45,11 +45,11 @@
             </div>
 
             <%# Admin?    : <%= f.check_box :admin %>
-            <div class="actions"><%= f.submit "Search", class: "btn btn-primary"%></div>
+            <div class="actions"><%= f.submit "Rechercher", class: "btn btn-primary"%></div>
           <% end %>
         <button class="btn btn-success" data-action="click->search#reset" style="margin-top: 10px"> Retour </button>
         </div>
-        <div class="opaq opacity-50 d-none" data-search-target="panel"></div>
+        <div class="opaqr opacity-50 d-none" data-search-target="panel"></div>
   </div>
 
 
@@ -88,8 +88,8 @@
               </div>
               <div class="description-side">
                 <h3><%= offer.function %></h3>
-                <div>
-                <p><%= Company.find(offer.company_id).name %></h3></p>
+                <div class="companame">
+                  <p><%= Company.find(offer.company_id).name %></h3></p>
                 </div>
                 <ul>
                   <li>
@@ -164,6 +164,7 @@
                       <li>
                         <% if offer.duration?  %>
                         <p>Stage <%= offer.duration %> mois</p>
+                        <i class="fa-thin fa-pipe"></i>
                         <% end %>
                       </li>
                       <li>
