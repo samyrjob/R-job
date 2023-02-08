@@ -16,9 +16,10 @@
             <div class="card"> <%= link_to company_offer_path(offer) do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-logo">
-                  <% if offer.company.photo.present? %>
-                    <%= image_tag offer.company.photo%>
-                  <% end %>
+                <% if offer.company.photo.present? %>
+                  <%= image_tag offer.company.photo%>
+                <% end %>
+                <%= link_to("Voir les candidatures", company_applications_path, {class: "btn btn-primary text-decoration-none"}) %>
               </div>
               <div class="description-side">
                 <h3><%= offer.function %></h3>
@@ -54,6 +55,7 @@
                      <% if offer.company.photo.present? %>
                       <%= image_tag offer.company.photo%>
                     <% end %>
+              <%= link_to("Voir les candidatures", company_applications_path, {class: "btn btn-primary text-decoration-none"}) %>
               </div>
               <div class="description-side">
                 <h3><%= offer.function %></h3>
@@ -90,7 +92,7 @@
 
 
 
-<div class="container-profile">
+<%# <div class="container-profile">
 
 
 
@@ -99,35 +101,41 @@
     <div class="container m-3 mb-5">
       <h2> Traitement des Candidatures </h2>
         <div class="wrapper mt-5">
-        <% @applications.each do |application| %>
-          <% if application.status == "pending" %>
-            <%= link_to company_offer_path(Offer.find(application.offer_id)) , class: "card m-2" do %>
-                <div class="card" style ="object-fit-content">
-                  <div class="card-body m-1">
-                    M. <%= Student.find(application.student_id).last_name %> souhaite postuler :
+        <% @offers.each do |offer|%>
+          <%# <h3 class="card-title"><%= offer.function %>
+          <%# <% offer.applications.each do |application| %>
+            <%# <% if application.status == "pending" %>
+              <%# <%= link_to company_application_path(application) , class: "card m-2" do %>
+                  <%# <div class="card" style ="object-fit-content">
+                    <div class="card-body m-1">
+                      M. <%= Student.find(application.student_id).last_name %>
+                       <%# souhaite postuler : %>
+                    <%# </div>
+                    <% if  Student.find(application.student_id).photo.image?%>
+                      <%# <%= image_tag(Student.find(application.student_id).photo, style: "width:82px") %>
+                    <%# <% end %>
+                    <%# <div class="card-body m-1"><i class="fa-solid fa-eye"></i>
+                      <small class="card-text text-start"> <%= link_to "accepter", accept_company_application_path(application), class: "btn btn-primary "%>
+                      <%# <small class="card-text text-start"> <%= link_to "refuser", decline_company_application_path(application), class: "btn btn-danger "%>
+                    <%# </div>
                   </div>
-                  <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
-                  <div class="card-body m-1">
-                    <h3 class="card-title"><%= Offer.find(application.offer_id).function %></h3>
-                    <small class="card-text text-start"> <%= link_to "accepter", accept_company_application_path(application), class: "btn btn-primary "%></small>
-                    <small class="card-text text-start"> <%= link_to "refuser", decline_company_application_path(application), class: "btn btn-danger "%></small>
-                  </div>
-                </div>
-            <% end %>
-          <% elsif application.status == "accepted"%>
-            <%= link_to company_offer_path(Offer.find(application.offer_id)) , class: "card m-2 position-relative" do %>
-                <div class="card" style ="object-fit-content">
-                  <div class="card-body m-1">
-                    <%= Offer.find(application.offer_id).function %> est convoité par M. <%= Student.find(application.student_id).last_name %>
-                  </div>
-                  <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
-                  <div class="card-body m-1">
-                  </div>
-                </div>
-              <%end %>
-          <% end %>
-        <% end %>
-        </div>
+              <% end %>
+            <%# <% elsif application.status == "accepted"%>
+              <%# <%= link_to company_offer_path(Offer.find(application.offer_id)) , class: "card m-2 position-relative" do %>
+                  <%# <div class="card" style ="object-fit-content">
+                    <div class="card-body m-1">
+                      <%# <%= Offer.find(application.offer_id).function %>
+                      <%# est convoité par M. <%= Student.find(application.student_id).last_name %>
+                    <%# </div>
+                    <%= image_tag("home-banner.jpg", height: 250, crop: :fill)  %>
+                    <%# <div class="card-body m-1">
+                    </div>
+                  </div>  %>
+                <%# <%end %>
+            <%# <% end %>
+          <%# <% end %>
+        <%# <%end%>
+        <%# </div>
     </div>
   </div>
-</div>
+</div> %>

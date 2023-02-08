@@ -21,6 +21,11 @@ class Company::ApplicationsController < ApplicationController
   end
 
 
+  def index
+    @offers = Offer.where(company_id: current_company.id)
+    @applications = Application.includes(:offer).where(offers: { company: current_company })
+  end
+  
   private
 
 

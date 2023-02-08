@@ -35,13 +35,15 @@
   </div>
 </div>
 
-  <div class="container-form-apply" data-display-booking-target="form">
-    <% if student_signed_in? %>
 
 
 
     <div class="deuxbuttons">
-      <%= link_to "Postuler", new_student_offer_application_path(@offer), class: "btn btn-primary px-3 py-2  fs-10 mt-3" %>
+      <% if @offer.applications.find_by_student_id(current_student.id).present? %>
+        <button disabled> Postuler </button>
+      <% else %>
+        <%= link_to "Postuler", new_student_offer_application_path(@offer), class: "btn btn-primary px-3 py-2  fs-10 mt-3" %>
+      <%end%>
       <%= link_to "Liste des offres", offers_path, class: "btn btn-primary px-3 py-2  fs-10 mt-3" %>
     </div>
 
@@ -75,30 +77,3 @@
     <%# <% if @savedoffer2 != nil %>
     <%# <%= @savedoffer2.saved? %>
     <%# <% end %>
-
-
-
-
-
-
-
-
-    <% else %>
-      <div class="col pt-1" data-controller="popup">
-        <div class="d-flex">
-          <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button"> Postuler </button>
-          <%= link_to "Retour à la liste", offers_path, class: "btn btn-info" %>
-        </div>
-
-        <div href="#" class="yeahh d-none" data-popup-target="link">
-          <h2>Oups... Tu dois être connecté pour postuler à cette fabuleuse offre</h2>
-          <div>
-            <a class="button-login" href="http://localhost:3000/students/sign_in">Connexion</a>
-            <button class="btn btn-primary" data-action="click->popup#reset"> Ok </button>
-          </div>
-        </div>
-        <div class="opaq opacity-50 d-none" data-popup-target="panel">
-        </div>
-      </div>
-    <%end%>
-  </div>

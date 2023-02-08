@@ -1,28 +1,64 @@
-<div class="main-container" data-controller="display-booking">
+<%# <div class="main-container" data-controller="display-booking">
   <div class= "container-flat-show">
     <div class="card-flat">
       <div class="img-card-elf">
         <%# <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
-      </div>
-      <div class="card-flat-infos">
+      
+      <%# <div class="card-flat-infos">
         <div class="card-flat-infos-title">
-          <h2><%= @offer.function %></h2>
-        </div>
+          <h2><%= @offer.function %>
+        <%# </div>
         <div class="card-elves-infos-content">
-          <p><%= @offer.description %></p>
+          <p><%= @offer.description</p>
+        <%# </div>
+      </div>
+    </div>
+  </div>
+</div> %>
+
+<div class="main-container">
+  <div class= "container-flat-show">
+    <div class="card-flat">
+      <div class="card-flat-infos">
+        <div class="card-title">
+          <h2><%= @offer.function %> - <%= @offer.company.name %> </h2>
+        </div>
+        <div class="card-shower-offer">
+          <div class="description2">
+            <div class="picture">
+              <%= image_tag( @offer.company.photo, {:style => "width:57px;height:57px;", class:"logos"}) %>
+            </div>
+            <div class="list3">
+              <ul>
+                      <li class="li1">
+                        <i class="fa-solid fa-location-dot"></i> <p> <%= @offer.town%> </p>
+                      </li>
+                      <li class="li1">
+                        <i class="fa-solid fa-euro-sign"></i><p> <%= @offer.salary %>€ </p>
+                      </li>
+                      <li class="li1">
+                        <i class="fa-sharp fa-solid fa-calendar-days" style="margin-right:2px;"></i><p> <%= @month %> <%=@offer.start_date.year%></p>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div class= "picture-cardshow">
+          </div>
+        </div>
+        <div class="card-description-offre">
+          <p> <%= @offer.description %></p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="container-form-booking" data-display-booking-target="form">
+  <div class="show-offers-company" data-display-booking-target="form" style="padding: 10px;">
     <% if company_signed_in? %>
 
 
-
-    <%= link_to "modifier", "#", class: "btn btn-info px-3 py-2  fs-10 mt-3"%>
-    <%= link_to "List of flats", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+    <%= link_to "Modifier", edit_company_offer_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
+    <%= link_to "List des offres", offers_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
 
     <%end%>
   </div>

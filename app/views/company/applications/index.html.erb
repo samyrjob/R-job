@@ -1,0 +1,93 @@
+
+
+
+
+
+<div class="latable">
+  <% @offers.each do |offer|%>
+  <table>
+      <caption> <%=offer.function%></caption>
+      <tr>
+          <th scope="col">Candidat</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Mail</th>
+          <th scope="col">Numéro Tel</th>
+          <th scope="col">Mobilité</th>
+          <th scope="col">Etablissement</th>
+          <th scope="col">Année</th>
+          <th scope="col">Secteur visé</th>
+          <th scope="col">Disponibilité</th>
+          <th scope="col">Pièces jointes</th>
+      </tr>
+        <% offer.applications.each do |application| %>
+      <tr>
+          <th scope="row"><%= offer.applications.to_a.find_index(application) + 1%></th>
+          <td><%= Student.find(application.student_id).last_name.upcase %></td>
+          <td><%= Student.find(application.student_id).first_name.capitalize%></td>
+          <% if Student.find(application.student_id).photo.present? %>
+            <td><%= image_tag(Student.find(application.student_id).photo, style: "width:82px") %></td>
+          <%else%>
+            <td></td>
+          <% end %>
+          <td><%= Student.find(application.student_id).email%></td>
+          <td></td>
+          <td></td>
+          <td><%= Student.find(application.student_id).school%></td>
+          <td></td>
+          <td></td>
+          <td><%= %></td>
+          <td></td>
+      </tr>
+
+
+      <%end%>
+  </table>
+
+  <%end%>
+</div>
+
+
+<%#
+fe %>
+
+<%# %>
+
+
+<style>
+
+.latable{
+  padding: 20px;
+}
+
+ td,
+th {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+}
+
+td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+th[scope='col'] {
+    background-color: #696969;
+    color: #fff;
+}
+
+th[scope='row'] {
+    background-color: #d7d9f2;
+}
+
+caption {
+    padding: 10px;
+    caption-side: bottom;
+}
+
+
+</style>
