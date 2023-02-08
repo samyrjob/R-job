@@ -4,7 +4,7 @@
 
 
 
-  <div class="containun">
+  <div class="containdeux">
     <div class="imageun">
       <%# <%= image_tag( 'avatar.png', {:style => "width:57px;height:57px;", class:"logos"}) %>
       <%= image_tag @company.photo,{:style => "width:57px;height:57px;", class:"logos"} %>
@@ -37,7 +37,7 @@
                     autofocus: true,
                     input_html: { autocomplete: "last_name"} %>
             <button href="" id="yeaquatre" type="button" style="border-color:transparent"><i class="fa fa-times" aria-hidden="true"></i></button>
-          
+
         <%= f.input :description, as: :text,  required: false,
                     autofocus: true,
                     input_html: { autocomplete: "description"} %>
@@ -250,5 +250,13 @@ onChange();
 <style>
 .off {
   display: none;
+}
+
+.containdeux{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 10px;
+
 }
 </style>

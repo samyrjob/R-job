@@ -5,5 +5,10 @@
 
 <%= simple_form_for ([:student, @offer, @application]) do |f| %>
   <%= f.input :description, as: :text %>
+  <%= f.input :dossiers,
+                 as: :file,
+                required: true,
+                autofocus: true,
+                input_html: { multiple: true, autocomplete: "photo"} %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

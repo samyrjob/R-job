@@ -6,6 +6,7 @@ class Company::DashboardsController < ApplicationController
     @offers = Offer.where(company: @company)
     # @offers = @company.offers
     @applications = Application.includes(:offer).where(offers: { company: @company })
+
   end
 
   private

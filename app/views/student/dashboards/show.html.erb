@@ -109,6 +109,248 @@
 </div>
 
 
+
+ <div class="flat-cards">
+        <% @applications.each do |application| %>
+          <% if application.status == "pending"  %>
+            <% if @applications.to_a.index(application) % 2 == 0 %>
+              <div class="card"> <%= link_to student_offer_path(application.offer) do %>
+                <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+                <div class="card-logo">
+                  <% if application.offer.company.photo.present? %>
+                    <%= image_tag application.offer.company.photo%>
+                  <% end %>
+                </div>
+                <div class="description-side">
+                  <h3><%= application.offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(application.offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if application.offer.duration?  %>
+                      <p>Stage <%= application.offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if application.offer.town?  %>
+                      <p><%= application.offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - application.offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+                <div class = "position-absolute top-0 end-0">
+                    <span class="badge rounded-pill bg-secondary"> En attente </span>
+                  </div>
+              <% end %>
+              </div>
+              <% else %>
+              <div class="card" style="background: #EEF1F6;"> <%= link_to student_offer_path(application.offer) do %>
+                <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+                <div class="card-logo">
+                      <% if application.offer.company.photo.present? %>
+                        <%= image_tag application.offer.company.photo%>
+                      <% end %>
+                </div>
+                <div class="description-side">
+                  <h3><%= application.offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(application.offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if application.offer.duration?  %>
+                      <p>Stage <%= application.offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if application.offer.town?  %>
+                      <p><%= application.offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - application.offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+                <div class = "position-absolute top-0 end-0">
+                    <span class="badge rounded-pill bg-secondary"> En attente </span>
+                  </div>
+              <% end %>
+              </div>
+            <% end %>
+          <% elsif application.status == "declined" %>
+            <% if @applications.to_a.index(application) % 2 == 0 %>
+              <div class="card"> <%= link_to student_offer_path(application.offer) do %>
+                <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+                <div class="card-logo">
+                  <% if application.offer.company.photo.present? %>
+                    <%= image_tag application.offer.company.photo%>
+                  <% end %>
+                </div>
+                <div class="description-side">
+                  <h3><%= application.offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(application.offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if application.offer.duration?  %>
+                      <p>Stage <%= application.offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if application.offer.town?  %>
+                      <p><%= application.offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - application.offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+                <div class = "position-absolute top-0 end-0">
+                    <span class="badge rounded-pill bg-danger">Refusé</span>
+                </div>
+              <% end %>
+              </div>
+              <% else %>
+              <div class="card" style="background: #EEF1F6;"> <%= link_to student_offer_path(application.offer) do %>
+                <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+                <div class="card-logo">
+                      <% if application.offer.company.photo.present? %>
+                        <%= image_tag application.offer.company.photo%>
+                      <% end %>
+                </div>
+                <div class="description-side">
+                  <h3><%= application.offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(application.offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if application.offer.duration?  %>
+                      <p>Stage <%= application.offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if application.offer.town?  %>
+                      <p><%= application.offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - application.offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+                <div class = "position-absolute top-0 end-0">
+                  <span class="badge rounded-pill bg-danger">Refusé</span>
+                </div>
+              <% end %>
+              </div>
+            <% end %>
+          <% else  application.status == "accepted"%>
+                      <% if @applications.to_a.index(application) % 2 == 0 %>
+              <div class="card"> <%= link_to student_offer_path(application.offer) do %>
+                <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+                <div class="card-logo">
+                  <% if application.offer.company.photo.present? %>
+                    <%= image_tag application.offer.company.photo%>
+                  <% end %>
+                </div>
+                <div class="description-side">
+                  <h3><%= application.offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(application.offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if application.offer.duration?  %>
+                      <p>Stage <%= application.offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if application.offer.town?  %>
+                      <p><%= application.offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - application.offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+                <div class = "position-absolute top-0 end-0">
+                    <span class="badge rounded-pill bg-success"> Accepté </span>
+                </div>
+              <% end %>
+              </div>
+              <% else %>
+              <div class="card" style="background: #EEF1F6;"> <%= link_to student_offer_path(application.offer) do %>
+                <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+                <div class="card-logo">
+                      <% if application.offer.company.photo.present? %>
+                        <%= image_tag application.offer.company.photo%>
+                      <% end %>
+                </div>
+                <div class="description-side">
+                  <h3><%= application.offer.function %></h3>
+                  <div>
+                  <p><%= Company.find(application.offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                    <li>
+                      <% if application.offer.duration?  %>
+                      <p>Stage <%= application.offer.duration %> mois</p>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if application.offer.town?  %>
+                      <p><%= application.offer.town %></p>
+                      <% end %>
+                    </li>
+                    <li>
+                        <% if (DateTime.now.to_date - application.offer.created_at.to_date).to_i == 1%>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jour</p>
+                        <% else %>
+                          <p>Publié il y'a <%= (DateTime.now.to_date - application.offer.created_at.to_date).to_i%> jours</p>
+                        <% end %>
+                    </li>
+                  </ul>
+                </div>
+                <div class = "position-absolute top-0 end-0">
+                  <span class="badge rounded-pill bg-success"> Accepté </span>
+                </div>
+              <% end %>
+              </div>
+            <% end %>
+          <%end%>
+        <% end %>
+ </div>
+
+
 <style>
 .image-event-show {
   width: 100px;

@@ -8,7 +8,7 @@ class Student::ApplicationsController < ApplicationController
     @application.offer = @offer
 
     if @application.save
-      redirect_to offer_path(@offer), notice: "your application has been sent !"
+      redirect_to student_offer_path(@offer), notice: "your application has been sent !"
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class Student::ApplicationsController < ApplicationController
 private
 
   def application_params
-    params.require(:application).permit(:description, :student_id, :offer_id)   # A configurer plutard
+    params.require(:application).permit(:description, :student_id, :offer_id, :dossiers)   # A configurer plutard
   end
 
 end
