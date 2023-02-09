@@ -21,5 +21,4 @@ application.register("popup", PopupController)
 import SearchController from "./search_controller"
 application.register("search", SearchController)
 
-import FormController from "./form_controller"
-application.register("form", FormController)
+
