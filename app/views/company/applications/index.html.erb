@@ -38,7 +38,13 @@
           <td></td>
           <td></td>
           <td><%= %></td>
-          <td></td>
+          <td>
+            <%if Student.find(application.student_id).dossiers.attached?%>
+              <%= Student.find(application.student_id).dossiers.each do |dossier|%>
+              <%= link_to dossier.filename, rails_blob_path(dossier, disposition: "preview")%> <br>
+              <% end %>
+            <% end %>
+          </td>
       </tr>
 
 
