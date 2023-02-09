@@ -331,6 +331,7 @@ DEPENDENCIES
   devise_token_auth
   dotenv-rails
   font-awesome-sass (~> 6.1)
+  gio2
   gobject-introspection
   image_processing (~> 1.2)
   jbuilder
