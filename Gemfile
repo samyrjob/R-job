@@ -41,6 +41,7 @@ gem 'kaminari'
 gem 'will_paginate', '~> 3.3'
 gem 'poppler'
 gem 'active_storage_validations'
+gem 'gobject-introspection'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
