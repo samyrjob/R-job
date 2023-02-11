@@ -58,10 +58,10 @@
 
 
 
-<div>
+<div style="padding: 10px;">
 
  <% if company_signed_in? %>
-    <%= link_to "Publish an offer", new_company_offer_path, class: "btn btn-success" %>
+    <%= link_to "Publier une annonce", new_company_offer_path, class: "btn btn-success" %>
  <% end %>
 
 
@@ -94,7 +94,7 @@
                 <ul>
                   <li>
                     <% if offer.duration?  %>
-                     <p>Stage <%= offer.duration %> mois</p>
+                     <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                     <% end %>
                   </li>
                   <li>
@@ -128,7 +128,7 @@
                   <ul>
                     <li>
                       <% if offer.duration?  %>
-                      <p>Stage <%= offer.duration %> mois</p>
+                      <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                       <% end %>
                     </li>
                     <li>
@@ -163,7 +163,7 @@
                     <ul>
                       <li>
                         <% if offer.duration?  %>
-                        <p>Stage <%= offer.duration %> mois</p>
+                        <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                         <i class="fa-thin fa-pipe"></i>
                         <% end %>
                       </li>
@@ -201,7 +201,7 @@
                 <ul>
                   <li>
                     <% if offer.duration?  %>
-                     <p>Stage <%= offer.duration %> mois</p>
+                     <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                     <% end %>
                   </li>
                   <li>
@@ -235,7 +235,7 @@
                   <ul>
                     <li>
                       <% if offer.duration?  %>
-                      <p>Stage <%= offer.duration %> mois</p>
+                      <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                       <% end %>
                     </li>
                     <li>
@@ -270,7 +270,7 @@
                   <ul>
                     <li>
                       <% if offer.duration?  %>
-                      <p>Stage <%= offer.duration %> mois</p>
+                      <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                       <% end %>
                     </li>
                     <li>
@@ -309,3 +309,10 @@ elem[0].textContent = 'Précédent'
 elem2[0].textContent = 'Suivant'
 
 </script>
+
+
+<style>
+ .description-side {
+   text-transform: capitalize;
+   }
+</style>

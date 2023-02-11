@@ -14,15 +14,21 @@ class Student < ApplicationRecord
 
   MOBILITY = ['Europe du Nord', 'Europe du Sud', 'Est de l`Europe', 'Allemagne/Région Benelux']
 
-  AREA = ['Finance', 'Recrutement', 'Audit/Conseil', 'Marketing/communication']
+  # AREA = ['Finance', 'Recrutement', 'Audit/Conseil', 'Marketing/communication']
   # SCHOOLS = BUSINESSCHOOLS + ENGINEERSCHOOLS
+  # serialize :wanted_area, Array
 
+  validate do
+    unless %w(Finance Recrutement Audit/conseil Marketing/communication).include? wanted_area
+      errors.add(:wanted_area, "#{wanted_area} n'est pas un mandat valide")
+    end
+  end
 
   has_many :applications, dependent: :destroy
   has_many :savedoffers, dependent: :destroy
   validates :profile, presence: true, inclusion: { in: PROFILES }
   validates :school, presence: true
-  validates :wanted_area, presence: true, inclusion: { in: AREA }
+  # validates :wanted_area, presence: true, inclusion: { in: AREA }
   validates :phone_number, presence: true
   validates_format_of :phone_number, with: PHONE_REGEX
   validates :mobility, presence: true, inclusion: { in: MOBILITY }

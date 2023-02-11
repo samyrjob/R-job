@@ -4,14 +4,31 @@
     <ul class="nav_links">
       <li><a href="#" class="blog">Blog</a></li>
       <% if company_signed_in? %>
-      <li><%= link_to "Déconnexion", destroy_company_session_path, class: 'blog'%></li>
+      <li>
+        <a href="#" style="--bs-link-hover-color: #4FEC97;">Menu  <i class="fa-sharp fa-solid fa-caret-down"></i></a>
+        <ul class="dropdown">
+          <%# <li><a href="https://ftb.tzportal.io/fr/login" target="_blank">Etudiant</a></li> %>
+          <li style="background: white;"><%= link_to "Dashboard", company_dashboard_path%></li>
+          <li style="background: #F4F4F4;"><%= link_to "Profil", company_profile_path %></li>
+          <li style="background: white"><%= link_to "Liste des offres", offers_path %></li>
+          <li style="background: #F4F4F4;"><%= link_to "Déconnexion", destroy_company_session_path%></li>
+        </ul>
+      </li>
       <% elsif student_signed_in? %>
-      <li><%= link_to "Déconnexion", destroy_student_session_path,  class: 'blog'%></li>
+        <li>
+          <a href="#" style="--bs-link-hover-color: #4FEC97;">Menu  <i class="fa-sharp fa-solid fa-caret-down"></i></a>
+          <ul class="dropdown">
+            <%# <li><a href="https://ftb.tzportal.io/fr/login" target="_blank">Etudiant</a></li> %>
+            <li style="background: white;"><%= link_to "Dashboard", student_dashboard_path%></li>
+            <li style="background: #F4F4F4;"><%= link_to "Profil", student_profile_path %></li>
+            <li style="background: white;"><%= link_to "Liste des offres", offers_path %></li>
+            <li style="background: #F4F4F4;"><%= link_to "Déconnexion", destroy_student_session_path%></li>
+          </ul>
+        </li>
       <% else %>
       <li>
         <a href="#" style="--bs-link-hover-color: #4FEC97;">Se connecter <i class="fa-sharp fa-solid fa-caret-down"></i></a>
         <ul class="dropdown">
-          <%# <li><a href="https://ftb.tzportal.io/fr/login" target="_blank">Etudiant</a></li> %>
           <li><%= link_to "Etudiant", student_session_path%></li>
           <li><%= link_to "Entreprise", company_session_path %></li>
         </ul>
@@ -20,3 +37,59 @@
     </ul>
   </nav>
 </div>
+
+
+<style>
+
+
+  ul li ul.dropdown a{
+       color: black;
+   }
+   ul li ul.dropdown {
+       border: solid 1px black;
+   }
+
+@media (min-width: 500px) and (min-height:700px){
+  .navbar-content {
+    width: 50%;
+  }
+  ul li ul.dropdown {
+      width: 20%;
+      background: #4FEC97;
+      position: absolute;
+      z-index: 999;
+      display: none;
+  }
+
+
+}
+
+@media (min-width: 300px) and (max-width: 499px) and (max-height:850px) {
+  .navbar-content {
+    width: 67%;
+  }
+    ul li ul.dropdown {
+      width: 30%;
+      background: #4FEC97;
+      position: absolute;
+      z-index: 999;
+      display: none;
+  }
+}
+
+
+@media screen and (min-width: 800px) {
+  .navbar-content {
+    width: 25%;
+  }
+
+  ul li ul.dropdown {
+    width: 10%;
+    background: #4FEC97;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+}
+
+</style>

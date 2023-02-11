@@ -19,7 +19,7 @@
     <%= f.input :phone_number,
                 required: false,
                 autofocus: true,
-                placeholder: "07/06...",
+                placeholder: "07/06 ou +33...",
                 input_html: { autocomplete: "phone_number" }%>
     <%= f.input :profile,
                 collection: Student::PROFILES,
@@ -47,10 +47,13 @@
                 autofocus: true,
                 input_html: { autocomplete: "disponibility"}%>
     <%= f.input :wanted_area,
-                collection: Student::AREA,
+                collection: ['Finance', 'Recrutement', 'Audit/Conseil', 'Marketing/communication'],
+                prompt: "Choisis ton domaine :",
                 required: true,
+                label: "Domaine recherché",
                 autofocus: true,
-                input_html: { autocomplete: "wanted_area"}%>
+                input_html: { multiple: true, autocomplete: "wanted_area" },
+                include_hidden: false %>
     <%= f.input :mobility,
                 collection: Student::MOBILITY,
                 required: true,
