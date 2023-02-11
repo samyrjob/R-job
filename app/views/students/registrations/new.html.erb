@@ -16,6 +16,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last_name"} %>
+    <%= f.input :phone_number,
+                required: false,
+                autofocus: true,
+                placeholder: "07/06...",
+                input_html: { autocomplete: "phone_number" }%>
     <%= f.input :profile,
                 collection: Student::PROFILES,
                 required: true,
@@ -31,6 +36,26 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "tongues"}%>
+    <%= f.input :year,
+                collection: Student::YEAR,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "year"}%>
+    <%= f.input :disponibility,
+                as: :date, html5: true,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "disponibility"}%>
+    <%= f.input :wanted_area,
+                collection: Student::AREA,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "wanted_area"}%>
+    <%= f.input :mobility,
+                collection: Student::MOBILITY,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "mobility"}%>
     <%= f.input :photo,
                  as: :file,
                 required: true,

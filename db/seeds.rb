@@ -19,8 +19,8 @@ Company.destroy_all
 
 puts "create students and companies"
 
-samy = Student.new(email: "samy@hotmail.fr", password: "password", last_name: "Rjob", first_name: "Samy", school: "Audencia", profile: "Business School", tongues: "Anglais", description: "Je serai un stagiaire studieux et investi ! Prenez moi plsss")
-jacy = Student.new(email: "jacy@hotmail.fr", password: "password", last_name: "Cy", first_name: "ja", school: "INSA", profile: "Engineer School", tongues: "Allemand", description: "Je parle allemand, y'a aucune raison que vous me preniez pas")
+samy = Student.new(email: "samy@hotmail.fr", password: "password", last_name: "Rjob", first_name: "Samy", school: "Audencia", profile: "Business School", tongues: "Anglais", description: "Je serai un stagiaire studieux et investi ! Prenez moi plsss", phone_number: "0676673748", mobility: "Europe du Sud", year: "stage de fin de scolarité/pré-embauche", wanted_area: "Marketing/communication", disponibility: "2023-06-25")
+jacy = Student.new(email: "jacy@hotmail.fr", password: "password", last_name: "Cy", first_name: "ja", school: "INSA", profile: "Engineer School", tongues: "Allemand", description: "Je parle allemand, y'a aucune raison que vous me preniez pas", phone_number: "0676983748", mobility: "Europe du Nord", year: "stage long Master 1", wanted_area: "Audit/conseil", disponibility: "2023-09-23")
 
 danone = Company.new(email: "danone@hotmail.fr", password: "password", name: "danone", sector: "Banque/Assurance", description: "leader sur le marché mondial des yaourts,
   notre vocation consiste en le bien être éternel des gens", structure: "PME")
@@ -182,6 +182,7 @@ puts "create applications"
 Application.create!(
   offer:      offer1,
   student:        samy,
+  student_id: samy.id,
   description: "La lettre de motivation, également appelée lettre de candidature ou lettre d'accompagnement, met en avant les compétences et qualités du candidat nécessaire
   s à la réussite de son projet professionnel.…"
 )
@@ -191,18 +192,21 @@ Application.create!(
 Application.create!(
   offer:      offer3,
   student:        samy,
+  student_id: samy.id,
   description: "je suis motivé bordel communauté !!!!!!!"
 )
 
 Application.create!(
   offer:      offer2,
   student:        jacy,
+  student_id: jacy.id,
   description: "Prenez moi et vous aurez pas de sort"
 )
 
 Application.create!(
   offer:      offer4,
   student:        jacy,
+  student_id: jacy.id,
   description: "je suis motivé donc prenez-moi et vous aurez pas de sort"
 )
 

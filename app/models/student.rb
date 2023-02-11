@@ -8,7 +8,13 @@ class Student < ApplicationRecord
 
   PROFILES = ['Business School', 'Engineer School', 'Universités / Sciences Politiques']
 
+  YEAR = ['Stage découverte', 'stage court niveau licence', 'stage long niveau licence', 'stage long Master 1', 'Stage long année de césure', 'stage court année de césure', 'stage de fin de scolarité/pré-embauche']
 
+  PHONE_REGEX = /(06|07)\d{8}/
+
+  MOBILITY = ['Europe du Nord', 'Europe du Sud', 'Est de l`Europe', 'Allemagne/Région Benelux']
+
+  AREA = ['Finance', 'Recrutement', 'Audit/Conseil', 'Marketing/communication']
   # SCHOOLS = BUSINESSCHOOLS + ENGINEERSCHOOLS
 
 
@@ -16,6 +22,12 @@ class Student < ApplicationRecord
   has_many :savedoffers, dependent: :destroy
   validates :profile, presence: true, inclusion: { in: PROFILES }
   validates :school, presence: true
+  validates :wanted_area, presence: true, inclusion: { in: AREA }
+  validates :phone_number, presence: true
+  validates_format_of :phone_number, with: PHONE_REGEX
+  validates :mobility, presence: true, inclusion: { in: MOBILITY }
+  validates :year, presence: true, inclusion: { in: YEAR }
+  validates :disponibility, presence: true
   has_one_attached :photo
   validates :first_name, presence: true
   validates :last_name, presence: true

@@ -17,13 +17,13 @@
  <%if @student.dossiers.attached?%>
 
     <% @student.dossiers.each do |dossier| %>
-      <% if dossier.previewable? %>
-        <%= link_to image_tag(dossier.preview(resize: '500x500')), dossier %>
-        <%= link_to image_tag(dossier.preview(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
-        <% else dossier.image? %>
+      <% if dossier.representable? %>
+        <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
+        <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
+        <% elsif dossier.image? %>
         <%= link_to image_tag(dossier, width: 500), dossier %>
-        <%# <%else %>
-        <%# <%= link_to dossier.filename, dossier%>
+        <%else %>
+        <%= link_to dossier.filename, dossier %>
         <% end %>
     <% end %>
   <% end %>

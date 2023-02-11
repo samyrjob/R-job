@@ -3,8 +3,5 @@ class Application < ApplicationRecord
   belongs_to :student
   validates :description, presence: true
   has_many_attached :dossiers
-  validates :status, inclusion: { in: %w[accepted pending declined] }
+  validates :status, inclusion: { in: %w[accepted pending declined kept nokept] }
 end
-
-
-
