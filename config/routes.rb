@@ -21,15 +21,18 @@ Rails.application.routes.draw do
   resources :searches, only: %i[create show ]
 
   patch 'offers/:id', controller: 'company/offers', action: :update
+  delete "offers/:id", controller: 'company/offers', action: :destroy
 
   namespace :company do # permet de faire sous catégories de user
-    resources :offers, only: %i[new create show edit update]
+    resources :offers
     resource :profile, only: :show
     resource :dashboard, only: :show
     resources :applications, only: [:index] do
       member do
         get :accept
         get :decline
+        get :keep
+        get :nokeep
       end
     end
   end
@@ -40,6 +43,14 @@ Rails.application.routes.draw do
     resources :offers, only: [:show] do
       resources :applications, only: %i[new create]
       resources :savedoffers, only: %i[create update]
+    end
+  end
+
+  namespace :student do
+    resource :tags do
+      member do
+        put :create_multiple
+      end
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

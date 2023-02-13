@@ -1,9 +1,9 @@
 <div class="top-dshc">
   <div>
-    <h5 style="margin:5%">Dashboard <%=@company.name%></h5>
+    <h5 style="margin:5%">Dashboard <%=@company.name.capitalize%></h5>
   </div>
   <div class="publii">
-    <%= link_to("Créer une annonce", new_company_offer_path, {class: "btn btn-success text-decoration-none"}) %>
+    <%= link_to("Créer une annonce", new_company_offer_path, {class: "btn btn-primary text-decoration-none"}) %>
   </div>
 </div>
 
@@ -19,7 +19,6 @@
                 <% if offer.company.photo.present? %>
                   <%= image_tag offer.company.photo%>
                 <% end %>
-                <%= link_to("Voir les candidatures", company_applications_path, {class: "btn btn-primary text-decoration-none"}) %>
               </div>
               <div class="description-side">
                 <h3><%= offer.function %></h3>
@@ -55,7 +54,6 @@
                      <% if offer.company.photo.present? %>
                       <%= image_tag offer.company.photo%>
                     <% end %>
-              <%= link_to("Voir les candidatures", company_applications_path, {class: "btn btn-primary text-decoration-none"}) %>
               </div>
               <div class="description-side">
                 <h3><%= offer.function %></h3>
@@ -87,9 +85,31 @@
           <% end %>
         <% end %>
       </div>
+      <div class= "dashbutton">
+        <%= link_to("Dashboard candidatures", company_applications_path, {class: "btn btn-primary text-decoration-none"}) %>
+      </div>
+
   </div>
 </div>
 
+
+<style>
+.description-side{
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+.dashbutton a{
+    width: 47%;
+}
+
+.dashbutton{
+  display: flex;
+  padding: 10px;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+</style>
 
 
 <%# <div class="container-profile">

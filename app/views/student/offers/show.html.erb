@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="card-description-offre">
-          <p> <%= @offer.description %></p>
+          <p style="padding:10px"> <%= @offer.description %></p>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
       <% else %>
         <%= link_to "Postuler", new_student_offer_application_path(@offer), class: "btn btn-primary px-3 py-2  fs-10 mt-3" %>
       <%end%>
-      <%= link_to "Liste des offres", offers_path, class: "btn btn-primary px-3 py-2  fs-10 mt-3" %>
+      <%= link_to "Liste des offres", offers_path, class: "btn btn-primary px-3 py-2  fs-10 mt-3"%>
     </div>
 
     <% if @savedoffer2 == nil %>
@@ -77,3 +77,17 @@
     <%# <% if @savedoffer2 != nil %>
     <%# <%= @savedoffer2.saved? %>
     <%# <% end %>
+
+
+<style>
+
+.simple_form{
+    padding: 10px;
+}
+
+.card-title{
+
+   text-transform: capitalize;
+
+}
+</style>

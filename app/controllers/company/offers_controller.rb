@@ -38,8 +38,13 @@ class Company::OffersController < ApplicationController
   def show
 
     @offer = Offer.find(params[:id])
-    @offers = Offer.all
-    
+
+   @applications =  @offer.applications.where(status: "pending")
+   @applications1 =  @offer.applications.where(status: "accepted")
+   @applications2 = @offer.applications.where(status: "nokept")
+   @applications3 = @applications1 + @applications2
+   @applications4 = @offer.applications.where(status: "kept")
+
     capacity = @offer.start_date.month
 
     case capacity
@@ -69,6 +74,13 @@ class Company::OffersController < ApplicationController
       @month = "Décembre"
     end
   end
+
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+    redirect_to company_dashboard_path, status: :see_other, notice: "L'annonce a bien été supprimée !"
+  end
+
 
 
 

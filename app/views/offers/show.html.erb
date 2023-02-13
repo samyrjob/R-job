@@ -3,7 +3,7 @@
     <div class="card-flat">
       <div class="card-flat-infos">
         <div class="card-title">
-          <h2><%= @offer.function %> - <%= @offer.company.name %> </h2>
+          <h2><%= @offer.function.capitalize %> - <%= @offer.company.name.capitalize %> </h2>
         </div>
         <div class="card-shower-offer">
           <div class="description2">
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="card-description-offre">
-          <p> <%= @offer.description %></p>
+          <p style="padding:10px"> <%= @offer.description %></p>
         </div>
       </div>
     </div>
@@ -40,19 +40,27 @@
   <div class="container-form-applyn">
       <div class="col pt-1" data-controller="popup">
         <div class="d-flex">
-          <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button"> Postuler </button>
-          <%= link_to "Liste des offres", offers_path, class: "btn btn-success" %>
+          <button class="btn btn-primary btn-lg" data-action="click->popup#panel" data-popup-target="button" style="font-size:13px"> Postuler </button>
+          <%= link_to "Liste des offres", offers_path, class: "btn btn-info",  style: "font-size:13px" %>
         </div>
         <div class="yeahd">
           <div href="#" class="yeahh d-none" data-popup-target="link">
-            <h2>Oups... You should be connected to apply for this fabulous offer</h2>
-            <div class="deuxbouttons">
-              <a class="blog" href="http://localhost:3000/students/sign_in">Se connecter maintenant</a>
+            <h5>Oups... Tu dois être connecté(e) pour postuler à cette offre !</h5> <br> <br><br>
+            <div style=" display: flex;justify-content: space-around;margin-bottom: 30px;">
+              <%= link_to "Se connecter maintenant !", new_student_session_path, class: "btn btn-success"%>
               <button class="btn btn-primary" data-action="click->popup#reset"> Ok </button>
             </div>
           </div>
         </div>
-        <div class="opaq opacity-50 d-none" data-popup-target="panel">
+        <div class="opaq opacity-0 d-none" data-popup-target="panel">
         </div>
       </div>
   </div>
+
+
+<style>
+.yeahh{
+      position: unset;
+      margin-bottom: 30px;
+}
+</style>

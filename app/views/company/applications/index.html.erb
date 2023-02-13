@@ -1,5 +1,6 @@
 
 
+    <%= link_to "Retour", company_dashboard_path, class: "btn btn-info px-3 py-2  fs-10 mt-3" %>
 
 
 
@@ -8,20 +9,48 @@
   <table>
       <caption> <%=offer.function%></caption>
       <tr>
-          <th scope="col">Candidat</th>
+          <th scope="col">N°</th>
           <th scope="col">Nom</th>
           <th scope="col">Prénom</th>
-          <th scope="col">Photo</th>
-          <th scope="col">Mail</th>
-          <th scope="col">Numéro Tel</th>
+          <th scope="col"><i class="fa-solid fa-user-tie"></i></th>
+          <th scope="col"><i class="fa-solid fa-envelope"></i></th>
+          <th scope="col"><i class="fa-solid fa-phone"></i></th>
           <th scope="col">Mobilité</th>
           <th scope="col">Etablissement</th>
-          <th scope="col">Année</th>
+          <th scope="col">Type de stage</th>
           <th scope="col">Secteur visé</th>
-          <th scope="col">Disponibilité</th>
+          <th scope="col">Dispo dès :</th>
           <th scope="col">Pièces jointes</th>
+          <th scope="col">Statut</th>
       </tr>
         <% offer.applications.each do |application| %>
+         <% case Student.find(application.student_id).disponibility.month
+
+          when 1
+            @month = "Janvier"
+          when 2
+            @month = "Février"
+          when 3
+            @month = "Mars"
+          when 4
+            @month = "Avril"
+          when 5
+            @month = "Mai"
+          when 6
+            @month = "Juin"
+          when 7
+            @month = "Juillet"
+          when 8
+            @month = "Août"
+          when 9
+            @month = "Septembre"
+          when 10
+            @month = "Octobre"
+          when 11
+            @month = "Novembre"
+          else
+            @month = "Décembre"
+          end %>
       <tr>
           <th scope="row"><%= offer.applications.to_a.find_index(application) + 1%></th>
           <td><%= Student.find(application.student_id).last_name.upcase %></td>
@@ -32,17 +61,33 @@
             <td></td>
           <% end %>
           <td><%= Student.find(application.student_id).email%></td>
-          <td></td>
-          <td></td>
+          <td><%=Student.find(application.student_id).phone_number%></td>
+          <td><%=Student.find(application.student_id).mobility%></td>
           <td><%= Student.find(application.student_id).school%></td>
-          <td></td>
-          <td></td>
-          <td><%= %></td>
+          <td><%=Student.find(application.student_id).year%></td>
+          <td><%=Student.find(application.student_id).wanted_area%></td>
+          <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
           <td>
-            <%if Student.find(application.student_id).dossiers.attached?%>
-              <%= Student.find(application.student_id).dossiers.each do |dossier|%>
-              <%= link_to dossier.filename, rails_blob_path(dossier, disposition: "preview")%> <br>
+             <%if Student.find(application.student_id).dossiers.attached?%>
+              <% Student.find(application.student_id).dossiers.each do |dossier| %>
+                <% if dossier.representable? %>
+                <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
+                <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
+                <% elsif dossier.image? %>
+                <%= link_to image_tag(dossier, width: 500), dossier %>
+                <%else %>
+                <%= link_to dossier.filename, dossier %>
+                <% end %>
               <% end %>
+           <% end %>
+          </td>
+          <td>
+            <% if ['pending', 'accepted'].include?(application.status) %>
+              <i class="fa-sharp fa-regular fa-hourglass-half"></i>
+            <% elsif application.status == "kept"%>
+              <i class="fa-sharp fa-solid fa-check"></i>
+            <% else %>
+              <i class="fa-sharp fa-solid fa-circle-xmark"></i>
             <% end %>
           </td>
       </tr>
@@ -62,9 +107,14 @@ fe %>
 
 
 <style>
-
+.fa-circle-xmark::before {
+    content: "\f057";
+    color: red;
+}
 .latable{
   padding: 20px;
+  color: black;
+  font-size: 12px;
 }
 
  td,
@@ -95,5 +145,14 @@ caption {
     caption-side: bottom;
 }
 
+.fa-check::before {
+    content: "\f00c";
+    color: green;
+}
+
+.fa-square-xmark::before {
+    content: "\f2d3";
+    color: red;
+}
 
 </style>

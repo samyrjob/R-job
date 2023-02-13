@@ -37,11 +37,11 @@
               <%= f.date_field :start_date %>
             </div>
             <div class="field">
-            <p><%= f.label :min_duration, "Durée minimale" %> - <%= f.number_field :min_duration, size: 10 %> </p>
-            <p><%= f.label :max_duration, "Durée maximale" %> - <%= f.number_field :max_duration, size: 10 %> </p>
+            <p><%= f.label :min_duration, "Durée minimale (en mois)" %> - <%= f.number_field :min_duration, size: 10 %> </p>
+            <p><%= f.label :max_duration, "Durée maximale (en mois)" %> - <%= f.number_field :max_duration, size: 10 %> </p>
             </div>
             <div class="field">
-            <p><%= f.label :min_salary, "Salaire minimum" %> - <%= f.number_field :min_salary, size: 10, step: :any %> </p>
+            <p><%= f.label :min_salary, "Rémunération minimale mensuelle" %> - <%= f.number_field :min_salary, size: 10, step: :any %> </p>
             </div>
 
             <%# Admin?    : <%= f.check_box :admin %>
@@ -58,10 +58,10 @@
 
 
 
-<div>
+<div style="padding: 10px;">
 
  <% if company_signed_in? %>
-    <%= link_to "Publish an offer", new_company_offer_path, class: "btn btn-success" %>
+    <%= link_to "Publier une annonce", new_company_offer_path, class: "btn btn-success" %>
  <% end %>
 
 
@@ -87,14 +87,14 @@
                   <% end %>
               </div>
               <div class="description-side">
-                <h3><%= offer.function %></h3>
+                <h3><%= offer.function%></h3>
                 <div class="companame">
                   <p><%= Company.find(offer.company_id).name %></h3></p>
                 </div>
                 <ul>
                   <li>
                     <% if offer.duration?  %>
-                     <p>Stage <%= offer.duration %> mois</p>
+                     <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                     <% end %>
                   </li>
                   <li>
@@ -128,7 +128,7 @@
                   <ul>
                     <li>
                       <% if offer.duration?  %>
-                      <p>Stage <%= offer.duration %> mois</p>
+                      <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                       <% end %>
                     </li>
                     <li>
@@ -163,7 +163,7 @@
                     <ul>
                       <li>
                         <% if offer.duration?  %>
-                        <p>Stage <%= offer.duration %> mois</p>
+                        <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                         <i class="fa-thin fa-pipe"></i>
                         <% end %>
                       </li>
@@ -201,7 +201,7 @@
                 <ul>
                   <li>
                     <% if offer.duration?  %>
-                     <p>Stage <%= offer.duration %> mois</p>
+                     <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                     <% end %>
                   </li>
                   <li>
@@ -235,7 +235,7 @@
                   <ul>
                     <li>
                       <% if offer.duration?  %>
-                      <p>Stage <%= offer.duration %> mois</p>
+                      <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                       <% end %>
                     </li>
                     <li>
@@ -270,7 +270,7 @@
                   <ul>
                     <li>
                       <% if offer.duration?  %>
-                      <p>Stage <%= offer.duration %> mois</p>
+                      <p>Stage <%= offer.duration %> mois (à partir de  <%= @month%> <%=  offer.start_date.year %>)</p>
                       <% end %>
                     </li>
                     <li>
@@ -309,3 +309,10 @@ elem[0].textContent = 'Précédent'
 elem2[0].textContent = 'Suivant'
 
 </script>
+
+
+<style>
+ .description-side {
+   text-transform: capitalize;
+   }
+</style>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_04_165739) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_13_100954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,6 +111,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_165739) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "student_tags", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_student_tags_on_student_id"
+    t.index ["tag_id"], name: "index_student_tags_on_tag_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -131,8 +140,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_165739) do
     t.text "description"
     t.string "status"
     t.string "tongues"
+    t.string "phone_number"
+    t.string "mobility"
+    t.string "year"
+    t.string "wanted_area"
+    t.date "disponibility"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "domaine"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -142,4 +163,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_165739) do
   add_foreign_key "offers", "companies"
   add_foreign_key "savedoffers", "offers"
   add_foreign_key "savedoffers", "students"
+  add_foreign_key "student_tags", "students"
+  add_foreign_key "student_tags", "tags"
 end
