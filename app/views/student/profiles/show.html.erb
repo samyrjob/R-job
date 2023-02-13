@@ -1,3 +1,4 @@
+<div class="padding">
 <h1>Mon profil</h1>
 
 
@@ -6,14 +7,9 @@
     <%# <%= link_to dossier.filename, rails_blob_path(dossier, disposition: "preview")%>
   <%# <% end %>
 <%# <% end %>
-<%if @student.dossiers.attached?%>
-<%= @student.dossiers.each do |dossier| %>
-<iframe src="<%= rails_blob_path(dossier, disposition: :inline) %>" height="200" width="300"></iframe>
-<%end%>
-<%end%>
-<br>
-<br>
-<br>
+<%# <%if @student.dossiers.attached?%>
+
+
  <%if @student.dossiers.attached?%>
 
     <% @student.dossiers.each do |dossier| %>
@@ -41,264 +37,50 @@
     <div class="descriptionun">
       <div style="display: flex;justify-content: space-between;">
         <h5><%= @student.first_name%> <%= @student.last_name%></h5><br>
-        <button href="" id="yeatrois" type="button" style="border-color:transparent"><i  class="fa-solid fa-pen" style="font-size: 10px;" ></i></button>
       </div>
       <div class="ef"><%= @student.profile%></div> <br>
       <div class="ef"><%= @student.school%></div> <br>
-      <div class="eg"><%= @student.description %></div>
+
+
     </div>
 
 
-  </div>
-  <div class="formun" style="display:none">
-    <%= simple_form_for(@student, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "formd"}) do |f| %>
-      <%= f.error_notification %>
 
-      <div class="form-inputs">
 
-        <% if devise_mapping.confirmable? && @student.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= @student.unconfirmed_email %></p>
-        <% end %>
-          <div class="nomprenom">
-            <%= f.input :first_name,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "first_name"} %>
-            <%= f.input :last_name,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "last_name"} %>
-            <button href="" id="yeaquatre" type="button" style="border-color:transparent"><i class="fa fa-times" aria-hidden="true"></i></button>
-          </div>
-        <%= f.input :profile,
-                    collection: Student::PROFILES,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "profile"}%>
-        <div class="yh">
-          <%= f.input :school,
-                      collection: ["", "", "", "", "", "", "", "", "", ""],
-                      required: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "school", class: 'businessman'} %>
-          <i class="fa-sharp fa-solid fa-asterisk"></i>
-        </div>
-        <%= f.input :photo,
-                    as: :file,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "photo"} %>
-        <%= f.input :description, as: :text,  required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "description"} %>
-        <%# <%= f.input :tongues,
-                    collection: Student::TONGUES,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "tongues"}%>
-        <%# <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-        <%# <%= f.input :password_confirmation,
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-        <%# <%= f.input :current_password,
-                    hint: "Rentre ton mot de passe et confirme les changements",
-                    required: true,
-                    input_html: { autocomplete: "current-password" }, class: "mess" %>
-      </div>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Confirmer", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+
+
   </div>
 
-<%# <div class="opaqe" style="display:none">
-</div> %>
+
+    <br><br><br>
 
 
 
-<script>
 
-document.querySelector('#yeatrois').addEventListener('click', myFunction);
-document.querySelector('#yeaquatre').addEventListener('click', myFunctionun);
-document.getElementById("student_school").classList.remove("is-valid");
-document.getElementById("student_school").onchange = function () {GFGfun()};
-document.getElementById("student_first_name").onchange = function () {GFGzi()};
-document.getElementById("student_last_name").onchange = function () {GFGzik()};
-document.getElementById("student_profile").onchange = function () {Gzte()};
+   <%= link_to "Modifier mon profil", edit_student_registration_path, class: "btn btn-primary"%>
 
 
-function GFGfun() {
-            var ert = document.getElementById("student_school");
-
-            if (ert.value === ''){
-              ert.classList.add("is-invalid");
-            }
-            else if (ert.value != '')
-            {
-              ert.classList.add("is-valid");
-              ert.classList.remove("is-invalid");
-            }
-
-}
-
-            function GFGzi() {
-              var firsty = document.getElementById("student_first_name");
-              if (firsty.value === ''){
-                firsty.classList.add("is-invalid");
-              }
-              else if (firsty.value != '')
-              {
-                firsty.classList.add("is-valid");
-                firsty.classList.remove("is-invalid");
-              }
-            }
-
-            function GFGzik() {
-              var firstyt = document.getElementById("student_last_name");
-              if (firstyt.value === ''){
-                firstyt.classList.add("is-invalid");
-              }
-              else if (firstyt.value != '')
-              {
-                firstyt.classList.add("is-valid");
-                firstyt.classList.remove("is-invalid");
-              }
-            }
-
-            function Gzte() {
-              var prop = document.getElementById("student_profile");
-              if (prop.value === ''){
-                prop.classList.add("is-invalid");
-              }
-              else if (prop.value != '')
-              {
-                prop.classList.add("is-valid");
-                prop.classList.remove("is-invalid");
-              }
-            }
-
-
-
-function myFunction() {
-  document.querySelector('.formun').style.display = 'block';
-
-}
-function myFunctionun() {
-  document.querySelector('.formun').style.display = 'none';
-
-}
-
-
-
-var e = document.getElementById("student_profile");
-var a = document.getElementById("student_school")
-//  var span = document.getElementById("GFG_Span");
-
-var tablo = document.getElementsByClassName("student_school");
-
-function onChange() {
-
-
-
-  var value = e.value;
-  var text = e.options[e.selectedIndex].text;
-  var jo = a.options[a.selectedIndex].text
-  // span.textContent = text;
-
-  // if (text == "Business School") {
-  //   document.getElementsByClassName("student_school")[0].classList.toggle("d-none")
-  // }
-  // else {
-  //   document.getElementsByClassName("student_school")[0].classList.toggle("d-none")
-  // }
-
-  if (text == "Engineer School") {
-    a.options[1].value = 'INSA'
-    a.options[2].value = 'Polytech'
-    a.options[3].value = 'CENTRALES SUPELEC'
-    a.options[4].value = 'POLYTECHNIQUE'
-    a.options[5].value = 'ECOLE DES MINES'
-    a.options[6].value = 'ECOLE CENTRALES'
-    a.options[7].value = 'ENSAE PARIS'
-    a.options[8].value = 'CENTRALES LYON'
-    a.options[9].value = 'CENTRALES PARIS'
-    a.options[10].value = 'CENTRALES RENNES'
-    a.options[1].textContent = 'INSA'
-    a.options[2].textContent = 'Polytech'
-    a.options[3].textContent = 'CENTRALES SUPELEC'
-    a.options[4].textContent = 'POLYTECHNIQUE'
-    a.options[5].textContent = 'ECOLE DES MINES'
-    a.options[6].textContent = 'ECOLE CENTRALES'
-    a.options[7].textContent = 'ENSAE PARIS'
-    a.options[8].textContent = 'CENTRALES LYON'
-    a.options[9].textContent = 'CENTRALES PARIS'
-    a.options[10].textContent = 'CENTRALES RENNES'
-  }
-  else if (text == "Business School") {
-    a.options[1].value = 'Audencia'
-    a.options[2].value = 'Essec'
-    a.options[3].value = 'EDHEC'
-    a.options[4].value = 'EM Lyon'
-    a.options[5].value = 'RSB'
-    a.options[6].value = 'Kedge Business school'
-    a.options[7].value = 'IMT TELECOM'
-    a.options[8].value = 'ESCP'
-    a.options[9].value = 'HEC'
-    a.options[10].value = 'ICN BS'
-    a.options[1].textContent = 'Audencia'
-    a.options[2].textContent = 'Essec'
-    a.options[3].textContent = 'EDHEC'
-    a.options[4].textContent = 'EM Lyon'
-    a.options[5].textContent = 'RSB'
-    a.options[6].textContent = 'Kedge Business school'
-    a.options[7].textContent = 'IMT TELECOM'
-    a.options[8].textContent = 'ESCP'
-    a.options[9].textContent = 'HEC'
-    a.options[10].textContent = 'ICN BS'
-  }
-   else {
-    a.options[1].value = 'Sciences Po Rennes'
-    a.options[2].value = 'Fac de Nanterres'
-    a.options[3].value = 'Université de Nantes'
-    a.options[4].value = 'Université de Caen'
-    a.options[5].value = 'Sciences po Paris'
-    a.options[6].value = 'IAE PARIS'
-    a.options[7].value = 'IAE REGION'
-    a.options[8].value = 'Fac de Metz'
-    a.options[9].value = 'Ecole des beaux-arts'
-    a.options[10].value = 'Ecoles des arts'
-    a.options[1].textContent = 'Sciences Po Rennes'
-    a.options[2].textContent = 'Fac de Nanterres'
-    a.options[3].textContent = 'Université de Nantes'
-    a.options[4].textContent = 'Université de Caen'
-    a.options[5].textContent = 'Sciences po Paris'
-    a.options[6].textContent = 'IAE PARIS'
-    a.options[7].textContent = 'IAE REGION'
-    a.options[8].textContent = 'Fac de Metz'
-    a.options[9].textContent = 'Ecole des beaux-arts'
-    a.options[10].textContent = 'Ecole des arts'
-  }
+<br>
+<br>
 
 
 
 
 
-// if (n.classList.contains(".businessman")) {
-//     var m = n.getAttribute("class");
-//     console.log(m);
-// }
-}
-e.onchange = onChange;
-onChange();
-</script>
+  </div>
 
 
 <style>
 .off {
   display: none;
+}
+
+.containun {
+  box-shadow: none;
+}
+
+.padding{
+  padding: 20px;
 }
 </style>

@@ -2,8 +2,8 @@
 <div class="container-profile">
    <div class="col-2" style="width: 66%;">
       <div style="margin: 10%; width: 100%; display:flex;justify-content: space-between;">
-        <%= link_to("Liste des offres", offers_path, {class: "btn btn-success text-decoration-none"}) %>
-        <%= link_to("Profil", student_profile_path, {class: "btn btn-success text-decoration-none"}) %>
+        <%= link_to("Liste des offres", offers_path, {class: "btn btn-primary text-decoration-none"}) %>
+        <%= link_to("Profil", student_profile_path, {class: "btn btn-primary text-decoration-none"}) %>
       </div>
     </div>
   <div class= "container mb-5" >
@@ -254,7 +254,7 @@
 
 <div class="container p-2 mt-3 mb-3" >
   <div class="card">
-    <h1 class="ms-5 mt-3"> Offres sauvegardées</h1>
+    <h3 class="ms-5 mt-3"> Offres sauvegardées</h3>
       <div class="row ms-3">
           <div class="wrapper mt-5">
             <% @savedoffers.each do |savedoffer| %>
@@ -334,13 +334,12 @@
 
           <div class="col-2" style="width: 40%;">
             <div style="margin: 40%; width: 100%;">
-              <%= link_to("Voir liste des offres", offers_path, {class: "btn btn-success text-decoration-none"}) %>
+              <%= link_to("Voir liste des offres", offers_path, {class: "btn btn-primary text-decoration-none"}) %>
             </div>
           </div>
       </div>
   </div>
 </div>
-
 
 
 

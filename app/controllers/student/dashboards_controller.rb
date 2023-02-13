@@ -8,7 +8,7 @@ class Student::DashboardsController < ApplicationController
     # @savedoffers = Savedoffer.where(student_id: @student.id)
     # @savedoffers = @student.savedoffers.distinct.pluck(:offer_id)
     @savedoffers = @student.savedoffers.where(:saved => true).distinct.pluck(:offer_id)
-
+    @tag = Tag.new 
     @applications.each do |application|
       case application.offer.start_date.month
 

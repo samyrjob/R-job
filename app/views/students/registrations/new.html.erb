@@ -1,90 +1,96 @@
-<h2>Sign up</h2>
+<div style="padding:30px">
+  <h3>Inscription</h3>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "first_name"} %>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "last_name"} %>
-    <%= f.input :phone_number,
-                required: false,
-                autofocus: true,
-                placeholder: "07/06 ou +33...",
-                input_html: { autocomplete: "phone_number" }%>
-    <%= f.input :profile,
-                collection: Student::PROFILES,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "profile"}%>
-    <%= f.input :school,
-                collection: ["", "", "", "", "", "", "", "", "", ""],
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "school", class: 'businessman'} %>
-    <%= f.input :tongues,
-                collection: Student::TONGUES,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "tongues"}%>
-    <%= f.input :year,
-                collection: Student::YEAR,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "year"}%>
-    <%= f.input :disponibility,
-                as: :date, html5: true,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "disponibility"}%>
-    <%= f.input :wanted_area,
-                collection: ['Finance', 'Recrutement', 'Audit/Conseil', 'Marketing/communication'],
-                prompt: "Choisis ton domaine :",
-                required: true,
-                label: "Domaine recherché",
-                autofocus: true,
-                input_html: { multiple: true, autocomplete: "wanted_area" },
-                include_hidden: false %>
-    <%= f.input :mobility,
-                collection: Student::MOBILITY,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "mobility"}%>
-    <%= f.input :photo,
-                 as: :file,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "photo"} %>
-    <%= f.input :dossiers,
-                 as: :file,
-                required: true,
-                autofocus: true,
-                input_html: { multiple: true, autocomplete: "photo"} %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :first_name,
+                  label: 'Prénom',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "first_name"} %>
+      <%= f.input :last_name,
+                  label: 'Nom',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last_name"} %>
+      <%= f.input :phone_number,
+                  label: 'Numéro de téléphone',
+                  required: false,
+                  autofocus: true,
+                  placeholder: "07/06 ou +33...",
+                  input_html: { autocomplete: "phone_number" }%>
+      <%= f.input :profile,
+                  collection: Student::PROFILES,
+                  label: 'profil',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "profile"}%>
+      <%= f.input :school,
+                  label: 'Ecole',
+                  collection: ["", "", "", "", "", "", "", "", "", "", ""],
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "school", class: 'businessman'} %>
+      <%= f.input :year,
+                  collection: Student::YEAR,
+                  label: 'type de stage',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "year"}%>
+      <%= f.input :wanted_area,
+                  label: "domaine recherché",
+                  collection: Student::AREA,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "wanted_area"}%>
+      <%= f.input :disponibility,
+                  label: 'Disponibilité (à partir de)',
+                  as: :date, html5: true,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "disponibility"}%>
+      <%= f.input :mobility,
+                  label: 'Mobilité',
+                  collection: Student::MOBILITY,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "mobility"}%>
+      <%= f.input :photo,
+                  as: :file,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "photo"} %>
+      <%= f.input :dossiers,
+                  label: 'Télécharge ton CV !',
+                  as: :file,
+                  required: true,
+                  autofocus: true,
+                  input_html: { multiple: true, autocomplete: "photo"} %>
+      <%= f.input :password,
+                  label: 'Mot de passe',
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  label: 'Confirme ton mot de passe',
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "S'inscrire", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
-<%= render "students/shared/links" %>
+  <%= render "students/shared/links" %>
 
+</div>
   <%# <p class="forfunction"> The value of the option selected is:
         <span id="GFG_Span"></span>
     </p> %>
@@ -124,7 +130,7 @@ function onChange() {
   //   document.getElementsByClassName("student_school")[0].classList.toggle("d-none")
   // }
 
-  if (text == "Engineer School") {
+  if (text == "Formation ingénieure") {
     a.options[1].value = 'INSA'
     a.options[2].value = 'Polytech'
     a.options[3].value = 'CENTRALES SUPELEC'
@@ -145,6 +151,7 @@ function onChange() {
     a.options[8].textContent = 'CENTRALES LYON'
     a.options[9].textContent = 'CENTRALES PARIS'
     a.options[10].textContent = 'CENTRALES RENNES'
+    a.options[11].textContent = 'Autre'
   }
   else if (text == "Business School") {
     a.options[1].value = 'Audencia'
@@ -167,6 +174,7 @@ function onChange() {
     a.options[8].textContent = 'ESCP'
     a.options[9].textContent = 'HEC'
     a.options[10].textContent = 'ICN BS'
+    a.options[11].textContent = 'Autre'
   }
    else {
     a.options[1].value = 'Sciences Po Rennes'
@@ -189,6 +197,7 @@ function onChange() {
     a.options[8].textContent = 'Fac de Metz'
     a.options[9].textContent = 'Ecole des beaux-arts'
     a.options[10].textContent = 'Ecole des arts'
+    a.options[11].textContent = 'autre'
   }
 
 
@@ -205,3 +214,11 @@ onChange();
 
 
 </script>
+
+
+<style>
+
+.simple_form{
+ padding: 10px;
+}
+</style>

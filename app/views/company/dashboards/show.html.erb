@@ -1,6 +1,6 @@
 <div class="top-dshc">
   <div>
-    <h5 style="margin:5%">Dashboard <%=@company.name%></h5>
+    <h5 style="margin:5%">Dashboard <%=@company.name.capitalize%></h5>
   </div>
   <div class="publii">
     <%= link_to("Créer une annonce", new_company_offer_path, {class: "btn btn-primary text-decoration-none"}) %>

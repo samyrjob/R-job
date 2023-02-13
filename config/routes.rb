@@ -45,6 +45,14 @@ Rails.application.routes.draw do
       resources :savedoffers, only: %i[create update]
     end
   end
+
+  namespace :student do
+    resource :tags do
+      member do
+        put :create_multiple
+      end
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

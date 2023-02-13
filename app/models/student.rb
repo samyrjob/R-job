@@ -6,29 +6,30 @@ class Student < ApplicationRecord
 
   TONGUES = ['Anglais', 'Espagnol', 'Italien', 'Russe', 'Allemand', 'Portugais', 'Arabe', 'Turc']
 
-  PROFILES = ['Business School', 'Engineer School', 'Universités / Sciences Politiques']
+  PROFILES = ['Business School', 'Formation ingénieure', 'Universités / IEP']
 
   YEAR = ['Stage découverte', 'stage court niveau licence', 'stage long niveau licence', 'stage long Master 1', 'Stage long année de césure', 'stage court année de césure', 'stage de fin de scolarité/pré-embauche']
 
   PHONE_REGEX = /(06|07)\d{8}/
 
-  MOBILITY = ['Europe du Nord', 'Europe du Sud', 'Est de l`Europe', 'Allemagne/Région Benelux']
+  MOBILITY = ['Europe du Nord', 'Europe du Sud', 'Est de l`Europe', 'Allemagne/Région Benelux', 'Autre']
 
-  # AREA = ['Finance', 'Recrutement', 'Audit/Conseil', 'Marketing/communication']
+  AREA = ['Finance', 'Audit/Conseil', 'Marketing/communication', "Ressources humaines/Recrutement", "Business Development", "Comtabilité/Contrôle de gestion"]
   # SCHOOLS = BUSINESSCHOOLS + ENGINEERSCHOOLS
   # serialize :wanted_area, Array
 
-  validate do
-    unless %w(Finance Recrutement Audit/conseil Marketing/communication).include? wanted_area
-      errors.add(:wanted_area, "#{wanted_area} n'est pas un mandat valide")
-    end
-  end
-
+  # validate do
+  #   unless %w(Finance Recrutement Audit/conseil Marketing/communication).include? wanted_area
+  #     errors.add(:wanted_area, "#{wanted_area} n'est pas un mandat valide")
+  #   end
+  # end
+  has_many :tags
+  # has_many :tags, through: :student_tags
   has_many :applications, dependent: :destroy
   has_many :savedoffers, dependent: :destroy
   validates :profile, presence: true, inclusion: { in: PROFILES }
   validates :school, presence: true
-  # validates :wanted_area, presence: true, inclusion: { in: AREA }
+  validates :wanted_area, presence: true, inclusion: { in: AREA }
   validates :phone_number, presence: true
   validates_format_of :phone_number, with: PHONE_REGEX
   validates :mobility, presence: true, inclusion: { in: MOBILITY }
@@ -37,7 +38,7 @@ class Student < ApplicationRecord
   has_one_attached :photo
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :tongues, presence: true, inclusion: { in: TONGUES }
+  validates :description, presence: false
   has_many_attached :dossiers
   # validates :dossiers, attached: true, content_type: { in: 'application/pdf', message: 'is not a PDF' }
   validates :dossiers, limit: { min: 1, max: 3 }, attached: true, content_type: { in: 'application/pdf', message: 'is not a PDF' }

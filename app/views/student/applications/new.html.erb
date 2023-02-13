@@ -1,14 +1,24 @@
-<h1>Yeahhhhhh</h1>
-<h1>Ajoute un nouveau restau my maaan ! </h1>
+<div class="padding">
+  <h3>Nouvelle candidature</h3>
+  <h5><%= @offer.function.capitalize%> - <%= @offer.company.name.capitalize%></h5>
 
 
+  <%= simple_form_for ([:student, @offer, @application]) do |f| %>
+    <%= f.input :dossiers,
+                  label: "CV",
+                  as: :file,
+                  required: true,
+                  autofocus: true,
+                  input_html: { multiple: true, autocomplete: "photo"} %>
+    <%= f.input :description, label: "Motivation", as: :text %>
+    <%= f.submit "Candidater", class: "btn btn-primary"%>
+  <% end %>
+</div>
 
-<%= simple_form_for ([:student, @offer, @application]) do |f| %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :dossiers,
-                 as: :file,
-                required: true,
-                autofocus: true,
-                input_html: { multiple: true, autocomplete: "photo"} %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+
+<style>
+
+.padding{
+  padding: 10px;
+}
+</style>

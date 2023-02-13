@@ -12,9 +12,9 @@
           <th scope="col">N°</th>
           <th scope="col">Nom</th>
           <th scope="col">Prénom</th>
-          <th scope="col">Photo</th>
-          <th scope="col">Mail</th>
-          <th scope="col">Tel</th>
+          <th scope="col"><i class="fa-solid fa-user-tie"></i></th>
+          <th scope="col"><i class="fa-solid fa-envelope"></i></th>
+          <th scope="col"><i class="fa-solid fa-phone"></i></th>
           <th scope="col">Mobilité</th>
           <th scope="col">Etablissement</th>
           <th scope="col">Type de stage</th>
@@ -24,6 +24,33 @@
           <th scope="col">Statut</th>
       </tr>
         <% offer.applications.each do |application| %>
+         <% case Student.find(application.student_id).disponibility.month
+
+          when 1
+            @month = "Janvier"
+          when 2
+            @month = "Février"
+          when 3
+            @month = "Mars"
+          when 4
+            @month = "Avril"
+          when 5
+            @month = "Mai"
+          when 6
+            @month = "Juin"
+          when 7
+            @month = "Juillet"
+          when 8
+            @month = "Août"
+          when 9
+            @month = "Septembre"
+          when 10
+            @month = "Octobre"
+          when 11
+            @month = "Novembre"
+          else
+            @month = "Décembre"
+          end %>
       <tr>
           <th scope="row"><%= offer.applications.to_a.find_index(application) + 1%></th>
           <td><%= Student.find(application.student_id).last_name.upcase %></td>
@@ -39,7 +66,7 @@
           <td><%= Student.find(application.student_id).school%></td>
           <td><%=Student.find(application.student_id).year%></td>
           <td><%=Student.find(application.student_id).wanted_area%></td>
-          <td><%=Student.find(application.student_id).disponibility%></td>
+          <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
           <td>
              <%if Student.find(application.student_id).dossiers.attached?%>
               <% Student.find(application.student_id).dossiers.each do |dossier| %>

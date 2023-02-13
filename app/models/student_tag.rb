@@ -1,4 +1,8 @@
 class StudentTag < ApplicationRecord
+
+    AREA = ['Finance', 'Recrutement', 'Audit/Conseil', 'Marketing/communication']
+
   belongs_to :student
-  belongs_to :tag
+  validates :tag, presence: true, inclusion: { in: AREA }
+
 end

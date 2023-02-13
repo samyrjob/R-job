@@ -21,7 +21,7 @@
     <div class="card-flat">
       <div class="card-flat-infos">
         <div class="card-title">
-          <h2><%= @offer.function %> - <%= @offer.company.name %> </h2>
+          <h2><%= @offer.function.capitalize %> - <%= @offer.company.name.capitalize %> </h2>
         </div>
         <div class="card-shower-offer">
           <div class="description2">
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="card-description-offre">
-          <p> <%= @offer.description %></p>
+          <p style="padding:10px"> <%= @offer.description %></p>
         </div>
       </div>
     </div>
@@ -86,6 +86,34 @@
               <th scope="col"></th>
           </tr>
             <% @applications.each do |application| %>
+                           <% case Student.find(application.student_id).disponibility.month
+
+          when 1
+            @month = "Janvier"
+          when 2
+            @month = "Février"
+          when 3
+            @month = "Mars"
+          when 4
+            @month = "Avril"
+          when 5
+            @month = "Mai"
+          when 6
+            @month = "Juin"
+          when 7
+            @month = "Juillet"
+          when 8
+            @month = "Août"
+          when 9
+            @month = "Septembre"
+          when 10
+            @month = "Octobre"
+          when 11
+            @month = "Novembre"
+          else
+            @month = "Décembre"
+          end %>
+
           <tr>
               <th scope="row"><%= @applications.to_a.find_index(application) + 1%></th>
               <td><%= Student.find(application.student_id).last_name.upcase %></td>
@@ -101,7 +129,7 @@
               <td><%= Student.find(application.student_id).school%></td>
               <td><%=Student.find(application.student_id).year%></td>
               <td><%=Student.find(application.student_id).wanted_area%></td>
-              <td><%=Student.find(application.student_id).disponibility%></td>
+              <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
                 <%if Student.find(application.student_id).dossiers.attached?%>
                   <% Student.find(application.student_id).dossiers.each do |dossier| %>
@@ -151,6 +179,33 @@
               <th scope="col"></th>
           </tr>
             <% @applications3.each do |application| %>
+             <% case Student.find(application.student_id).disponibility.month
+
+          when 1
+            @month = "Janvier"
+          when 2
+            @month = "Février"
+          when 3
+            @month = "Mars"
+          when 4
+            @month = "Avril"
+          when 5
+            @month = "Mai"
+          when 6
+            @month = "Juin"
+          when 7
+            @month = "Juillet"
+          when 8
+            @month = "Août"
+          when 9
+            @month = "Septembre"
+          when 10
+            @month = "Octobre"
+          when 11
+            @month = "Novembre"
+          else
+            @month = "Décembre"
+          end %>
             <% if application.status == "nokept"%>
           <tr style="opacity: 15%;">
               <th scope="row"><%= @applications3.to_a.find_index(application) + 1%></th>
@@ -167,7 +222,7 @@
               <td><%= Student.find(application.student_id).school%></td>
               <td><%=Student.find(application.student_id).year%></td>
               <td><%=Student.find(application.student_id).wanted_area%></td>
-              <td><%=Student.find(application.student_id).disponibility%></td>
+              <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
                 <%if Student.find(application.student_id).dossiers.attached?%>
                   <% Student.find(application.student_id).dossiers.each do |dossier| %>
@@ -206,7 +261,7 @@
               <td><%= Student.find(application.student_id).school%></td>
               <td><%=Student.find(application.student_id).year%></td>
               <td><%=Student.find(application.student_id).wanted_area%></td>
-              <td><%=Student.find(application.student_id).disponibility%></td>
+              <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
                 <%if Student.find(application.student_id).dossiers.attached?%>
                   <% Student.find(application.student_id).dossiers.each do |dossier| %>
@@ -255,6 +310,35 @@
               <th scope="col"></th>
           </tr>
             <% @applications4.each do |application| %>
+
+            <% case Student.find(application.student_id).disponibility.month
+
+            when 1
+              @month = "Janvier"
+            when 2
+              @month = "Février"
+            when 3
+              @month = "Mars"
+            when 4
+              @month = "Avril"
+            when 5
+              @month = "Mai"
+            when 6
+              @month = "Juin"
+            when 7
+              @month = "Juillet"
+            when 8
+              @month = "Août"
+            when 9
+              @month = "Septembre"
+            when 10
+              @month = "Octobre"
+            when 11
+              @month = "Novembre"
+            else
+              @month = "Décembre"
+            end %>
+
           <tr>
               <th scope="row"><%= @applications4.to_a.find_index(application) + 1%></th>
               <td><%= Student.find(application.student_id).last_name.upcase %></td>
@@ -270,7 +354,7 @@
               <td><%= Student.find(application.student_id).school%></td>
               <td><%=Student.find(application.student_id).year%></td>
               <td><%=Student.find(application.student_id).wanted_area%></td>
-              <td><%=Student.find(application.student_id).disponibility%></td>
+              <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
                 <%if Student.find(application.student_id).dossiers.attached?%>
                   <% Student.find(application.student_id).dossiers.each do |dossier| %>
