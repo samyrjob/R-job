@@ -8,7 +8,7 @@ class Offer < ApplicationRecord
   validates :start_date, presence: true
   validates :salary, presence: true
   validates :duration, presence: true
-  has_many_attached :images, service: :s3
+  has_many_attached :images
   # self.per_page = 7
 
 
