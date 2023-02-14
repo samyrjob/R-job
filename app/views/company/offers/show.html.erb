@@ -144,7 +144,7 @@
                  <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
                 <%end%>
 
-                
+
               </td>
               <td>
               <%= link_to (' <i class="fa-solid fa-check"></i>').html_safe, accept_company_application_path(application)%>
@@ -437,6 +437,10 @@ caption {
 .fa-square-xmark::before {
     content: "\f2d3";
     color: red;
+}
+
+.logos {
+    filter: unset;
 }
 
 </style>

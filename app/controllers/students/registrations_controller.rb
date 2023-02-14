@@ -27,7 +27,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   def update
     @student = current_student
-  
+
 
     if @student.update(update_params)
       redirect_to student_profile_path(@student)
@@ -44,7 +44,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
 
   def update_params
-    params.require(:student).permit(:first_name, :last_name, :description, :profile, :school, :photo, :disponibility, :phone_number, :year, :mobility, :wanted_area, dossiers: [])
+    params.require(:student).permit(:first_name, :last_name, :description, :profile, :school, :photo, :disponibility, :phone_number, :year, :mobility, :wanted_area)
   end
 
 
@@ -66,7 +66,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     # @profile = params.require(:student).permit(:profile)
-    attributes = [:first_name, :last_name, :email, :photo, :profile, :school, :tongues, :password, :password_confirmation, :description, :phone_number, :year, :disponibility, :mobility, :wanted_area, dossiers: []]
+    attributes = [:first_name, :last_name, :email, :photo, :profile, :school, :tongues, :password, :password_confirmation, :description, :phone_number, :year, :disponibility, :mobility, :wanted_area]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end

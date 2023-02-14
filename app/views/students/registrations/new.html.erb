@@ -33,9 +33,10 @@
                   input_html: { autocomplete: "profile"}%>
       <%= f.input :school,
                   label: 'Ecole',
-                  collection: ["", "", "", "", "", "", "", "", "", "", ""],
+                  collection: ["", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "" ],
                   required: true,
                   autofocus: true,
+                  include_hidden: false,
                   input_html: { autocomplete: "school", class: 'businessman'} %>
       <%= f.input :year,
                   collection: Student::YEAR,
@@ -61,17 +62,11 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "mobility"}%>
-      <%# <%= f.input :photo,
+      <%= f.input :photo,
                   as: :file,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "photo"} %>
-      <%= f.input :dossiers,
-                  label: 'Télécharge ton CV !',
-                  as: :file,
-                  required: true,
-                  autofocus: true,
-                  input_html: { multiple: true, autocomplete: "dossiers"} %>
       <%= f.input :password,
                   label: 'Mot de passe',
                   required: true,
@@ -132,72 +127,136 @@ function onChange() {
 
   if (text == "Formation ingénieure") {
     a.options[1].value = 'INSA'
-    a.options[2].value = 'Polytech'
+    a.options[2].value = 'École Polytechnique - Palaiseau'
     a.options[3].value = 'CENTRALES SUPELEC'
-    a.options[4].value = 'POLYTECHNIQUE'
+    a.options[4].value = 'Polytech'
     a.options[5].value = 'ECOLE DES MINES'
-    a.options[6].value = 'ECOLE CENTRALES'
+    a.options[6].value = 'ESPCI'
     a.options[7].value = 'ENSAE PARIS'
-    a.options[8].value = 'CENTRALES LYON'
-    a.options[9].value = 'CENTRALES PARIS'
-    a.options[10].value = 'CENTRALES RENNES'
+    a.options[8].value = 'École centrale - Lyon'
+    a.options[9].value = 'École centrale - Lille'
+    a.options[10].value = 'Grenoble INP'
+    a.options[11].value = 'Télécom Paris'
+    a.options[12].value = 'ENSTA Paris'
+    a.options[13].value = 'IMT Atlantique'
+    a.options[14].value = 'École des ponts ParisTech - Marne-la-vallée'
+    a.options[15].value = 'École centrale - Nantes'
+    a.options[16].value = 'École des mines - Nancy'
+    a.options[17].value = 'École des mines ParisTech'
+    a.options[18].value = 'ECPM - Strasbourg'
+    a.options[19].value = 'AgroParisTech'
+    a.options[20].value = 'IMT Mines Alès'
+    a.options[21].value = 'Autre'
     a.options[1].textContent = 'INSA'
-    a.options[2].textContent = 'Polytech'
+    a.options[2].textContent = 'École Polytechnique - Palaiseau'
     a.options[3].textContent = 'CENTRALES SUPELEC'
-    a.options[4].textContent = 'POLYTECHNIQUE'
+    a.options[4].textContent = 'Polytech'
     a.options[5].textContent = 'ECOLE DES MINES'
-    a.options[6].textContent = 'ECOLE CENTRALES'
+    a.options[6].textContent = 'ESPCI'
     a.options[7].textContent = 'ENSAE PARIS'
-    a.options[8].textContent = 'CENTRALES LYON'
-    a.options[9].textContent = 'CENTRALES PARIS'
-    a.options[10].textContent = 'CENTRALES RENNES'
-    a.options[11].textContent = 'Autre'
+    a.options[8].textContent = 'École centrale - Lyon'
+    a.options[9].textContent = 'École centrale - Lille'
+    a.options[10].textContent = 'Grenoble INP'
+    a.options[11].textContent = 'Télécom Paris'
+    a.options[12].textContent = 'ENSTA Paris'
+    a.options[13].textContent = 'IMT Atlantique'
+    a.options[14].textContent = 'École des ponts ParisTech - Marne-la-vallée'
+    a.options[15].textContent = 'École centrale - Nantes'
+    a.options[16].textContent = 'École des mines - Nancy'
+    a.options[17].textContent = 'École des mines ParisTech'
+    a.options[18].textContent = 'ECPM - Strasbourg'
+    a.options[19].textContent = 'AgroParisTech'
+    a.options[20].textContent = 'IMT Mines Alès'
+    a.options[21].textContent = 'Autre'
   }
   else if (text == "Business School") {
-    a.options[1].value = 'Audencia'
-    a.options[2].value = 'Essec'
-    a.options[3].value = 'EDHEC'
-    a.options[4].value = 'EM Lyon'
-    a.options[5].value = 'RSB'
-    a.options[6].value = 'Kedge Business school'
-    a.options[7].value = 'IMT TELECOM'
-    a.options[8].value = 'ESCP'
+    a.options[1].value = 'ESCP'
+    a.options[2].value = 'Em Normandie'
+    a.options[3].value = 'Neoma Business School'
+    a.options[4].value = 'Skema Business School'
+    a.options[5].value = 'Rennes School of Business'
+    a.options[6].value = 'ESC Troyes'
+    a.options[7].value = 'ESC Clermont'
+    a.options[8].value = 'Burgundy School of Business'
     a.options[9].value = 'HEC'
     a.options[10].value = 'ICN BS'
-    a.options[1].textContent = 'Audencia'
-    a.options[2].textContent = 'Essec'
-    a.options[3].textContent = 'EDHEC'
-    a.options[4].textContent = 'EM Lyon'
-    a.options[5].textContent = 'RSB'
-    a.options[6].textContent = 'Kedge Business school'
-    a.options[7].textContent = 'IMT TELECOM'
-    a.options[8].textContent = 'ESCP'
+    a.options[11].value = 'Audencia'
+    a.options[12].value = 'Essec'
+    a.options[13].value = 'EDHEC'
+    a.options[14].value = 'EM Lyon'
+    a.options[15].value = 'Grenoble Ecole de Management'
+    a.options[16].value = 'Toulouse Business School'
+    a.options[17].value = 'IMT TELECOM'
+    a.options[18].value = 'IESEG'
+    a.options[19].value = 'ESSCA'
+    a.options[20].value = 'Montpellier BS'
+    a.options[21].value = 'Autre'
+    a.options[1].textContent = 'ESCP'
+    a.options[2].textContent = 'Em Normandie'
+    a.options[3].textContent = 'Neoma Business School'
+    a.options[4].textContent = 'Skema Business School'
+    a.options[5].textContent = 'Rennes School of Business'
+    a.options[6].textContent = 'ESC Troyes'
+    a.options[7].textContent = 'ESC Clermont'
+    a.options[8].textContent = 'Burgundy School of Business'
     a.options[9].textContent = 'HEC'
     a.options[10].textContent = 'ICN BS'
-    a.options[11].textContent = 'Autre'
+    a.options[11].textContent = 'Audencia'
+    a.options[12].textContent = 'Essec'
+    a.options[13].textContent = 'EDHEC'
+    a.options[14].textContent = 'EM Lyon'
+    a.options[15].textContent = 'Grenoble Ecole de Management'
+    a.options[16].textContent = 'Toulouse Business School'
+    a.options[17].textContent = 'IMT TELECOM'
+    a.options[18].textContent = 'IESEG'
+    a.options[19].textContent = 'ESSCA'
+    a.options[20].textContent = 'Montpellier BS'
+    a.options[21].textContent = 'Autre'
+
   }
    else {
-    a.options[1].value = 'Sciences Po Rennes'
-    a.options[2].value = 'Fac de Nanterres'
+    a.options[1].value = 'Sciences Po Paris'
+    a.options[2].value = 'Université Paris Nanterres'
     a.options[3].value = 'Université de Nantes'
     a.options[4].value = 'Université de Caen'
-    a.options[5].value = 'Sciences po Paris'
+    a.options[5].value = 'Sciences Po Lyon'
     a.options[6].value = 'IAE PARIS'
-    a.options[7].value = 'IAE REGION'
-    a.options[8].value = 'Fac de Metz'
+    a.options[7].value = 'IAE PROVINCE'
+    a.options[8].value = 'Université ASSAS PARIS'
     a.options[9].value = 'Ecole des beaux-arts'
     a.options[10].value = 'Ecoles des arts'
-    a.options[1].textContent = 'Sciences Po Rennes'
-    a.options[2].textContent = 'Fac de Nanterres'
+    a.options[11].value = 'Université Sorbonne'
+    a.options[12].value = 'Université Aix-Marseille'
+    a.options[13].value = 'Université Montpellier'
+    a.options[14].value = 'Université de Caen'
+    a.options[15].value = 'Sciences po Rennes'
+    a.options[16].value = 'Université de Rennes'
+    a.options[17].value = 'Panthéon-Sorbonne University-Paris 1'
+    a.options[18].value = 'Université de Metz'
+    a.options[19].value = 'Sciences Po Aix'
+    a.options[20].value = 'Ecoles des arts'
+    a.options[21].value = 'Autre'
+    a.options[1].textContent = 'Sciences Po Paris'
+    a.options[2].textContent = 'Université Paris Nanterres'
     a.options[3].textContent = 'Université de Nantes'
-    a.options[4].textContent = 'Université de Caen'
-    a.options[5].textContent = 'Sciences po Paris'
+    a.options[4].textContent= 'Université de Caen'
+    a.options[5].textContent = 'Sciences Po Lyon'
     a.options[6].textContent = 'IAE PARIS'
-    a.options[7].textContent = 'IAE REGION'
-    a.options[8].textContent = 'Fac de Metz'
+    a.options[7].textContent = 'IAE PROVINCE'
+    a.options[8].textContent = 'Université ASSAS PARIS'
     a.options[9].textContent = 'Ecole des beaux-arts'
-    a.options[10].textContent = 'Ecole des arts'
-    a.options[11].textContent = 'autre'
+    a.options[10].textContent = 'Ecoles des arts'
+    a.options[11].textContent = 'Université Sorbonne'
+    a.options[12].textContent = 'Université Aix-Marseille'
+    a.options[13].textContent = 'Université Montpellier'
+    a.options[14].textContent = 'Université de Caen'
+    a.options[15].textContent = 'Sciences po Rennes'
+    a.options[16].textContent = 'Université de Rennes'
+    a.options[17].textContent = 'Panthéon-Sorbonne University-Paris 1'
+    a.options[18].textContent = 'Université de Metz'
+    a.options[19].textContent = 'Sciences Po Aix'
+    a.options[20].textContent = 'Ecoles des arts'
+    a.options[21].textContent = 'Autre'
   }
 
 
