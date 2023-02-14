@@ -10,7 +10,7 @@ class Student < ApplicationRecord
 
   YEAR = ['Stage découverte', 'stage court niveau licence', 'stage long niveau licence', 'stage long Master 1', 'Stage long année de césure', 'stage court année de césure', 'stage de fin de scolarité/pré-embauche']
 
-  PHONE_REGEX = /(06|07)\d{8}/
+  PHONE_REGEX = /(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/
 
   MOBILITY = ['Europe du Nord', 'Europe du Sud', 'Est de l`Europe', 'Allemagne/Région Benelux', 'Autre']
 
@@ -39,9 +39,8 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :description, presence: false
-  has_many_attached :dossiers
+
   # validates :dossiers, attached: true, content_type: { in: 'application/pdf', message: 'is not a PDF' }
-  validates :dossiers, limit: { min: 1, max: 3 }, attached: true, content_type: { in: 'application/pdf', message: 'is not a PDF' }
 
   validate :photo_format
 
