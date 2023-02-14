@@ -11,12 +11,6 @@
     <%= f.input :salary, as: :float, :label => "Rémunération (mensuelle)" %>
     <i class="fa-sharp fa-solid fa-euro-sign"></i>
   </div>
-  <%= f.input :images,
-                  label: 'Télécharge ton CV !',
-                  as: :file,
-                  required: true,
-                  autofocus: true,
-                  input_html: { multiple: true, autocomplete: "images"} %>
   <%= f.input :start_date, as: :date, :label => "Date de début" %>
   <%= f.input :duration, as: :integer, :label => "Durée (mois)" %>
   <%= f.submit 'Publier', class: "btn btn-primary" %>
