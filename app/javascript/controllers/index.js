@@ -23,5 +23,3 @@ application.register("search", SearchController)
 
 
 
-import SlimController from "./slim_controller"
-application.register("slim", SlimController)
