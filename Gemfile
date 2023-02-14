@@ -26,6 +26,8 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+gem 'poppler'
+gem "aws-sdk-s3", require: false
 
 gem 'devise'
 gem 'devise_token_auth'

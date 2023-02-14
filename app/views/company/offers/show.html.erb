@@ -62,6 +62,15 @@
       <%= link_to "Supprimer l'annonce", @offer, data: {turbo_method: :delete, turbo_confirm: "Etes-vous sûrs de vouloir supprimer l'annonce ?"},class: "btn btn-danger px-3 py-2  fs-10 mt-3", style: "color: white;"%>
       <br>
       <br>
+
+
+
+    <% @offer.images.each do |attachment|%>
+      <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+    <%end%>
+
+
+
     <h3>Traitement des candidatures</h3>
 
     <h5>Candidatures en attente</h5>
@@ -131,13 +140,26 @@
               <td><%=Student.find(application.student_id).wanted_area%></td>
               <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
-                <%if Student.find(application.student_id).dossiers.attached?%>
+
+                 <%if Student.find(application.student_id).dossiers.attached?%>
                   <% Student.find(application.student_id).dossiers.each do |dossier| %>
                     <% if dossier.representable? %>
-                    <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
-                    <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
+                      <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
+                      <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
+                      <% elsif dossier.image? %>
+                      <%= link_to image_tag(dossier, width: 500), dossier %>
+                      <%else %>
+                      <%= link_to dossier.filename, dossier %>
+                      <% end %>
+                  <% end %>
+                <% end %>
+                <%if Student.find(application.student_id).dossiers.attached?%>
+                  <% Student.find(application.student_id).dossiers.each do |dossier| %>
+                    <% if dossier.previewable? %>
+                    <%= link_to image_tag(dossier.preview(resize: '500x500')).processed.url, dossier %>
+                    <%= link_to image_tag(dossier.preview(resize: '500x500')).processed.url, rails_blob_path(dossier, disposition: :attachment) %>
                     <% elsif dossier.image? %>
-                    <%= link_to image_tag(dossier, width: 500), dossier %>
+                    <%= link_to image_tag(dossier, width: 500), dossier.processed.url %>
                     <%else %>
                     <%= link_to dossier.filename, dossier %>
                     <% end %>

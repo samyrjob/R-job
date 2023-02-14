@@ -11,4 +11,5 @@ class Company < ApplicationRecord
   validates :structure, presence: true, inclusion: { in: STRUCTURES }
   validates :name, presence: true
   has_one_attached :photo
+  
 end
