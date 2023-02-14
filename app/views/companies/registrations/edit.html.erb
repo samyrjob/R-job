@@ -1,4 +1,4 @@
-<h3>Modifier le profil</h3>
+<h3 style="padding:30px">Modifier le profil</h3>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -26,6 +26,10 @@
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "structure"} %>
+      <%= f.input :description,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "description"} %>
     <%= f.input :name,
                 label: "Nom",
                 required: false,

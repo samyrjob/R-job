@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :offers
     resource :profile, only: :show
     resource :dashboard, only: :show
-    resources :applications, only: [:index] do
+    resources :applications, only: %i[index show] do
       member do
         get :accept
         get :decline

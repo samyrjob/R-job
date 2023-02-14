@@ -42,6 +42,10 @@ class Company::ApplicationsController < ApplicationController
     @applications = Application.includes(:offer).where(offers: { company: current_company })
   end
 
+  def show
+    @application = Application.find(params[:id])
+  end
+
   private
 
 

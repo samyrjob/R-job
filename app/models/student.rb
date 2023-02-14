@@ -31,7 +31,7 @@ class Student < ApplicationRecord
   validates :school, presence: true
   validates :wanted_area, presence: true, inclusion: { in: AREA }
   validates :phone_number, presence: true
-  validates_format_of :phone_number, with: PHONE_REGEX
+  validates_format_of :phone_number, with: PHONE_REGEX, allow_blank: true
   validates :mobility, presence: true, inclusion: { in: MOBILITY }
   validates :year, presence: true, inclusion: { in: YEAR }
   validates :disponibility, presence: true
