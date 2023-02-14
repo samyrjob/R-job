@@ -39,6 +39,13 @@
                       <li class="li1">
                         <i class="fa-sharp fa-solid fa-calendar-days" style="margin-right:2px;"></i><p> <%= @month %> <%=@offer.start_date.year%></p>
                       </li>
+                      <li class="li1">
+                        <i class="fa-solid fa-globe" style="margin-right:2px;"></i><p>
+                        <% if @offer.company.website? %>
+                          <%= link_to "Site web", @offer.company.website, :target => "_blank" %>
+                        <%end%>
+                        </p>
+                      </li>
               </ul>
             </div>
           </div>
@@ -65,9 +72,6 @@
 
 
 
-    <% @offer.images.each do |attachment|%>
-      <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
-    <%end%>
 
 
 
@@ -140,11 +144,11 @@
               <td><%=Student.find(application.student_id).wanted_area%></td>
               <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
+                <% if application.images.attached? %>
                 <% application.images.each do |attachment|%>
-                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), target: :_blank %>
                 <%end%>
-
-
+                <%end%>
               </td>
               <td>
               <%= link_to (' <i class="fa-solid fa-check"></i>').html_safe, accept_company_application_path(application)%>
@@ -226,18 +230,11 @@
               <td><%=Student.find(application.student_id).wanted_area%></td>
               <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
-                <%if Student.find(application.student_id).dossiers.attached?%>
-                  <% Student.find(application.student_id).dossiers.each do |dossier| %>
-                    <% if dossier.representable? %>
-                    <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
-                    <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
-                    <% elsif dossier.image? %>
-                    <%= link_to image_tag(dossier, width: 500), dossier %>
-                    <%else %>
-                    <%= link_to dossier.filename, dossier %>
-                    <% end %>
-                  <% end %>
-              <% end %>
+                 <% if application.images.attached? %>
+                 <% application.images.each do |attachment|%>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+                <%end%>
+                <%end%>
               </td>
               <td>
                 <div style="display:none">
@@ -265,18 +262,11 @@
               <td><%=Student.find(application.student_id).wanted_area%></td>
               <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
-                <%if Student.find(application.student_id).dossiers.attached?%>
-                  <% Student.find(application.student_id).dossiers.each do |dossier| %>
-                    <% if dossier.representable? %>
-                    <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
-                    <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
-                    <% elsif dossier.image? %>
-                    <%= link_to image_tag(dossier, width: 500), dossier %>
-                    <%else %>
-                    <%= link_to dossier.filename, dossier %>
-                    <% end %>
-                  <% end %>
-              <% end %>
+                <% if application.images.attached? %>
+                 <% application.images.each do |attachment|%>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+                <%end%>
+                <%end%>
               </td>
               <td>
                   <%= link_to ('<i class="fa-solid fa-face-smile"></i>').html_safe, keep_company_application_path(application)%> <br>
@@ -358,18 +348,11 @@
               <td><%=Student.find(application.student_id).wanted_area%></td>
               <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
               <td>
-                <%if Student.find(application.student_id).dossiers.attached?%>
-                  <% Student.find(application.student_id).dossiers.each do |dossier| %>
-                    <% if dossier.representable? %>
-                    <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
-                    <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
-                    <% elsif dossier.image? %>
-                    <%= link_to image_tag(dossier, width: 500), dossier %>
-                    <%else %>
-                    <%= link_to dossier.filename, dossier %>
-                    <% end %>
-                  <% end %>
-              <% end %>
+                 <% if application.images.attached? %>
+                 <% application.images.each do |attachment|%>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+                <%end%>
+                <%end%>
               </td>
               <td>
               </td>
