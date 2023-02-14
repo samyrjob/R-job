@@ -87,7 +87,7 @@ class Company::OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:description, :function, :town, :salary, :duration, :start_date, images: [])
+    params.require(:offer).permit(:description, :function, :town, :salary, :duration, :start_date)
   end
 
 end
