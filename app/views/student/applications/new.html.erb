@@ -4,12 +4,12 @@
 
 
   <%= simple_form_for ([:student, @offer, @application]) do |f| %>
-    <%= f.input :dossiers,
-                  label: "CV",
+    <%= f.input :images,
+                  label: "CV,...",
                   as: :file,
                   required: true,
                   autofocus: true,
-                  input_html: { multiple: true, autocomplete: "photo"} %>
+                  input_html: { multiple: true, autocomplete: "images"} %>
     <%= f.input :description, label: "Motivation (facultatif)", as: :text %>
     <%= f.submit "Candidater", class: "btn btn-primary"%>
   <% end %>
