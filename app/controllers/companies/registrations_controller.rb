@@ -24,14 +24,14 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   end
 
   def update_params
-    params.require(:company).permit(:name, :sector, :description)
+    params.require(:company).permit(:name, :sector, :description, :structure, :website)
   end
 
 
   protected
 
   def configure_permitted_parameters
-    attributes = [:sector, :email, :photo, :name, :structure]
+    attributes = [:sector, :email, :photo, :name, :structure, :website]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end

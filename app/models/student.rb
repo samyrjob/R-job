@@ -14,7 +14,7 @@ class Student < ApplicationRecord
 
   MOBILITY = ['Europe du Nord', 'Europe du Sud', 'Est de l`Europe', 'Allemagne/Région Benelux', 'Autre']
 
-  AREA = ['Finance', 'Audit/Conseil', 'Marketing/communication', "Ressources humaines/Recrutement", "Business Development", "Comtabilité/Contrôle de gestion"]
+  AREA = ['Finance', 'Audit/Conseil', 'Marketing/communication', "Ressources humaines/Recrutement", "Business Development", "Comtabilité/Contrôle de gestion", "Autre"]
   # SCHOOLS = BUSINESSCHOOLS + ENGINEERSCHOOLS
   # serialize :wanted_area, Array
 

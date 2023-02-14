@@ -26,11 +26,16 @@
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "structure"} %>
-     <%= f.input :name,
+    <%= f.input :name,
                 label: "Nom",
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "name"} %>
+    <%= f.input :website,
+                  label: "Site web/Page linkedin",
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "website"} %>
     <%= f.input :password,
                 hint: "Laisser vide si pas de volonté de modifier le mot de passe",
                 label: "Nouveau mot de passe",

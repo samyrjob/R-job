@@ -12,14 +12,19 @@
     </div>
     <div class="descriptionun">
       <div style="display: flex;justify-content: space-between;">
-        <h5>Bienvenu chez <%= @company.name%></h5><br>
+        <h5>Bienvenue chez <%= @company.name%></h5><br>
         <%= link_to ('<i class="fa-solid fa-pen"></i>').html_safe, edit_student_registration_path(current_student)%>
       </div>
       <div class="ef"><%= @company.sector%></div> <br>
     </div>
   </div>
 
-      <div class="eg"> <h6 style="margin: 10px;display: flex;margin-top: 80px;justify-content: center;"><%= @company.description.capitalize %></h6></div>
+      <div class="eg"> <h6 style="margin: 10px;display: flex;margin-top: 80px;justify-content: center;">
+      <%if @company.description?%>
+      <%= @company.description.capitalize %>
+      <%end%>
+      </h6>
+      </div>
 
   <br><br><br>
 
@@ -40,5 +45,9 @@ justify-content: space-between;
 align-items: center;
 margin: 10px;
 
+}
+
+.logos{
+  filter: unset;
 }
 </style>
