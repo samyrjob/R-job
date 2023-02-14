@@ -26,7 +26,7 @@ class Student::ApplicationsController < ApplicationController
 private
 
   def application_params
-    params.require(:application).permit(:description, :student_id, :offer_id, :dossiers)   # A configurer plutard
+    params.require(:application).permit(:description, :student_id, :offer_id, images: [])   # A configurer plutard
   end
 
 end
