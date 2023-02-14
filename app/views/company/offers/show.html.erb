@@ -128,7 +128,11 @@
           end %>
 
           <tr>
+            <% if application.description?%>
+              <th scope="row" class="hagla"><%=link_to @applications.to_a.find_index(application) + 1,company_application_path(application)%></th>
+            <%else%>
               <th scope="row"><%= @applications.to_a.find_index(application) + 1%></th>
+            <%end%>
               <td><%= Student.find(application.student_id).last_name.upcase %></td>
               <td><%= Student.find(application.student_id).first_name.capitalize%></td>
               <% if Student.find(application.student_id).photo.present? %>
@@ -214,7 +218,11 @@
           end %>
             <% if application.status == "nokept"%>
           <tr style="opacity: 15%;">
+            <% if application.description?%>
+              <th scope="row" class="hagla"><%=link_to @applications3.to_a.find_index(application) + 1,company_application_path(application)%></th>
+            <%else%>
               <th scope="row"><%= @applications3.to_a.find_index(application) + 1%></th>
+            <%end%>
               <td><%= Student.find(application.student_id).last_name.upcase %></td>
               <td><%= Student.find(application.student_id).first_name.capitalize%></td>
               <% if Student.find(application.student_id).photo.present? %>
@@ -246,7 +254,11 @@
 
         <%else%>
           <tr >
+            <% if application.description?%>
+              <th scope="row" class="hagla"><%=link_to @applications3.to_a.find_index(application) + 1,company_application_path(application)%></th>
+            <%else%>
               <th scope="row"><%= @applications3.to_a.find_index(application) + 1%></th>
+            <%end%>
               <td><%= Student.find(application.student_id).last_name.upcase %></td>
               <td><%= Student.find(application.student_id).first_name.capitalize%></td>
               <% if Student.find(application.student_id).photo.present? %>
@@ -332,7 +344,11 @@
             end %>
 
           <tr>
+            <% if application.description?%>
+              <th scope="row" class="hagla"><%=link_to @applications4.to_a.find_index(application) + 1,company_application_path(application)%></th>
+            <%else%>
               <th scope="row"><%= @applications4.to_a.find_index(application) + 1%></th>
+            <%end%>
               <td><%= Student.find(application.student_id).last_name.upcase %></td>
               <td><%= Student.find(application.student_id).first_name.capitalize%></td>
               <% if Student.find(application.student_id).photo.present? %>
@@ -424,6 +440,10 @@ caption {
 
 .logos {
     filter: unset;
+}
+
+.hagla a{
+text-decoration: none;
 }
 
 </style>

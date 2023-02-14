@@ -10,20 +10,6 @@
 <%# <%if @student.dossiers.attached?%>
 
 
- <%if @student.dossiers.attached?%>
-
-    <% @student.dossiers.each do |dossier| %>
-      <% if dossier.representable? %>
-        <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
-        <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
-        <% elsif dossier.image? %>
-        <%= link_to image_tag(dossier, width: 500), dossier %>
-        <%else %>
-        <%= link_to dossier.filename, dossier %>
-        <% end %>
-    <% end %>
-  <% end %>
-
 
 
 
@@ -51,6 +37,23 @@
 
 
   </div>
+
+<br>
+Liste de mes pièces justificatives transmises : <br>
+    <% @applications.each do |application| %>
+    <% if application.images.attached? %>
+        <% application.images.each do |dossier| %>
+          <% if dossier.representable? %>
+            <%= link_to image_tag(dossier.representation(resize: '500x500')), dossier %>
+            <%= link_to image_tag(dossier.representation(resize: '500x500')), rails_blob_path(dossier, disposition: :attachment) %>
+            <% elsif dossier.image? %>
+            <%= link_to image_tag(dossier, width: 500), dossier %>
+            <%else %>
+            <%= link_to dossier.filename, dossier %>
+            <% end %>
+        <% end %>
+      <% end %>
+    <%end%>
 
 
     <br><br><br>

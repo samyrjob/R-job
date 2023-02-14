@@ -26,12 +26,13 @@
       </h6>
       </div>
 
-  <br><br><br>
-
-
-
-
-   <%= link_to "Modifier Le profil", edit_company_registration_path, class: "btn btn-primary"%>
+  <br><br>
+  <div class="yete">
+    <%= link_to "Modifier Le profil", edit_company_registration_path, class: "btn btn-primary"%>
+    <% unless @company.description? %>
+      <%= link_to "Ajouter une description !", edit_company_registration_path, class: "btn btn-info"%>
+    <% end %>
+  </div>
 
   </div>
 <style>

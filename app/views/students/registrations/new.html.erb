@@ -63,8 +63,9 @@
                   autofocus: true,
                   input_html: { autocomplete: "mobility"}%>
       <%= f.input :photo,
+                  label: "photo de profil",
                   as: :file,
-                  required: true,
+                  required: false,
                   autofocus: true,
                   input_html: { autocomplete: "photo"} %>
       <%= f.input :password,
