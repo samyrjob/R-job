@@ -19,6 +19,11 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "last_name"} %>
+      <%= f.input :linkedin,
+                  label: 'URL Linkedin',
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "linkedin"} %>
       <%= f.input :phone_number,
                   label: 'Numéro de téléphone',
                   required: false,
@@ -27,7 +32,7 @@
                   input_html: { autocomplete: "phone_number" }%>
       <%= f.input :profile,
                   collection: Student::PROFILES,
-                  label: 'profil',
+                  label: 'Formation',
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "profile"}%>
@@ -39,13 +44,14 @@
                   include_hidden: false,
                   input_html: { autocomplete: "school", class: 'businessman'} %>
       <%= f.input :year,
-                  collection: Student::YEAR,
-                  label: 'type de stage',
+                  as: :integer,
+                  label: 'Durée du stage (en mois)',
+                  placeholder: "Pour un stage de 6 mois tapez '6'",
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "year"}%>
       <%= f.input :wanted_area,
-                  label: "domaine recherché",
+                  label: "Domaine recherché",
                   collection: Student::AREA,
                   required: true,
                   autofocus: true,
@@ -63,7 +69,7 @@
                   autofocus: true,
                   input_html: { autocomplete: "mobility"}%>
       <%= f.input :photo,
-                  label: "photo de profil",
+                  label: "Photo de profil",
                   as: :file,
                   required: false,
                   autofocus: true,
@@ -71,7 +77,7 @@
       <%= f.input :password,
                   label: 'Mot de passe',
                   required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
                   label: 'Confirme ton mot de passe',

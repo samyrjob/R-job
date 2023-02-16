@@ -8,13 +8,13 @@ class Student < ApplicationRecord
 
   PROFILES = ['Business School', 'Formation ingénieure', 'Universités / IEP']
 
-  YEAR = ['Stage découverte', 'stage court niveau licence', 'stage long niveau licence', 'stage long Master 1', 'Stage long année de césure', 'stage court année de césure', 'stage de fin de scolarité/pré-embauche']
 
   PHONE_REGEX = /(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/
 
-  MOBILITY = ['Europe du Nord', 'Europe du Sud', 'Est de l`Europe', 'Allemagne/Région Benelux', 'Autre']
+  MOBILITY = ['Emmenez-moi où vous voulez !', 'Espagne', 'Portugal', 'Pays-bas', 'Autre']
 
-  AREA = ['Finance', 'Audit/Conseil', 'Marketing/communication', "Ressources humaines/Recrutement", "Business Development", "Comtabilité/Contrôle de gestion", "Autre"]
+  AREA = ['Finance', 'Audit/Conseil', 'Marketing/communication', "Tech", "Ressources humaines/Recrutement", "Business Development",
+          "Comtabilité/Contrôle de gestion", "Logistique/supply Chain", "Ventes", "Autre"]
   # SCHOOLS = BUSINESSCHOOLS + ENGINEERSCHOOLS
   # serialize :wanted_area, Array
 
@@ -30,10 +30,11 @@ class Student < ApplicationRecord
   validates :profile, presence: true, inclusion: { in: PROFILES }
   validates :school, presence: true
   validates :wanted_area, presence: true, inclusion: { in: AREA }
-  validates :phone_number, presence: true
+  validates :phone_number, presence: false
+  validates :linkedin, presence: false
   validates_format_of :phone_number, with: PHONE_REGEX, allow_blank: true
   validates :mobility, presence: true, inclusion: { in: MOBILITY }
-  validates :year, presence: true, inclusion: { in: YEAR }
+  validates :year, presence: true
   validates :disponibility, presence: true
   has_one_attached :photo
   validates :first_name, presence: true

@@ -4,14 +4,13 @@
 
           <tr>
               <th scope="col">N°</th>
-              <th scope="col">Nom</th>
-              <th scope="col">Prénom</th>
+              <th scope="col">Nom et prénom</th>
               <th scope="col"><i class="fa-solid fa-user-tie"></i></th>
               <th scope="col"><i class="fa-solid fa-envelope"></i></th>
               <th scope="col"><i class="fa-solid fa-phone"></i></th>
               <th scope="col">Mobilité</th>
               <th scope="col">Etablissement</th>
-              <th scope="col">Type de stage</th>
+              <th scope="col">Durée du stage</th>
               <th scope="col">Secteur visé</th>
               <th scope="col">Dispo dès :</th>
               <th scope="col">Pièces jointes</th>
@@ -48,8 +47,13 @@
 
           <tr>
               <th scope="row" class="hagla"></th>
-              <td><%= Student.find(@application.student_id).last_name.upcase %></td>
-              <td><%= Student.find(@application.student_id).first_name.capitalize%></td>
+              <td class="hagla">
+                <% if Student.find(@application.student_id).linkedin? %>
+                  <%= link_to Student.find(@application.student_id).last_name.upcase + " " + Student.find(@application.student_id).first_name.capitalize, Student.find(@application.student_id).linkedin, :target => "_blank" %>
+                <% else %>
+                  <%= Student.find(@application.student_id).last_name.upcase + " " + Student.find(@application.student_id).first_name.capitalize %>
+                <% end %>
+              </td>
               <% if Student.find(@application.student_id).photo.present? %>
                 <td><%= image_tag(Student.find(@application.student_id).photo, style: "width:82px") %></td>
               <%else%>
@@ -59,7 +63,7 @@
               <td><%=Student.find(@application.student_id).phone_number%></td>
               <td><%=Student.find(@application.student_id).mobility%></td>
               <td><%= Student.find(@application.student_id).school%></td>
-              <td><%=Student.find(@application.student_id).year%></td>
+              <td><%=Student.find(@application.student_id).year%> mois </td>
               <td><%=Student.find(@application.student_id).wanted_area%></td>
               <td><%= @month %> <%=Student.find(@application.student_id).disponibility.year %></td>
               <td>

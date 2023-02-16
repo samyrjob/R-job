@@ -19,6 +19,11 @@
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "last_name"} %>
+    <%= f.input :linkedin,
+                  label: 'URL Linkedin',
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "linkedin"} %>
     <%= f.input :phone_number,
                   label: 'Numéro de téléphone',
                   required: false,
@@ -26,7 +31,7 @@
                   placeholder: "07/06 ou +33...",
                   input_html: { autocomplete: "phone_number" }%>
     <%= f.input :profile,
-                label: "Profil",
+                label: "Formation",
                 collection: Student::PROFILES,
                 required: true,
                 autofocus: true,
@@ -39,13 +44,14 @@
                   include_hidden: false,
                   input_html: { autocomplete: "school", class: 'businessman'} %>
       <%= f.input :year,
-                  collection: Student::YEAR,
-                  label: 'type de stage',
+                  as: :integer,
+                  label: 'Durée du stage (en mois)',
+                  placeholder: "Pour un stage de 6 mois tapez '6'",
                   required: false,
                   autofocus: true,
                   input_html: { autocomplete: "year"}%>
       <%= f.input :wanted_area,
-                  label: "domaine recherché",
+                  label: "Domaine recherché",
                   collection: Student::AREA,
                   required: false,
                   autofocus: true,
