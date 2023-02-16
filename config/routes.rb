@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resource :profile, only: :show
     resource :dashboard, only: :show
     resources :applications, only: %i[index show] do
+      resources :comments, only: [:create]
       member do
         get :accept
         get :decline

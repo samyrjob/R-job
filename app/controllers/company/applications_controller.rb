@@ -8,7 +8,7 @@ class Company::ApplicationsController < ApplicationController
     @applications = Application.includes(:offer).where(offers: { company: current_company})
     @application = Application.find(params[:id])
     @application.update(:status => 'accepted')
-    redirect_to company_offer_path(@application.offer), notice: "La candidature a bien été retenue!"
+    redirect_to company_offer_path(@application.offer), notice: "La candidature est désormais en process !"
 
 
   end
@@ -26,7 +26,7 @@ class Company::ApplicationsController < ApplicationController
     @applications = Application.includes(:offer).where(offers: { company: current_company })
     @application = Application.find(params[:id])
     @application.update(:status => 'kept')
-    redirect_to company_offer_path(@application.offer), notice: "La candidature a bien été gardée"
+    redirect_to company_offer_path(@application.offer), notice: "La candidature a bien été retenue"
   end
 
   def nokeep
@@ -44,6 +44,7 @@ class Company::ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
+    @comment = Comment.new
   end
 
   private

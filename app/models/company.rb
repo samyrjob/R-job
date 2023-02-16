@@ -12,5 +12,6 @@ class Company < ApplicationRecord
   validates :name, presence: true
   validates :website, presence: true
   has_one_attached :photo
+  has_many :comments, dependent: :destroy
 
 end

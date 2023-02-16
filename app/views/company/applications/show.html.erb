@@ -69,7 +69,7 @@
               <td>
                  <% if @application.images.attached? %>
                  <% @application.images.each do |attachment|%>
-                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), target: :_blank %>
                 <%end%>
                 <%end%>
               </td>
@@ -97,6 +97,61 @@
 <br>
 <br>
 <br>
+
+   <div class = "container-comments">
+      <h2><strong>Commentaires</strong></h2>
+      <% @application.comments.each do |comment| %>
+       <% if @application.comments.to_a.index(comment) % 2 == 0 %>
+      <div class= "container-comment">
+
+        <div class = "comment-top">
+
+          <div><%= image_tag comment.user.photo, height: 80, crop: :fill, class:"avatar"%></div>
+
+          <div class ="user-created">
+            <%# <div><strong><%= comment.user.nickname%>
+            <div class = "creation"><%= comment.created_at%></div>
+          </div>
+
+        </div>
+
+         <div class ="comment-content"><%= comment.content %></div>
+
+      </div>
+
+      <% else %>
+
+      <div class= "container-comment" style="background: #EEF1F6;">
+
+        <div class = "comment-top">
+
+          <div><%= image_tag comment.company.photo, height: 80, crop: :fill, class:"avatar"%></div>
+
+          <div class ="user-created">
+            <%# <div><strong><%= comment.user.nickname%>
+            <div class = "creation"><%= comment.created_at%></div>
+          </div>
+
+        </div>
+
+         <div class ="comment-content"><%= comment.content %></div>
+
+      </div>
+
+      <% end %>
+
+      <% end %>
+    </div>
+
+  <div class = "espcom" id="second">
+    <strong><h2>Rédiger un commentaire</h2></strong>
+
+    <%= simple_form_for [:company, @application, @comment] do |f| %>
+      <%= f.input :content, as: :text, label: 'Commentaire', error: 'Comment cannot be blank'%>
+      <%= f.submit "Soumettre le commentaire", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
 
 
 <style>

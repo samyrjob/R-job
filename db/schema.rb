@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_16_141351) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_16_172043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_141351) do
     t.string "status", default: "pending"
     t.index ["offer_id"], name: "index_applications_on_offer_id"
     t.index ["student_id"], name: "index_applications_on_student_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "company_id", null: false
+    t.bigint "application_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_comments_on_application_id"
+    t.index ["company_id"], name: "index_comments_on_company_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -162,6 +172,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_141351) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "applications", "offers"
   add_foreign_key "applications", "students"
+  add_foreign_key "comments", "applications"
+  add_foreign_key "comments", "companies"
   add_foreign_key "offers", "companies"
   add_foreign_key "savedoffers", "offers"
   add_foreign_key "savedoffers", "students"

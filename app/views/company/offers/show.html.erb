@@ -42,7 +42,7 @@
                       <li class="li1">
                         <i class="fa-solid fa-globe" style="margin-right:2px;"></i><p>
                         <% if @offer.company.website? %>
-                          <%= link_to "Site web", @offer.company.website, :target => "_blank" %>
+                          <%= link_to "Site web", @offer.company.website, target: :_blank %>
                         <%end%>
                         </p>
                       </li>
@@ -127,11 +127,7 @@
           end %>
 
           <tr>
-            <% if application.description?%>
               <th scope="row" class="hagla"><%=link_to @applications.to_a.find_index(application) + 1,company_application_path(application)%></th>
-            <%else%>
-              <th scope="row"><%= @applications.to_a.find_index(application) + 1%></th>
-            <%end%>
               <td class="hagla">
                 <% if Student.find(application.student_id).linkedin? %>
                   <%= link_to Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize, Student.find(application.student_id).linkedin, :target => "_blank" %>
@@ -171,7 +167,7 @@
     </div>
 
 
-    <h5>Candidatures retenues</h5>
+    <h5>Candidatures en process</h5>
 
     <div class="latable">
 
@@ -221,11 +217,7 @@
           end %>
             <% if application.status == "nokept"%>
           <tr style="opacity: 15%;">
-            <% if application.description?%>
               <th scope="row" class="hagla"><%=link_to @applications3.to_a.find_index(application) + 1,company_application_path(application)%></th>
-            <%else%>
-              <th scope="row"><%= @applications3.to_a.find_index(application) + 1%></th>
-            <%end%>
               <td class="hagla">
                 <% if Student.find(application.student_id).linkedin? %>
                   <%= link_to Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize, Student.find(application.student_id).linkedin, :target => "_blank" %>
@@ -248,7 +240,7 @@
               <td>
                  <% if application.images.attached? %>
                  <% application.images.each do |attachment|%>
-                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), target: :_blank%>
                 <%end%>
                 <%end%>
               </td>
@@ -262,11 +254,7 @@
 
         <%else%>
           <tr >
-            <% if application.description?%>
               <th scope="row" class="hagla"><%=link_to @applications3.to_a.find_index(application) + 1,company_application_path(application)%></th>
-            <%else%>
-              <th scope="row"><%= @applications3.to_a.find_index(application) + 1%></th>
-            <%end%>
               <td class="hagla">
                 <% if Student.find(application.student_id).linkedin? %>
                   <%= link_to Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize, Student.find(application.student_id).linkedin, :target => "_blank" %>
@@ -289,7 +277,7 @@
               <td>
                 <% if application.images.attached? %>
                  <% application.images.each do |attachment|%>
-                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), target: :_blank %>
                 <%end%>
                 <%end%>
               </td>
@@ -356,11 +344,7 @@
             end %>
 
           <tr>
-            <% if application.description?%>
               <th scope="row" class="hagla"><%=link_to @applications4.to_a.find_index(application) + 1,company_application_path(application)%></th>
-            <%else%>
-              <th scope="row"><%= @applications4.to_a.find_index(application) + 1%></th>
-            <%end%>
               <td class="hagla">
                 <% if Student.find(application.student_id).linkedin? %>
                   <%= link_to Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize, Student.find(application.student_id).linkedin, :target => "_blank" %>
@@ -383,7 +367,7 @@
               <td>
                  <% if application.images.attached? %>
                  <% application.images.each do |attachment|%>
-                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), target: :__blank %>
                 <%end%>
                 <%end%>
               </td>
