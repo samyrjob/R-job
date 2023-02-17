@@ -37,6 +37,10 @@ class Company::OffersController < ApplicationController
 
   def show
 
+
+    
+
+
     @offer = Offer.find(params[:id])
 
    @applications =  @offer.applications.where(status: "pending")

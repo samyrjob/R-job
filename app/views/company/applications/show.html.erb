@@ -1,7 +1,7 @@
 <div class="latable">
 
     <table>
-
+       <caption> <%=@application.offer.function%></caption>
           <tr>
               <th scope="col">N°</th>
               <th scope="col">Nom et prénom</th>
@@ -80,37 +80,61 @@
 </div>
 
 <div style="padding:20px">
-  <h3>Paragraphe de Motivation :</h3>
+  <h3>Motivation :</h3>
 
   <% if @application.description?%>
     <p style="padding:10px"><%= @application.description%></p>
   <% end %>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    <div class = "container-comments">
-      <h2><strong>Commentaires</strong></h2>
+      <h3><strong>Commentaires</strong></h3>
       <% @application.comments.each do |comment| %>
        <% if @application.comments.to_a.index(comment) % 2 == 0 %>
       <div class= "container-comment">
 
         <div class = "comment-top">
 
-          <div><%= image_tag comment.user.photo, height: 80, crop: :fill, class:"avatar"%></div>
+          <div><%= image_tag comment.company.photo, height: 80, crop: :fill, class:"avatar"%></div>
 
           <div class ="user-created">
             <%# <div><strong><%= comment.user.nickname%>
-            <div class = "creation"><%= comment.created_at%></div>
+            <div class = "creation">
+              <div class='namys'>
+                <p style="font-size:13px"><%= Company.find(comment.application.offer.company_id).name%></p>
+              </div>
+              <div class="namys2">
+                <p style="font-size:13px"><%= comment.created_at.strftime('%d %b %Y %H:%M:%S')%></p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -129,7 +153,14 @@
 
           <div class ="user-created">
             <%# <div><strong><%= comment.user.nickname%>
-            <div class = "creation"><%= comment.created_at%></div>
+            <div class = "creation">
+              <div>
+                <p style="font-size:13px"><%= Company.find(comment.application.offer.company_id).name%></p>
+              </div>
+              <div>
+                <p style="font-size:13px"><%= comment.created_at.strftime('%d %b %Y %H:%M:%S')%></p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -144,7 +175,7 @@
     </div>
 
   <div class = "espcom" id="second">
-    <strong><h2>Rédiger un commentaire</h2></strong>
+    <strong><h3>Rédiger un commentaire</h3></strong>
 
     <%= simple_form_for [:company, @application, @comment] do |f| %>
       <%= f.input :content, as: :text, label: 'Commentaire', error: 'Comment cannot be blank'%>
@@ -152,9 +183,118 @@
     <% end %>
   </div>
 
+  <div class="commentsgeneral">
+    <div>
+      <h3>Historique des commentaires sur le candidat :</h3>
+    </div>
+    <div class="commentsprecis">
+       <% @grouped_comments.each do |application, comments| %>
+        <div class="rentreer">
+            <strong><%= application.offer.function %></strong>
+          <div>
+              <% comments.each do |comment|%>
+
+       <% if comments.to_a.index(comment) % 2 == 0 %>
+      <div class= "container-comment">
+
+        <div class = "comment-top">
+
+          <div><%= image_tag comment.company.photo, height: 80, crop: :fill, class:"avatar"%></div>
+
+          <div class ="user-created">
+            <%# <div><strong><%= comment.user.nickname%>
+            <div class = "creation">
+              <div class='namys'>
+                <p style="font-size:13px"><%= Company.find(comment.application.offer.company_id).name%></p>
+              </div>
+              <div class="namys2">
+                <p style="font-size:13px"><%= comment.created_at.strftime('%d %b %Y %H:%M:%S')%></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+         <div class ="comment-content"><%= comment.content %></div>
+
+      </div>
+
+      <% else %>
+
+      <div class= "container-comment" style="background: #EEF1F6;">
+
+        <div class = "comment-top">
+
+          <div><%= image_tag comment.company.photo, height: 80, crop: :fill, class:"avatar"%></div>
+
+          <div class ="user-created">
+            <%# <div><strong><%= comment.user.nickname%>
+            <div class = "creation">
+              <div>
+                <p style="font-size:13px"><%= Company.find(comment.application.offer.company_id).name%></p>
+              </div>
+              <div>
+                <p style="font-size:13px"><%= comment.created_at.strftime('%d %b %Y %H:%M:%S')%></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+         <div class ="comment-content"><%= comment.content %></div>
+
+      </div>
+        <%end%>
+      </div>
+        <%end%>
+      </div>
+    </div>
+       <%end%>
+    </div>
+  </div>
 
 
 <style>
+
+
+.rentreer{
+  padding: 10px;
+  margin: 10px;
+  font-size: 17px;
+}
+.commentsgeneral {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-top {
+  display: flex;
+    padding: 10px;
+    margin: 20px 0px;
+
+}
+
+.comment-content{
+  font-size: 15px;
+}
+
+.user-created {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin-left: 20px;
+    }
+
+      .creation {
+        font-size: 10px;
+      }
+
+
+.commentsprecis{
+
+}
 
 .fa-face-smile::before {
     content: "\f118";
@@ -215,6 +355,91 @@ caption {
 
 .hagla a{
 text-decoration: none;
+}
+
+
+.container-post-top {
+  padding: 10px;
+  margin: 10px;
+}
+
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.top-show {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-show {
+  margin-top: 20px;
+}
+
+.top-show {
+  margin-top: 20px;
+}
+
+.post-content  {
+  margin: 20px 0px;
+}
+
+.avatar {
+  object-fit: cover;
+  width: 80px;
+}
+
+
+.container-comments {
+
+  margin-bottom: 20px;
+  padding: 10px;
+
+  .container-comment {
+    border: 0.0625rem solid #e0e0e0b5;
+    border-radius: 0.25rem;
+    margin-bottom: 0.9375rem;
+  }
+
+  .comment-top {
+    display: flex;
+    padding: 10px;
+    margin: 20px 0px;
+    .user-created {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin-left: 20px;
+      .creation {
+        font-size: 10px;
+      }
+    }
+  }
+
+  .comment-content {
+    padding: 15px;
+  }
+
+}
+
+
+
+.espcom {
+  margin-top: 20px;
+  padding: 10px;
+  h2 {
+    font-size: 30px;
+  }
+}
+
+.url {
+  button {
+    color: $white;
+    background: $purple;
+    border: $purple;
+    padding: 5px;
+  }
 }
 
 </style>

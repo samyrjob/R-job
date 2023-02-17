@@ -12,8 +12,9 @@ def create
   @application = Application.find(params[:application_id])
   @comment = Comment.new(comment_params)
   @comment.application = @application
+
   @comment.company = current_company
- @company =  Company.find(@comment.application_id)
+
 
   # if @comment.save
   #   redirect_to company_application_path(@application), notice: "Commentaire publié"
@@ -21,10 +22,12 @@ def create
   #   render "company/applications/show", status: :unprocessable_entity
   # end
 
-  @comment.save
+  if @comment.save
 
-  redirect_to company_application_path(@application), notice: "The offer has been saved !"
-  raise
+    redirect_to company_application_path(@application), notice: "Le commentaire a bien été enregistré"
+  else
+    render "company/applications/show", status: :unprocessable_entity
+  end
 end
 
 private

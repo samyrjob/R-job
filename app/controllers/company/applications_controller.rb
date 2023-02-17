@@ -45,6 +45,9 @@ class Company::ApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:id])
     @comment = Comment.new
+    @grouped_comments = Comment.includes(:application).where(applications: {student: @application.student}).all.group_by(&:application)
+
+
   end
 
   private
