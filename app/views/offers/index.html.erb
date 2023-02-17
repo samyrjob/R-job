@@ -37,11 +37,11 @@
               <%= f.date_field :start_date %>
             </div>
             <div class="field">
-            <p><%= f.label :min_duration, "Durée minimale (en mois)" %> - <%= f.number_field :min_duration, size: 10 %> </p>
-            <p><%= f.label :max_duration, "Durée maximale (en mois)" %> - <%= f.number_field :max_duration, size: 10 %> </p>
+            <p><%= f.label :min_duration, "Durée minimale (en mois)" %> - <%= f.number_field :min_duration, size: 10, placeholder: "3" %> </p>
+            <p><%= f.label :max_duration, "Durée maximale (en mois)" %> - <%= f.number_field :max_duration, size: 10, placeholder: "6" %> </p>
             </div>
             <div class="field">
-            <p><%= f.label :min_salary, "Rémunération minimale mensuelle" %> - <%= f.number_field :min_salary, size: 10, step: :any %> </p>
+            <p><%= f.label :min_salary, "Rémunération minimale mensuelle" %> - <%= f.number_field :min_salary, size: 10, step: :any, placeholder: "600" %> </p>
             </div>
 
             <%# Admin?    : <%= f.check_box :admin %>

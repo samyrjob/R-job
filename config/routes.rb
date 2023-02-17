@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root to: "pages#home"
 
   devise_for :companies, controllers: {
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   devise_for :students, controllers: {
     registrations: 'students/registrations'
   }
+
 
 
   resources :students do
