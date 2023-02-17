@@ -17,7 +17,23 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
-  config.action_mailer.default_url_options = { :host => "dev.yourhost.com" }
+  # config.action_mailer.default_url_options = { :host => "dev.yourhost.com" }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.smtp_settings = {
+    :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
+    :ssl => true,
+    :enable_starttls_auto => true,  #this is the important stuff!
+    :address        => 'smtp.xxxx.xxx',
+    :port           => xxx,
+    :domain         => 'xxxxxx',
+    :authentication => :plain,
+    :user_name      => 'xxxxxxx@xxx.xxx',
+    :password       => 'xxxxxxxxx'
+  }
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
