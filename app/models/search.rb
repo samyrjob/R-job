@@ -1,6 +1,6 @@
 class Search < ApplicationRecord
   def search_offers
-    offers = Offer.all
+    offers = Offer.where(status: "accepted")
 
 
     offers = offers.where(["function ILIKE ?","%#{keywords}%"]) if keywords.present?
