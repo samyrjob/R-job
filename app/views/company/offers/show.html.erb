@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="card-description-offre">
-          <p style="padding:10px"> <%= @offer.description %></p>
+          <p style="padding:10px;white-space:break-spaces"> <%= @offer.description %></p>
         </div>
       </div>
     </div>
@@ -187,7 +187,7 @@
               <th scope="col">Pièces jointes</th>
               <th scope="col"></th>
           </tr>
-            <% @applications3.each do |application| %>
+            <% @applications1.each do |application| %>
              <% case Student.find(application.student_id).disponibility.month
 
           when 1
@@ -215,46 +215,8 @@
           else
             @month = "Décembre"
           end %>
-            <% if application.status == "nokept"%>
-          <tr style="opacity: 15%;">
-              <th scope="row" class="hagla"><%=link_to @applications3.to_a.find_index(application) + 1,company_application_path(application)%></th>
-              <td class="hagla">
-                <% if Student.find(application.student_id).linkedin? %>
-                  <%= link_to Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize, Student.find(application.student_id).linkedin, :target => "_blank" %>
-                <% else %>
-                  <%= Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize %>
-                <% end%>
-              </td>
-              <% if Student.find(application.student_id).photo.present? %>
-                <td><%= image_tag(Student.find(application.student_id).photo, style: "width:82px") %></td>
-              <%else%>
-                <td></td>
-              <% end %>
-              <td><%= Student.find(application.student_id).email%></td>
-              <td><%=Student.find(application.student_id).phone_number%></td>
-              <td><%=Student.find(application.student_id).mobility%></td>
-              <td><%= Student.find(application.student_id).school%></td>
-              <td><%=Student.find(application.student_id).year%> mois </td>
-              <td><%=Student.find(application.student_id).wanted_area%></td>
-              <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
-              <td>
-                 <% if application.images.attached? %>
-                 <% application.images.each do |attachment|%>
-                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), target: :_blank%>
-                <%end%>
-                <%end%>
-              </td>
-              <td>
-                <div style="display:none">
-                  <%= link_to ('<i class="fa-solid fa-face-smile"></i>').html_safe, keep_company_application_path(application)%> <br>
-                  <%= link_to ('<i class="fa-solid fa-face-sad-tear"></i>').html_safe, nokeep_company_application_path(application)%>
-                </div>
-              </td>
-          </tr>
-
-        <%else%>
           <tr >
-              <th scope="row" class="hagla"><%=link_to @applications3.to_a.find_index(application) + 1,company_application_path(application)%></th>
+              <th scope="row" class="hagla"><%=link_to @applications1.to_a.find_index(application) + 1,company_application_path(application)%></th>
               <td class="hagla">
                 <% if Student.find(application.student_id).linkedin? %>
                   <%= link_to Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize, Student.find(application.student_id).linkedin, :target => "_blank" %>
@@ -287,13 +249,98 @@
               </td>
           </tr>
         <%end%>
+
+      </table>
+
+    </div>
+
+      <h5>Candidatures refusées </h5>
+
+    <div class="latable">
+
+      <table>
+          <caption> <%=@offer.function%></caption>
+          <tr>
+              <th scope="col">N°</th>
+              <th scope="col">Nom et prénom</th>
+              <th scope="col"><i class="fa-solid fa-user-tie"></i></th>
+              <th scope="col"><i class="fa-solid fa-envelope"></i></th>
+              <th scope="col"><i class="fa-solid fa-phone"></i></th>
+              <th scope="col">Mobilité</th>
+              <th scope="col">Etablissement</th>
+              <th scope="col">Durée du stage</th>
+              <th scope="col">Secteur visé</th>
+              <th scope="col">Dispo dès :</th>
+              <th scope="col">Pièces jointes</th>
+              <th scope="col"></th>
+          </tr>
+            <% @applications2.each do |application| %>
+
+            <% case Student.find(application.student_id).disponibility.month
+
+            when 1
+              @month = "Janvier"
+            when 2
+              @month = "Février"
+            when 3
+              @month = "Mars"
+            when 4
+              @month = "Avril"
+            when 5
+              @month = "Mai"
+            when 6
+              @month = "Juin"
+            when 7
+              @month = "Juillet"
+            when 8
+              @month = "Août"
+            when 9
+              @month = "Septembre"
+            when 10
+              @month = "Octobre"
+            when 11
+              @month = "Novembre"
+            else
+              @month = "Décembre"
+            end %>
+
+          <tr style="opacity: 25%;">
+              <th scope="row" class="hagla"><%=link_to @applications2.to_a.find_index(application) + 1,company_application_path(application)%></th>
+              <td class="hagla">
+                <% if Student.find(application.student_id).linkedin? %>
+                  <%= link_to Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize, Student.find(application.student_id).linkedin, :target => "_blank" %>
+                <% else %>
+                  <%= Student.find(application.student_id).last_name.upcase + " " + Student.find(application.student_id).first_name.capitalize %>
+                <% end %>
+              </td>
+              <% if Student.find(application.student_id).photo.present? %>
+                <td><%= image_tag(Student.find(application.student_id).photo, style: "width:82px") %></td>
+              <%else%>
+                <td></td>
+              <% end %>
+              <td><%= Student.find(application.student_id).email%></td>
+              <td><%=Student.find(application.student_id).phone_number%></td>
+              <td><%=Student.find(application.student_id).mobility%></td>
+              <td><%= Student.find(application.student_id).school%></td>
+              <td><%=Student.find(application.student_id).year%> mois </td>
+              <td><%=Student.find(application.student_id).wanted_area%></td>
+              <td><%= @month %> <%=Student.find(application.student_id).disponibility.year %></td>
+              <td>
+                 <% if application.images.attached? %>
+                 <% application.images.each do |attachment|%>
+                 <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), target: :__blank %>
+                <%end%>
+                <%end%>
+              </td>
+              <td>
+              </td>
+          </tr>
       <%end%>
       </table>
 
     </div>
 
-
-    <h5>Candidatures retenues ++</h5>
+    <h5>Candidatures retenues </h5>
 
     <div class="latable">
 
@@ -378,6 +425,7 @@
       </table>
 
     </div>
+
 
         <%end%>
   </div>

@@ -118,6 +118,36 @@
    <div class = "container-comments">
       <h3><strong>Commentaires</strong></h3>
       <% @application.comments.each do |comment| %>
+
+        <% case comment.created_at.strftime('%b')
+
+                    when "Jan"
+                      @month = "Janvier"
+                    when "Feb"
+                      @month = "Février"
+                    when "Mar"
+                      @month = "Mars"
+                    when "Apr"
+                      @month = "Avril"
+                    when "May"
+                      @month = "Mai"
+                    when "Jun"
+                      @month = "Juin"
+                    when "Jul"
+                      @month = "Juillet"
+                    when "Aug"
+                      @month = "Août"
+                    when "Sept"
+                      @month = "Septembre"
+                    when "Oct"
+                      @month = "Octobre"
+                    when "Nov"
+                      @month = "Novembre"
+                    else
+                      @month = "Décembre"
+                    end %>
+
+
        <% if @application.comments.to_a.index(comment) % 2 == 0 %>
       <div class= "container-comment">
 
@@ -132,7 +162,7 @@
                 <p style="font-size:13px"><%= Company.find(comment.application.offer.company_id).name%></p>
               </div>
               <div class="namys2">
-                <p style="font-size:13px"><%= comment.created_at.strftime('%d %b %Y %H:%M:%S')%></p>
+                  <p style="font-size:13px"><%= comment.created_at.strftime('%d')+ " " + @month + " " + comment.created_at.strftime('%Y') %> à <%= comment.created_at.strftime('%H:%M:%S')%> </p>
               </div>
             </div>
           </div>
@@ -158,7 +188,7 @@
                 <p style="font-size:13px"><%= Company.find(comment.application.offer.company_id).name%></p>
               </div>
               <div>
-                <p style="font-size:13px"><%= comment.created_at.strftime('%d %b %Y %H:%M:%S')%></p>
+                <p style="font-size:13px"><%= comment.created_at.strftime('%d')+ " " + @month + " " + comment.created_at.strftime('%Y') %> à <%= comment.created_at.strftime('%H:%M:%S')%> </p>
               </div>
             </div>
           </div>
@@ -194,6 +224,35 @@
           <div>
               <% comments.each do |comment|%>
 
+                <% case comment.created_at.strftime('%b')
+
+                    when "Jan"
+                      @month = "Janvier"
+                    when "Feb"
+                      @month = "Février"
+                    when "Mar"
+                      @month = "Mars"
+                    when "Apr"
+                      @month = "Avril"
+                    when "May"
+                      @month = "Mai"
+                    when "Jun"
+                      @month = "Juin"
+                    when "Jul"
+                      @month = "Juillet"
+                    when "Aug"
+                      @month = "Août"
+                    when "Sept"
+                      @month = "Septembre"
+                    when "Oct"
+                      @month = "Octobre"
+                    when "Nov"
+                      @month = "Novembre"
+                    else
+                      @month = "Décembre"
+                    end %>
+
+
        <% if comments.to_a.index(comment) % 2 == 0 %>
       <div class= "container-comment">
 
@@ -208,7 +267,7 @@
                 <p style="font-size:13px"><%= Company.find(comment.application.offer.company_id).name%></p>
               </div>
               <div class="namys2">
-                <p style="font-size:13px"><%= comment.created_at.strftime('%d %b %Y %H:%M:%S')%></p>
+                <p style="font-size:13px"><%= comment.created_at.strftime('%d')+ " " + @month + " " + comment.created_at.strftime('%Y') %> à <%= comment.created_at.strftime('%H:%M:%S')%> </p>
               </div>
             </div>
           </div>
@@ -234,7 +293,7 @@
                 <p style="font-size:13px"><%= Company.find(comment.application.offer.company_id).name%></p>
               </div>
               <div>
-                <p style="font-size:13px"><%= comment.created_at.strftime('%d %b %Y %H:%M:%S')%></p>
+                <p style="font-size:13px"><%= comment.created_at.strftime('%d')+ " " + @month + " " + comment.created_at.strftime('%Y') %> à <%= comment.created_at.strftime('%H:%M:%S')%> </p>
               </div>
             </div>
           </div>
