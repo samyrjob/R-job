@@ -9,10 +9,11 @@
 
 <div class="container p-2 mt-3 mb-3" >
   <div class="card">
-    <h4 class="ms-5 mt-3">Annonces déposées(<%= @offers.count%>)</h4>
+    <h4 class="ms-5 mt-3">Annonces (<%= @offers.count%>)</h4>
        <div class="flat-cards">
         <% @offers.each do |offer| %>
-           <% if @offers.to_a.index(offer) % 2 == 0 %>
+          <% if offer.status == "accepted" %>
+            <% if @offers.to_a.index(offer) % 2 == 0 %>
             <div class="card"> <%= link_to company_offer_path(offer) do %>
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
               <div class="card-logo">
@@ -45,6 +46,9 @@
                   </li>
                 </ul>
               </div>
+               <div class = "position-absolute top-0 end-0">
+                            <span class="badge rounded-pill bg-success"> En ligne </span>
+                </div>
             <% end %>
             </div>
              <% else %>
@@ -80,11 +84,170 @@
                   </li>
                 </ul>
               </div>
+               <div class = "position-absolute top-0 end-0">
+                            <span class="badge rounded-pill bg-success"> En ligne </span>
+               </div>
             <% end %>
             </div>
-          <% end %>
-        <% end %>
+            <% end %>
+          <% elsif offer.status == "declined" %>
+            <% if @offers.to_a.index(offer) % 2 == 0 %>
+               <div class="card"> <%= link_to company_offer_path(offer) do %>
+                  <div class="card-logo">
+                <% if offer.company.photo.present? %>
+                  <%= image_tag offer.company.photo%>
+                <% end %>
+                  </div>
+                  <div class="description-side">
+                    <h3><%= offer.function %></h3>
+                    <div>
+                    <p><%= Company.find(offer.company_id).name %></h3></p>
+                    </div>
+                    <ul>
+                      <li>
+                        <% if offer.duration?  %>
+                        <p>Stage <%= offer.duration %> mois</p>
+                        <% end %>
+                      </li>
+                      <li>
+                        <% if offer.town?  %>
+                        <p><%= offer.town %></p>
+                        <% end %>
+                      </li>
+                      <li>
+                          <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                            <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                          <% else %>
+                            <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                          <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class = "position-absolute top-0 end-0">
+                                <span class="badge rounded-pill bg-danger"> Refusée </span>
+                    </div>
+               <% end %>
+               </div>
+            <% else %>
+              <div class="card" style="background: #EEF1F6;"> <%= link_to company_offer_path(offer) do %>
+                <div class="card-logo">
+                  <% if offer.company.photo.present? %>
+                    <%= image_tag offer.company.photo%>
+                  <% end %>
+                </div>
+                <div class="description-side">
+                  <h3><%= offer.function %></h3>
+                <div>
+                  <p><%= Company.find(offer.company_id).name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if offer.duration?  %>
+                     <p>Stage <%= offer.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if offer.town?  %>
+                     <p><%= offer.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
+               <div class = "position-absolute top-0 end-0">
+                  <span class="badge rounded-pill bg-danger"> Refusée </span>
+               </div>
+              </div>
+              <% end %>
+              </div>
+            <% end %>
+          <% else %>
+              <% if @offers.to_a.index(offer) % 2 == 0 %>
+               <div class="card"> <%= link_to company_offer_path(offer) do %>
+                <div class="card-logo">
+                  <% if offer.company.photo.present? %>
+                    <%= image_tag offer.company.photo%>
+                  <% end %>
+                </div>
+              <div class="description-side">
+                <h3><%= offer.function %></h3>
+                <div>
+                  <p><%= Company.find(offer.company_id).name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if offer.duration?  %>
+                     <p>Stage <%= offer.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if offer.town?  %>
+                     <p><%= offer.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
+              </div>
+               <div class = "position-absolute top-0 end-0">
+                  <span class="badge rounded-pill bg-secondary"> En attente </span>
+               </div>
+              <% end %>
+              </div>
+             <% else %>
+              <div class="card" style="background: #EEF1F6;"> <%= link_to company_offer_path(offer) do %>
+                <div class="card-logo">
+                  <% if offer.company.photo.present? %>
+                    <%= image_tag offer.company.photo%>
+                  <% end %>
+                </div>
+                <div class="description-side">
+                  <h3><%= offer.function %></h3>
+                  <div>
+                    <p><%= Company.find(offer.company_id).name %></h3></p>
+                  </div>
+                  <ul>
+                  <li>
+                    <% if offer.duration?  %>
+                     <p>Stage <%= offer.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if offer.town?  %>
+                     <p><%= offer.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                  </ul>
+                </div>
+                <div class = "position-absolute top-0 end-0">
+                  <span class="badge rounded-pill bg-secondary"> En attente </span>
+                </div>
+              <% end %>
+              </div>
+              <% end %>
+            <% end %>
+          <%end%>
+        </div>
       </div>
+    </div>
+
       <div class= "dashbutton">
         <%= link_to("Dashboard candidatures", company_applications_path, {class: "btn btn-primary text-decoration-none"}) %>
       </div>
@@ -92,6 +255,52 @@
   </div>
 </div>
 
+
+<% if @company.admin? %>
+   <% @all_offers.to_a.each do |offer| %>
+                <div class="card" style="background: #EEF1F6;">
+              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
+              <div class="card-logo">
+                     <% if offer.company.photo.present? %>
+                      <%= image_tag offer.company.photo%>
+                    <% end %>
+              </div>
+              <div class="description-side">
+                <h3><%= offer.function %></h3>
+                <div>
+                <p><%= Company.find(offer.company_id).name %></h3></p>
+                </div>
+                <ul>
+                  <li>
+                    <% if offer.duration?  %>
+                     <p>Stage <%= offer.duration %> mois</p>
+                    <% end %>
+                  </li>
+                  <li>
+                    <% if offer.town?  %>
+                     <p><%= offer.town %></p>
+                    <% end %>
+                  </li>
+                  <li>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% else %>
+                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                      <% end %>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p style="white-space: break-spaces;"><%= offer.description%></p>
+              </div>
+              <div>
+                  <%= link_to (' <i class="fa-solid fa-check"></i>').html_safe, accept_company_offer_path(offer)%>
+                  <br> <%= link_to ('<i class="fa-solid fa-square-xmark"></i>').html_safe,decline_company_offer_path(offer)%>
+              </div>
+
+            </div>
+   <%end%>
+ <% end %>
 
 <style>
 .description-side{

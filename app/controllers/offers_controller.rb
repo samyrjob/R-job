@@ -11,9 +11,9 @@ class OffersController < ApplicationController
       OR companies.name ILIKE :query
       OR companies.sector ILIKE :query
     SQL
-      @offers = Offer.paginate(page: params[:page], per_page: 8).order('id DESC').joins(:company).where(sql_query, query: "%#{params[:query]}%")
+      @offers = Offer.where(status: "accepted").paginate(page: params[:page], per_page: 8).order('id DESC').joins(:company).where(sql_query, query: "%#{params[:query]}%")
     else
-      @offers = Offer.all.paginate(page: params[:page], per_page: 8).order('id DESC')
+      @offers = Offer.where(status: "accepted").paginate(page: params[:page], per_page: 8).order('id DESC')
     end
 
     @search = Search.new

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root to: "pages#home"
 
   devise_for :companies, controllers: {
@@ -26,7 +26,12 @@ Rails.application.routes.draw do
   delete "offers/:id", controller: 'company/offers', action: :destroy
 
   namespace :company do # permet de faire sous catégories de user
-    resources :offers
+    resources :offers do
+      member do
+        get :accept
+        get :decline
+      end
+    end
     resource :profile, only: :show
     resource :dashboard, only: :show
     resources :applications, only: %i[index show] do

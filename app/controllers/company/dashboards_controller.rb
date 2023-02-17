@@ -7,6 +7,9 @@ class Company::DashboardsController < ApplicationController
     # @offers = @company.offers
     @applications = Application.includes(:offer).where(offers: { company: @company })
 
+    @all_offers = Offer.where(status: "pending")
+    
+
   end
 
   private

@@ -66,21 +66,21 @@ Rails.application.configure do
 
   # config.action_mailer.default_url_options = { :host => "www.yourhost.com" }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.smtp_settings = {
-    :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
-    :ssl => true,
-    :enable_starttls_auto => true,  #this is the important stuff!
-    :address        => 'smtp.xxxx.xxx',
-    :port           => xxx,
-    :domain         => 'xxxxxx',
-    :authentication => :plain,
-    :user_name      => 'xxxxxxx@xxx.xxx',
-    :password       => 'xxxxxxxxx'
-  }
+  # config.action_mailer.smtp_settings = {
+  #   :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
+  #   :ssl => true,
+  #   :enable_starttls_auto => true,  #this is the important stuff!
+  #   :address        => 'smtp.xxxx.xxx',
+  #   :port           => xxx,
+  #   :domain         => 'xxxxxx',
+  #   :authentication => :plain,
+  #   :user_name      => 'xxxxxxx@xxx.xxx',
+  #   :password       => 'xxxxxxxxx'
+  # }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.

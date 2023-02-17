@@ -2,6 +2,19 @@ class Company::OffersController < ApplicationController
 
 
 
+  def accept
+    @offers = Offer.where(status: "pending")
+    @offer = Offer.find(params[:id])
+    @offer.update(:status => 'accepted')
+    redirect_to company_dashboard_path(current_company), notice: "L'offre est désormais en ligne !"
+  end
+
+  def decline
+    @offers = Offer.where(status: "pending")
+    @offer = Offer.find(params[:id])
+    @offer.update(:status => 'declined')
+    redirect_to company_dashboard_path(current_company), notice: "L'offre ne sera pas publiée en ligne !"
+  end
 
   def new
     @offer = Offer.new
@@ -11,8 +24,9 @@ class Company::OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.company = current_company
+    @offer.status = "pending"
     if @offer.save
-      redirect_to "/", notice: "your application has been sent !"
+      redirect_to "/", notice: "Votre offre de stage sera examinée et publiée sous peu !"
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +52,7 @@ class Company::OffersController < ApplicationController
   def show
 
 
-    
+
 
 
     @offer = Offer.find(params[:id])
