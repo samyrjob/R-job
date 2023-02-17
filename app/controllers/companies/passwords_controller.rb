@@ -6,15 +6,10 @@ class Companies::PasswordsController < Devise::PasswordsController
   #   super
   # end
 
-
-  def create
-    @company = Company.find_by(email: params[:email])
-
-    if @company.present?
-    end
-
-    redirect_to root_path, notice: "If an account with that email was found, we have sent a link to reset your password"
-  end
+  # POST /resource/password
+  # def create
+  #   super
+  # end
 
   # GET /resource/password/edit?reset_password_token=abcdef
   # def edit
