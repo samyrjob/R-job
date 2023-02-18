@@ -17,7 +17,7 @@ Rails.application.initialize!
   #   :domain         => 'gmail.com',
   #   :authentication => :plain,
   #   :user_name      => 'rjobsamy@gmail.com',
-  #   :password       => 'FouinyRjob09$'
+  #   :password       => 
   # }
 
   ActionMailer::Base.smtp_settings = {

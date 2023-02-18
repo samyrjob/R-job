@@ -50,7 +50,7 @@ Rails.application.configure do
     :domain         => 'gmail.com',
     :authentication => :plain,
     :user_name      => 'rjobsamy@gmail.com',
-    :password       => 'FouinyRjob09$'
+    :password       => 
   }
 
 
