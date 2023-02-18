@@ -34,7 +34,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
 
   def update_params
-    params.require(:student).permit(:sector, :email, :description, :name, :structure, :photo, :website )
+    params.require(:company).permit(:sector, :email, :description, :name, :structure, :photo, :website )
   end
 
 
