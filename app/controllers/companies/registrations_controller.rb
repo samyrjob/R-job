@@ -7,6 +7,16 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
   before_action :configure_permitted_parameters
 
+  def create
+    @company = Company.new(params.require(:company).permit(:name, :photo, :email, :sector, :description, :structure, :website))
+    if @company.save
+      CompanyNotifierMailer.send_signup_email(@compny).deliver
+      # redirect_to(@company, :notice => 'User created')
+    # else
+    #   render :action => 'new'
+    end
+  end
+
 
   def update
     @company = current_company
@@ -23,12 +33,13 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
   end
 
-  def update_params
-    params.require(:company).permit(:name, :photo, :email, :sector, :description, :structure, :website)
-  end
+
+
 
 
   protected
+
+
 
   def configure_permitted_parameters
     attributes = [:sector, :email, :photo, :name, :structure, :website]
@@ -39,11 +50,11 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
 
   def after_sign_up_path_for(resource)
-    company_dashboard_path(resource)
+    new_company_session_path
   end
 
   def after_inactive_sign_up_path_for(resource)
-    company_dashboard_path(resource)
+    new_company_session_path
   end
 
   def after_update_path_for(resource)

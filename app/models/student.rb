@@ -1,8 +1,10 @@
 class Student < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable, :timeoutable
+         :recoverable, :rememberable, :validatable, :trackable, :timeoutable, :confirmable
 
   TONGUES = ['Anglais', 'Espagnol', 'Italien', 'Russe', 'Allemand', 'Portugais', 'Arabe', 'Turc']
 
@@ -15,14 +17,7 @@ class Student < ApplicationRecord
 
   AREA = ['Finance', 'Audit/Conseil', 'Marketing/communication', "Tech", "Ressources humaines/Recrutement", "Business Development",
           "Comtabilité/Contrôle de gestion", "Logistique/supply Chain", "Ventes", "Autre"]
-  # SCHOOLS = BUSINESSCHOOLS + ENGINEERSCHOOLS
-  # serialize :wanted_area, Array
 
-  # validate do
-  #   unless %w(Finance Recrutement Audit/conseil Marketing/communication).include? wanted_area
-  #     errors.add(:wanted_area, "#{wanted_area} n'est pas un mandat valide")
-  #   end
-  # end
   has_many :tags
   # has_many :tags, through: :student_tags
   has_many :applications, dependent: :destroy
@@ -54,29 +49,6 @@ def photo_format
   errors.add(:photo, 'needs to be an image')
 end
 
-  # validates :dossiers,file_content_type: { allow: ['image/jpeg', 'image/png', 'application/pdf'] }
-  # validates_attachment :dossiers, blob: { content_type: ['application/pdf',
-  #   'application/vnd.ms-excel',
-  #   'application/msword',
-  #   'text/plain',
-  #   'image/png',
-  #   'text/csv',] }
-
-  # validates_attachment :dossiers, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
-  # validates :dossiers, attached: true, content_type: ['application/pdf']
-  # EMAIL_REGEX = /\A[^@\s]+@[^@\s]+\z/
-  # validates_format_of :email, with: EMAIL_REGEX
-
-#   GMAIL_DOMAINS = %w{gmail.com googlemail.com hotmail.fr hotmail.com }
-
-# validates :email_is_gmail
-
-# private
-# def email_is_gmail
-#   GMAIL_DOMAINS.each do |domain|
-#     return true if email.end_with?('@' + domain)
-#   end
-# end
 
 
 
