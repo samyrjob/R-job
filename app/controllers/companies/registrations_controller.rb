@@ -49,11 +49,11 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
 
   def after_sign_up_path_for(resource)
-    new_company_session_path
+    company_dashboard_path(resource)
   end
 
   def after_inactive_sign_up_path_for(resource)
-    new_company_session_path
+    company_dashboard_path(resource)
   end
 
   def after_update_path_for(resource)

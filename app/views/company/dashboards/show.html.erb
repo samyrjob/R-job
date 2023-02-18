@@ -256,7 +256,7 @@
 </div>
 
 
-<% if current_company && current_company.admin? %>
+<% if @company.admin? %>
    <% @all_offers.to_a.each do |offer| %>
                 <div class="card" style="background: #EEF1F6;">
               <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
