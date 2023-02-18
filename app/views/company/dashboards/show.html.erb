@@ -256,51 +256,6 @@
 </div>
 
 
-<% if @company.admin? %>
-   <% @all_offers.to_a.each do |offer| %>
-                <div class="card" style="background: #EEF1F6;">
-              <%# <%= cl_image_tag offer.photo.key, height: 200, crop: :fill, class:"card-img" %>
-              <div class="card-logo">
-                     <% if offer.company.photo.present? %>
-                      <%= image_tag offer.company.photo%>
-                    <% end %>
-              </div>
-              <div class="description-side">
-                <h3><%= offer.function %></h3>
-                <div>
-                <p><%= Company.find(offer.company_id).name %></h3></p>
-                </div>
-                <ul>
-                  <li>
-                    <% if offer.duration?  %>
-                     <p>Stage <%= offer.duration %> mois</p>
-                    <% end %>
-                  </li>
-                  <li>
-                    <% if offer.town?  %>
-                     <p><%= offer.town %></p>
-                    <% end %>
-                  </li>
-                  <li>
-                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
-                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
-                      <% else %>
-                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
-                      <% end %>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p style="white-space: break-spaces;"><%= offer.description%></p>
-              </div>
-              <div>
-                  <%= link_to (' <i class="fa-solid fa-check"></i>').html_safe, accept_company_offer_path(offer)%>
-                  <br> <%= link_to ('<i class="fa-solid fa-square-xmark"></i>').html_safe,decline_company_offer_path(offer)%>
-              </div>
-
-            </div>
-   <%end%>
- <% end %>
 
 <style>
 .description-side{
