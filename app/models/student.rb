@@ -4,7 +4,7 @@ class Student < ApplicationRecord
 
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable, :timeoutable, :confirmable
+         :recoverable, :rememberable, :validatable, :trackable, :timeoutable
 
   TONGUES = ['Anglais', 'Espagnol', 'Italien', 'Russe', 'Allemand', 'Portugais', 'Arabe', 'Turc']
 
