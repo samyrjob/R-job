@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_16_172043) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_17_231535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_172043) do
     t.text "description"
     t.string "structure"
     t.string "website"
+    t.boolean "admin", default: false, null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
@@ -157,6 +162,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_172043) do
     t.string "wanted_area"
     t.date "disponibility"
     t.string "linkedin"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end

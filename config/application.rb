@@ -26,3 +26,20 @@ module Testy
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+
+# config.action_mailer.delivery_method = :smtp
+# config.action_mailer.perform_deliveries = true
+# config.action_mailer.raise_delivery_errors = true
+
+# config.action_mailer.smtp_settings = {
+#   :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
+#   :ssl => true,
+#   :enable_starttls_auto => true,  #this is the important stuff!
+#   :address        => 'smtp.gmail.com',
+#   :port           => 465,
+#   :domain         => 'gmail.com',
+#   :authentication => :plain,
+#   :user_name      => 'rjobsamy@gmail.com',
+#   :password       => 'FouinyRjob09$'
+# }
