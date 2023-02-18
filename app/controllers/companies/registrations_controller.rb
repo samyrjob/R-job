@@ -7,15 +7,14 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
   before_action :configure_permitted_parameters
 
-  def create
-    @company = Company.new(params.require(:company).permit(:name, :photo, :email, :sector, :description, :structure, :website))
-    if @company.save
-      CompanyNotifierMailer.send_signup_email(@compny).deliver
-      # redirect_to(@company, :notice => 'User created')
-    # else
-    #   render :action => 'new'
-    end
-  end
+  # def create
+  #   if @company.save
+  #     CompanyNotifierMailer.send_signup_email(@compny).deliver
+  #     # redirect_to(@company, :notice => 'User created')
+  #   # else
+  #   #   render :action => 'new'
+  #   end
+  # end
 
 
   def update
