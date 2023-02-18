@@ -8,7 +8,7 @@ class Company::DashboardsController < ApplicationController
     @applications = Application.includes(:offer).where(offers: { company: @company })
 
     @all_offers = Offer.where(status: "pending")
-    
+
 
   end
 
@@ -17,4 +17,5 @@ class Company::DashboardsController < ApplicationController
   def set_company
     @company = current_company
   end
+  
 end
