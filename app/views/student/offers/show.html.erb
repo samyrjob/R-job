@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="card-description-offre">
-          <p style="padding:10px;white-space:break-spaces"> <%= @offer.description %></p>
+          <p> <%= @offer.description %></p>
         </div>
       </div>
     </div>
@@ -100,6 +100,15 @@
 
 .logos {
     filter: unset;
+}
+
+.card-description-offre p{
+    padding: 20px;
+    white-space: break-spaces;
+    background-color: white;
+    margin: 20px;
+    font-size: 14px;
+    font-family: "Work Sans", sans-serif;
 }
 
 </style>
