@@ -77,6 +77,33 @@
 
       <div class="flat-cards">
         <% @offers.each do |offer| %>
+          <%case offer.start_date.month
+
+      when 1
+        @month = "Janvier"
+      when 2
+        @month = "Février"
+      when 3
+        @month = "Mars"
+      when 4
+        @month = "Avril"
+      when 5
+        @month = "Mai"
+      when 6
+        @month = "Juin"
+      when 7
+        @month = "Juillet"
+      when 8
+        @month = "Août"
+      when 9
+        @month = "Septembre"
+      when 10
+        @month = "Octobre"
+      when 11
+        @month = "Novembre"
+      else
+        @month = "Décembre"
+      end %>
            <% if @offers.to_a.index(offer) % 2 == 0 %>
             <% if student_signed_in? %>
             <div class="card"> <%= link_to student_offer_path(offer) do %>
@@ -316,7 +343,7 @@ elem2[0].textContent = 'Suivant'
    text-transform: capitalize;
    }
 
-   
+
    .card-logo img {
     width: 100px;
     height: 80px;

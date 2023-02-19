@@ -23,36 +23,34 @@ class OffersController < ApplicationController
 
     @capacities = Offer.select(:start_date)
 
-    @offers.each do |offer|
-      case offer.start_date.month
+    # @offers.each do |offer|
+      # case offer.start_date.month
 
-      when 1
-        @month = "Janvier"
-      when 2
-        @month = "Février"
-      when 3
-        @month = "Mars"
-      when 4
-        @month = "Avril"
-      when 5
-        @month = "Mai"
-      when 6
-        @month = "Juin"
-      when 7
-        @month = "Juillet"
-      when 8
-        @month = "Août"
-      when 9
-        @month = "Septembre"
-      when 10
-        @month = "Octobre"
-      when 11
-        @month = "Novembre"
-      else
-        @month = "Décembre"
-      end
-
-    end
+      # when 1
+      #   @month = "Janvier"
+      # when 2
+      #   @month = "Février"
+      # when 3
+      #   @month = "Mars"
+      # when 4
+      #   @month = "Avril"
+      # when 5
+      #   @month = "Mai"
+      # when 6
+      #   @month = "Juin"
+      # when 7
+      #   @month = "Juillet"
+      # when 8
+      #   @month = "Août"
+      # when 9
+      #   @month = "Septembre"
+      # when 10
+      #   @month = "Octobre"
+      # when 11
+      #   @month = "Novembre"
+      # else
+      #   @month = "Décembre"
+      # end
 
 
     # @offers1 = Offer.paginate(page: params[:page], per_page: 8).order('id DESC')
