@@ -34,7 +34,7 @@ gem 'devise_token_auth'
 
 
 
-
+gem 'sendgrid-ruby'
 gem "cloudinary"
 
 gem "activestorage"

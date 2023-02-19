@@ -8,13 +8,22 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
 
   # def create
-  #   if @company.save
-  #     CompanyNotifierMailer.send_signup_email(@compny).deliver
-  #     # redirect_to(@company, :notice => 'User created')
+
+  #   @company = Company.new(company_params)
+  #     # zeta = params.require(:company).permit(:email, :name)
+  #     # company = Company.new(email: zeta['email'], name: zeta['name'], photo: zeta['photo'], sector: zeta['sector'], website: zeta['website'], structure: zeta['structure'] )
+  #     # email = zeta['email']
+  #     # name = zeta['name']
+  #     if @company.save
+  #     CompanyNotifierMailer.send_signup_email(@company).deliver
+  #     redirect_to(offers_path, :notice => 'gogo created')
+  #     end
   #   # else
   #   #   render :action => 'new'
-  #   end
+
   # end
+
+
 
 
   def update
@@ -41,7 +50,9 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-
+  def company_params
+    params.require(:company).permit(:structure, :website, :sector, :name, :email, :photo, :password, :password_confirmation)
+  end
 
   def configure_permitted_parameters
     attributes = [:sector, :email, :photo, :name, :structure, :website]
@@ -52,11 +63,11 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
 
   def after_sign_up_path_for(resource)
-    offers_path
+    company_dashboard_path(resource)
   end
 
   def after_inactive_sign_up_path_for(resource)
-    offers_path
+    company_dashboard_path(resource)
   end
 
   def after_update_path_for(resource)

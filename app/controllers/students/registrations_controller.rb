@@ -57,11 +57,11 @@ class Students::RegistrationsController < Devise::RegistrationsController
     # end
 
     def after_sign_up_path_for(resource)
-      new_student_session_path
+      student_dashboard_path(resource)
     end
 
     def after_inactive_sign_up_path_for(resource)
-      new_student_session_path
+      student_dashboard_path(resource)
     end
 
   def configure_permitted_parameters

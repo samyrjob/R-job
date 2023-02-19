@@ -1,3 +1,5 @@
+
+
 class CompanyNotifierMailer < ApplicationMailer
   default :from => 'notreson@hotmail.fr'
 

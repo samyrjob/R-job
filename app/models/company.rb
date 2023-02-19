@@ -1,8 +1,7 @@
 class Company < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   CATEGORIES = ['Banque/Assurance', 'Ressources humaines/Recrutement','Conseil/Audit', 'Communication', 'Finance', 'Commerce/Ventes/Marketing', 'Services', 'Achats/Logistique', 'Autre']
