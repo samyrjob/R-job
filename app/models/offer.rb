@@ -6,7 +6,7 @@ class Offer < ApplicationRecord
   validates :function, presence: true
   validates :town, presence: true
   validates :start_date, presence: true
-  validates :salary, presence: true
+  validates :salary, presence: false
   validates :duration, presence: true
 
   # self.per_page = 7
