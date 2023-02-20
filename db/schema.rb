@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_18_103534) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_20_233844) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_103534) do
     t.date "start_date"
     t.date "end_activation"
     t.string "status"
-    t.integer "duration"
+    t.string "duration"
     t.index ["company_id"], name: "index_offers_on_company_id"
   end
 
