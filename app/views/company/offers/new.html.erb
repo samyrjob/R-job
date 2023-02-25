@@ -12,6 +12,6 @@
     <i class="fa-sharp fa-solid fa-euro-sign"></i>
   </div>
   <%= f.input :start_date, as: :date, :label => "Date de début" %>
-  <%= f.input :duration, as: :integer, :label => "Durée (mois)" %>
+  <%= f.input :duration, as: :string, :label => "Durée (mois)" %>
   <%= f.submit 'Publier', class: "btn btn-primary" %>
 <% end %>
