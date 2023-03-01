@@ -6,7 +6,7 @@
     <div class="contentcarre">
       <h1>Ton stage à l'étranger en quelques clics !</h1>
       <p>Cultive, créé et profite de ta nouvelle expérience internationale</p>
-      <%= link_to "Voir les offres", confidentpage_path, class: 'home-button' %>
+      <%= link_to "Voir les offres", offers_path, class: 'home-button' %>
     </div>
   </div>
 
@@ -68,7 +68,50 @@
         </div>
       </div>
     </div>
-    <div class="container-slider">
+
+
+
+
+
+
+
+
+     <div class="first-contain" style=" display: flex;justify-content: center;">
+      <div class="first2">
+          <div class="container-partner2">
+          <div class="description2">
+              <p>Ils parlent de nous</p>
+            </div>
+            <div class="logoss">
+              <div class="container-schools2">
+                <div class="grid-logos12">
+                  <a href="https://www.planetegrandesecoles.com/"  target="_blank"><%= image_tag("PGE.png", {:style => "width:60px;height:60px;", class:"logost"}) %></a>
+                  <a href="https://www.pepite-france.fr/"  target="_blank"><%= image_tag("pepitez.png", {:style => "width:60px;height:60px;", class:"logost"}) %></a>
+                  <a href="https://www.lewagon.com/fr" target="_blank"><%= image_tag("wagon.png", {:style => "width:60px;height:60px;", class:"logost"}) %></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container-slider" style="display:none">
         <div class="slider">
           <div class="slides">
             <input type="radio" name="radio-btn" id="radio1">
