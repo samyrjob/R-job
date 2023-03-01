@@ -1,11 +1,13 @@
-<h1>Nouvelle offre</h1>
-<h3> Rédiger une nouvelle offre </h3>
+<div style="padding:10px">
+  <h1>Nouvelle offre</h1>
+  <h3> Rédiger une nouvelle offre </h3>
+</div>
 
 
 
 <%= simple_form_for ([@company, @offer]) do |f| %>
   <%= f.input :function, :label => "Poste" %>
-  <%= f.input :description, as: :text, :label => "Description",  placeholder: "Missions/ Profile / Key details ..." %>
+  <%= f.input :description, as: :rich_text_area, :label => "Description",  placeholder: "Missions/ Profile / Key details ..." %>
   <%= f.input :town, :label => "Ville"%>
   <div class="yeah2">
     <%= f.input :salary, as: :float, :label => "Rémunération (mensuelle)" %>
