@@ -338,6 +338,30 @@
   background: white;
 }
 
+.home-banner3 {
+  width: 100%;
+  height: 500px;
+  // transform: rotate(180deg);
+  // background-image: url("dusk.jpeg");
+  background-size: cover;
+  background-position: center;
+  z-index: auto;
+  // position: absolute;
+  }
+
+  // .degrad {
+
+  //   background-image: linear-gradient(to bottom, rgba(255,0,0,0), $blue);
+  //   position: relative;
+  //   width: 100%;
+  //   height: 500px;
+  //   top: 40px;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+
+
 
 @media only screen and (max-width: 768px) {
 
@@ -405,6 +429,9 @@
 .home-banner1 {
   height: 689px;
 }
+
+
+
 
   }
 
