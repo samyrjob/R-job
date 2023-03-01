@@ -8,6 +8,7 @@ class Offer < ApplicationRecord
   validates :start_date, presence: true
   validates :salary, presence: false
   validates :duration, presence: true
+  has_rich_text :description
 
   # self.per_page = 7
 
