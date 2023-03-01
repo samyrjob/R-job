@@ -74,7 +74,7 @@
 
 
 <br>
-
+       <%= will_paginate @offers %>
       <div class="flat-cards">
         <% @offers.each do |offer| %>
           <%case offer.start_date.month
