@@ -9,6 +9,9 @@ class Offer < ApplicationRecord
   validates :salary, presence: false
   validates :duration, presence: true
   has_rich_text :description
+  has_one :action_text_rich_text,
+  class_name: 'ActionText::RichText',
+  as: :record
 
   # self.per_page = 7
 

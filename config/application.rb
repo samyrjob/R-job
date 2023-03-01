@@ -1,7 +1,7 @@
 require_relative "boot"
 require "active_storage/engine"
-
 require "rails/all"
+require 'action_text'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -26,4 +26,3 @@ module Testy
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-
