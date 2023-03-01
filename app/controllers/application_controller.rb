@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  require 'action_text'
-  helper ActionText::Engine.helpers
+  # require 'action_text'
+  # helper ActionText::Engine.helpers
 
 
   def after_sign_in_path_for(resource)
