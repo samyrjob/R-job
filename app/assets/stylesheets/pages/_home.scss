@@ -483,130 +483,149 @@
   }
 
 
-  @media (min-width: 530px) and (max-height: 730px) and (min-height: 610px) {
 
-
+  @media (min-width: 359px) and (max-width: 369px) and (max-height: 650px) and (min-height: 605px) {
 
     .carre1{
-      height: 752px;
-    }
-
-    .carre2 {
-
-      .partners-double{
-        display: block;
-
-       .first .container-partner{
-        margin-bottom: 0;
-      }
-      .second .container-partner{
-        background-image: none;
-        margin-top: 286px;
-        .videoimage {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden
-      }
-        .videoimage img {
-          display: none;
-      }
-
-
-      }
+      height: 610px;
     }
 
   }
 
-  .container-slider{
-    position: relative;
-    bottom: 365px;
+  @media (min-width: 359px) and (max-width: 369px) and (max-height: 750px) and (min-height: 705px) {
 
-    .slider {
-    width: 500px;
-    height: 345px;
-    border-radius: 0px;
-
-    .slides {
-      .navigation-auto{
-        width: 508px;
-      }
-      .slide img {
-      width: 500px;
-      }
-    }
-    .navigation-manual{
-      width: 508px;
-    }
-    }
-  }
-
-  }
-
-
-
-
-@media (min-width: 750px) and (max-width: 780px) and (min-height: 1000px){
-
-
-  .carre1 {
-    align-items: center;
-  }
-
-  .carre2 {
-   top: -48px;
-    .partners-double{
-      display: block;
-
-     .first .container-partner{
-      margin-bottom: 0;
-    }
-    .second {
-      margin-top: 289px;
-
-      p {
-        color: white;
-      }
-
-      .container-partner{
-        background-image: none;
-        margin-top: 286px;
-        .videoimage {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden
-      }
-
-        .description {
-          background: none;
-        }
-
-        .videoimage img {
-          display: none;
-      }
-
-
-      }
+    .carre1{
+      height: 442px;
     }
 
-
   }
 
-  .container-slider {
-    position: relative;
-    bottom: 389px;
-  }
-}
 
-.footer-container {
+// brouillon 2 :
+  // @media (min-width: 530px) and (max-height: 730px) and (min-height: 610px) {
 
-  .footer-content{
-    width: 663px;
-  }
-}
 
-}
+
+  //   .carre1{
+  //     height: 752px;
+  //   }
+
+  //   .carre2 {
+
+  //     .partners-double{
+  //       display: block;
+
+  //      .first .container-partner{
+  //       margin-bottom: 0;
+  //     }
+  //     .second .container-partner{
+  //       background-image: none;
+  //       margin-top: 286px;
+  //       .videoimage {
+  //         display: flex;
+  //         justify-content: center;
+  //         align-items: center;
+  //         overflow: hidden
+  //     }
+  //       .videoimage img {
+  //         display: none;
+  //     }
+
+
+  //     }
+  //   }
+
+  // }
+
+  // .container-slider{
+  //   position: relative;
+  //   bottom: 365px;
+
+  //   .slider {
+  //   width: 500px;
+  //   height: 345px;
+  //   border-radius: 0px;
+
+  //   .slides {
+  //     .navigation-auto{
+  //       width: 508px;
+  //     }
+  //     .slide img {
+  //     width: 500px;
+  //     }
+  //   }
+  //   .navigation-manual{
+  //     width: 508px;
+  //   }
+  //   }
+  // }
+
+  // }
+
+
+// brouillon 1
+
+// @media (min-width: 750px) and (max-width: 780px) and (min-height: 1000px){
+
+
+//   .carre1 {
+//     align-items: center;
+//   }
+
+//   .carre2 {
+//    top: -48px;
+//     .partners-double{
+//       display: block;
+
+//      .first .container-partner{
+//       margin-bottom: 0;
+//     }
+//     .second {
+//       margin-top: 289px;
+
+//       p {
+//         color: white;
+//       }
+
+//       .container-partner{
+//         background-image: none;
+//         margin-top: 286px;
+//         .videoimage {
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//           overflow: hidden
+//       }
+
+//         .description {
+//           background: none;
+//         }
+
+//         .videoimage img {
+//           display: none;
+//       }
+
+
+//       }
+//     }
+
+
+//   }
+
+//   .container-slider {
+//     position: relative;
+//     bottom: 389px;
+//   }
+// }
+
+// .footer-container {
+
+//   .footer-content{
+//     width: 663px;
+//   }
+// }
+
+// }
 
 
 
