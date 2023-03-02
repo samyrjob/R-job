@@ -13,7 +13,7 @@ class Student < ApplicationRecord
 
   PHONE_REGEX = /(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/
 
-  MOBILITY = ['Emmenez-moi où vous voulez !', 'Espagne', 'Portugal', 'Pays-bas', 'Autre']
+  MOBILITY = ['Emmenez-moi où vous voulez !', 'Espagne', 'Portugal', 'Pays-bas', 'Belgique', 'Autre']
 
   AREA = ['Finance', 'Audit/Conseil', 'Marketing/communication', "Tech", "Ressources humaines/Recrutement", "Business Development",
           "Comtabilité/Contrôle de gestion", "Logistique/supply Chain", "Ventes", "Autre"]
