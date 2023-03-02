@@ -74,7 +74,7 @@
 
 
 <br>
-       
+
       <div class="flat-cards">
         <% @offers.each do |offer| %>
           <%case offer.start_date.month
@@ -130,10 +130,10 @@
                     <% end %>
                   </li>
                   <li>
-                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
-                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1 || (DateTime.now.to_date - offer.created_at.to_date).to_i == 0%>
+                        <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
                       <% else %>
-                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                        <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
                       <% end %>
                   </li>
                 </ul>
@@ -164,10 +164,10 @@
                       <% end %>
                     </li>
                     <li>
-                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
-                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1 || (DateTime.now.to_date - offer.created_at.to_date).to_i == 0 %>
+                          <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
                         <% else %>
-                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                          <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
                         <% end %>
                     </li>
                   </ul>
@@ -200,10 +200,10 @@
                         <% end %>
                       </li>
                       <li>
-                          <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
-                            <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                          <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1 || (DateTime.now.to_date - offer.created_at.to_date).to_i == 0%>
+                            <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
                           <% else %>
-                            <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                            <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
                           <% end %>
                       </li>
                     </ul>
@@ -237,10 +237,10 @@
                     <% end %>
                   </li>
                   <li>
-                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
-                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                      <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1 || (DateTime.now.to_date - offer.created_at.to_date).to_i == 0 %>
+                        <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
                       <% else %>
-                        <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                        <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
                       <% end %>
                   </li>
                 </ul>
@@ -271,10 +271,10 @@
                       <% end %>
                     </li>
                     <li>
-                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
-                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1 || (DateTime.now.to_date - offer.created_at.to_date).to_i == 0%>
+                          <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
                         <% else %>
-                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                          <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
                         <% end %>
                     </li>
                   </ul>
@@ -306,10 +306,10 @@
                       <% end %>
                     </li>
                     <li>
-                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1%>
-                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
+                        <% if (DateTime.now.to_date - offer.created_at.to_date).to_i == 1 || (DateTime.now.to_date - offer.created_at.to_date).to_i == 0%>
+                          <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jour</p>
                         <% else %>
-                          <p>Publié il y'a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
+                          <p>Publié il y a <%= (DateTime.now.to_date - offer.created_at.to_date).to_i%> jours</p>
                         <% end %>
                     </li>
                   </ul>
