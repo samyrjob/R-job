@@ -66,6 +66,8 @@ class OffersController < ApplicationController
     @offers = Offer.all
 
     capacity = @offer.start_date.month
+    set_meta_tags title: @offer.function,
+                  reverse: true
 
     case capacity
     when 1

@@ -28,6 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'friendly_id', '~> 5.4.0'
+gem 'meta-tags'
 
 
 
