@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-
+  before_action :find_offer, only: [:show]
   # ,  :raise => false
 
   def index
@@ -62,7 +62,7 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find(params[:id])
+    # @offer = Offer.find(params[:id])
     @offers = Offer.all
 
     capacity = @offer.start_date.month
@@ -115,7 +115,18 @@ class OffersController < ApplicationController
   # end
 
 
+private
 
+  def find_offer
+    @offer = Offer.find(params[:id])
+
+    # If an old id or a numeric id was used to find the record, then
+    # the request path will not match the post_path, and we should do
+    # a 301 redirect that uses the current friendly id.
+    if request.path != offer_path(@offer)
+      return redirect_to @offer, :status => :moved_permanently
+    end
+  end
 
 
 end
