@@ -1,11 +1,11 @@
 class Student::OffersController < ApplicationController
 
-
+  before_action :find_offer, only: [:show]
 
 
 
   def show
-    @offer = Offer.find(params[:id])
+    # @offer = Offer.find(params[:id])
     @offers = Offer.all
     # @savedoffer1 = Savedoffer.find(params[:id])
     @savedoffer2 = Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last
@@ -56,5 +56,15 @@ class Student::OffersController < ApplicationController
   end
 
 
+  def find_offer
+    @offer = Offer.friendly.find(params[:id])
+
+    # If an old id or a numeric id was used to find the record, then
+    # the request path will not match the post_path, and we should do
+    # a 301 redirect that uses the current friendly id.
+    if request.path != offer_path(@offer)
+      return redirect_to @offer, :status => :moved_permanently
+    end
+  end
 
 end
