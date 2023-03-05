@@ -1,17 +1,17 @@
 class Company::OffersController < ApplicationController
 
-
+  before_action :find_offer, only: %i[accept decline edit update show destroy]
 
   def accept
     @offers = Offer.where(status: "pending")
-    @offer = Offer.find(params[:id])
+    # @offer = Offer.find(params[:id])
     @offer.update(:status => 'accepted')
     redirect_to company_dashboard_path(current_company), notice: "L'offre est désormais en ligne !"
   end
 
   def decline
     @offers = Offer.where(status: "pending")
-    @offer = Offer.find(params[:id])
+    # @offer = Offer.find(params[:id])
     @offer.update(:status => 'declined')
     redirect_to company_dashboard_path(current_company), notice: "L'offre ne sera pas publiée en ligne !"
   end
@@ -35,11 +35,11 @@ class Company::OffersController < ApplicationController
   end
 
   def edit
-    @offer = Offer.find(params[:id])
+    # @offer = Offer.find(params[:id])
   end
 
   def update
-    @offer = Offer.find(params[:id])
+    # @offer = Offer.find(params[:id])
     @offer.update(offer_params)
 
     if @offer.save
@@ -55,7 +55,7 @@ class Company::OffersController < ApplicationController
 
 
 
-    @offer = Offer.find(params[:id])
+    # @offer = Offer.find(params[:id])
 
    @applications =  @offer.applications.where(status: "pending")
    @applications1 =  @offer.applications.where(status: "accepted")
@@ -94,7 +94,7 @@ class Company::OffersController < ApplicationController
   end
 
   def destroy
-    @offer = Offer.find(params[:id])
+    # @offer = Offer.find(params[:id])
     @offer.destroy
     redirect_to company_dashboard_path, status: :see_other, notice: "L'annonce a bien été supprimée !"
   end
@@ -106,6 +106,18 @@ class Company::OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:description, :function, :town, :salary, :duration, :start_date)
+  end
+
+
+  def find_offer
+    @offer = Offer.friendly.find(params[:id])
+
+    # If an old id or a numeric id was used to find the record, then
+    # the request path will not match the post_path, and we should do
+    # a 301 redirect that uses the current friendly id.
+    if request.path != offer_path(@offer)
+      return redirect_to @offer, :status => :moved_permanently
+    end
   end
 
 end
