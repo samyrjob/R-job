@@ -15,7 +15,7 @@ class Offer < ApplicationRecord
   # as: :record
 
   # self.per_page = 7
-  friendly_id :function, use: [:slugged]
+  friendly_id :function, use: [:slugged, :finders]
 
   def should_generate_new_friendly_id?
     function_changed? || slug.blank?
