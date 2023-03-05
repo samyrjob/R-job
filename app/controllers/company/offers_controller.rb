@@ -4,14 +4,14 @@ class Company::OffersController < ApplicationController
 
   def accept
     @offers = Offer.where(status: "pending")
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
     @offer.update(:status => 'accepted')
     redirect_to company_dashboard_path(current_company), notice: "L'offre est désormais en ligne !"
   end
 
   def decline
     @offers = Offer.where(status: "pending")
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
     @offer.update(:status => 'declined')
     redirect_to company_dashboard_path(current_company), notice: "L'offre ne sera pas publiée en ligne !"
   end
@@ -35,11 +35,11 @@ class Company::OffersController < ApplicationController
   end
 
   def edit
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
   end
 
   def update
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
     @offer.update(offer_params)
 
     if @offer.save
@@ -55,7 +55,7 @@ class Company::OffersController < ApplicationController
 
 
 
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
 
    @applications =  @offer.applications.where(status: "pending")
    @applications1 =  @offer.applications.where(status: "accepted")
@@ -94,7 +94,7 @@ class Company::OffersController < ApplicationController
   end
 
   def destroy
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
     @offer.destroy
     redirect_to company_dashboard_path, status: :see_other, notice: "L'annonce a bien été supprimée !"
   end

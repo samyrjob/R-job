@@ -62,7 +62,7 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
     @offers = Offer.all
 
     capacity = @offer.start_date.month

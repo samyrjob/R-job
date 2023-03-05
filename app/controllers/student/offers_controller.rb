@@ -5,7 +5,7 @@ class Student::OffersController < ApplicationController
 
 
   def show
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
     @offers = Offer.all
     # @savedoffer1 = Savedoffer.find(params[:id])
     @savedoffer2 = Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last

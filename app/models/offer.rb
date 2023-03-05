@@ -14,6 +14,7 @@ class Offer < ApplicationRecord
   # as: :record
 
   # self.per_page = 7
-
+  extend FriendlyId
+  friendly_id :function, use: :slugged
 
 end
