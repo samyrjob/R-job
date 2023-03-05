@@ -118,7 +118,7 @@ class OffersController < ApplicationController
 private
 
   def find_offer
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
 
     # If an old id or a numeric id was used to find the record, then
     # the request path will not match the post_path, and we should do
