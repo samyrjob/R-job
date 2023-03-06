@@ -71,8 +71,8 @@ class OffersController < ApplicationController
                   description: @offer.description,
                   twitter: {
                     card: "summary",
-                    site: @trainee_plus,
-                    title: "Trainee plus",
+                    site: "@trainee_plus",
+                    title: "Trainee +",
                     description: @offer.description,
                     image: "https://www.traineenandplus.com/assets/tredies-9c5ddd7fe7e8a2366fd9f22579e41352f86524bfdee9874e79824da2caa80670.png"
                   }
