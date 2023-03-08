@@ -65,7 +65,6 @@ class OffersController < ApplicationController
     # @offer = Offer.find(params[:id])
     @offers = Offer.all
 
-    capacity = @offer.start_date.month
     set_meta_tags title: @offer.function,
                   reverse: true,
                   description: @offer.description,
@@ -76,6 +75,7 @@ class OffersController < ApplicationController
                     description: @offer.description,
                     image: "https://www.traineenandplus.com/assets/tredies-9c5ddd7fe7e8a2366fd9f22579e41352f86524bfdee9874e79824da2caa80670.png"
                   }
+    capacity = @offer.start_date.month
 
     case capacity
     when 1
