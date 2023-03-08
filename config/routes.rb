@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :offers, only: %i[index show]
   resources :searches, only: %i[create show]
   resource :confidentpage, only: :show
+  resource :termsyconditions, only: :show
 
   patch 'offers/:id', controller: 'company/offers', action: :update
   delete "offers/:id", controller: 'company/offers', action: :destroy
