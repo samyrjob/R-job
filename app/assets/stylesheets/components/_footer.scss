@@ -29,12 +29,19 @@ $gray: #767676;
         }
       }
 
+
+
       .footer-names {
         p {
         color: $white;
         font-size: 9px;
         }
         p a{
+          color: $white;
+          font-size: 9px;
+          text-decoration: none;
+        }
+        a {
           color: $white;
           font-size: 9px;
           text-decoration: none;
