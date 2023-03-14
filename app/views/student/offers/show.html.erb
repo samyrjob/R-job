@@ -22,6 +22,9 @@
                         <i class="fa-sharp fa-solid fa-calendar-days" style="margin-right:2px;"></i><p> <%= @month %> <%=@offer.start_date.year%></p>
                       </li>
                       <li class="li1">
+                        <i class="fa-solid fa-clock"></i><p> <%= @offer.duration %> mois </p>
+                      </li>
+                      <li class="li1">
                         <i class="fa-solid fa-globe" style="margin-right:2px;"></i><p>
                         <% if @offer.company.website? %>
                           <%= link_to "Site web", @offer.company.website, :target => "_blank" %>
