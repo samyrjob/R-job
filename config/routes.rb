@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
 
   root to: "pages#home"
-  # get 'application/download_pdf'
+
+  get 'application/download_pdf'
+
+  # match 'download', to: 'application#download_pdf', as: 'download', via: :get
 
   devise_for :companies, controllers: {
     registrations: 'companies/registrations', sessions: 'companies/sessions'
