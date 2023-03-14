@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def download_pdf
     send_file(
-      "app/assets/images/Conditions.pdf",
+      "app/assets//Conditions.pdf",
        filename: "Conditions.pdf",
        type: "application/pdf"
     )
