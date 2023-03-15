@@ -3,7 +3,6 @@ class Offer < ApplicationRecord
   belongs_to :company
   has_many :applications, dependent: :destroy
   has_many :savedoffers, dependent: :destroy
-  validates :description, presence: true
   validates :function, presence: true
   validates :town, presence: true
   validates :start_date, presence: true
@@ -14,6 +13,7 @@ class Offer < ApplicationRecord
   # class_name: 'ActionText::RichText',
   # as: :record
   has_rich_text :content
+  validates :content, presence: true
 
   # self.per_page = 7
   friendly_id :function, use: [:slugged, :finders]
