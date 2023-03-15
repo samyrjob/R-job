@@ -13,7 +13,7 @@ class Offer < ApplicationRecord
   # has_one :action_text_rich_text,
   # class_name: 'ActionText::RichText',
   # as: :record
-
+  has_rich_text :description
 
   # self.per_page = 7
   friendly_id :function, use: [:slugged, :finders]
