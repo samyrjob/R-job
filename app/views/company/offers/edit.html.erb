@@ -1,10 +1,11 @@
-<h3> Modifier l'offre </h3>
-
+<div style="padding:10px">
+  <h1> Modifier l'offre</h1>
+</div>
 
 <%= simple_form_for ([@company, @offer]) do |f| %>
   <%= f.input :function, :label => "Poste" %>
   <%# <%= f.input :description, as: :text, :label => "Description",  placeholder: "Missions/ Profile / Key details ..." %>
-  <%= f.input :content, as: :rich_text_area, :label => "Description",  placeholder: "Missions/ Profile / Key details ..." %>
+  <%= f.input :content, as: :rich_text_area, :label => "Description",  placeholder: "Missions/ Profile / Key details ...", input_html: { class: "DescriptionStyling" } %>
   <%= f.input :town, :label => "Ville"%>
   <div class="yeah2">
     <%= f.input :salary, as: :float, :label => "Rémunération (mensuelle)" %>
@@ -14,3 +15,10 @@
   <%= f.input :duration, as: :string, :label => "Durée (mois)" %>
   <%= f.submit 'Publier', class: "btn btn-primary" %>
 <% end %>
+
+
+<style>
+  .DescriptionStyling{
+    height: 700px;
+  }
+</style>
