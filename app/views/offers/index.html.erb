@@ -252,6 +252,8 @@
                 <div class="card-logo">
                     <% if offer.company.photo.present? %>
                       <%= image_tag offer.company.photo%>
+                    <% else %>
+                      <%= image_tag("logobuil.jpg",{:style => "width:80px;height:80px;", class:"logos"}) %>
                     <% end %>
                 </div>
                 <div class="description-side">
