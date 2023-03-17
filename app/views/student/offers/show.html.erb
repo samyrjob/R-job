@@ -8,7 +8,9 @@
         <div class="card-shower-offer">
           <div class="description2">
             <div class="picture">
-              <%= image_tag( @offer.company.photo, {:style => "width:57px;height:57px;", class:"logos"}) %>
+              <% if @offer.company.photo.present? %>
+                <%= image_tag( @offer.company.photo, {:style => "width:57px;height:57px;", class:"logos"}) %>
+              <% end %>
             </div>
             <div class="list3">
               <ul>

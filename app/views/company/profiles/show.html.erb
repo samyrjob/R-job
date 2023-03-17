@@ -8,7 +8,9 @@
   <div class="containdeux">
     <div class="imageun">
       <%# <%= image_tag( 'avatar.png', {:style => "width:57px;height:57px;", class:"logos"}) %>
-      <%= image_tag @company.photo,{:style => "width:80px;height:80px;", class:"logos"} %>
+      <% if @offer.company.photo.present? %>
+        <%= image_tag @company.photo,{:style => "width:80px;height:80px;", class:"logos"} %>
+      <% end %>
     </div>
     <div class="descriptionun">
       <div style="display: flex;justify-content: space-between;">
