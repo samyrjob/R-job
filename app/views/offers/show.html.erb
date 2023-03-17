@@ -10,6 +10,8 @@
             <div class="picture">
               <% if @offer.company.photo.present? %>
                 <%= image_tag( @offer.company.photo, {:style => "width:57px;height:57px;", class:"logos"}) %>
+              <% else %>
+                <%= image_tag("logobuil.jpg",{:style => "width:80px;height:80px;", class:"logos"}) %>
               <% end %>
             </div>
             <div class="list3">
