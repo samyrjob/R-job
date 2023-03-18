@@ -56,7 +56,54 @@
 </div>
 
 
+ <% if student_signed_in? %>
 
+    <div class="deuxbuttons">
+      <% if @offer.applications.find_by_student_id(current_student.id).present? %>
+        <button disabled> Postuler </button>
+      <% else %>
+        <%= link_to "Postuler", new_student_offer_application_path(@offer), class: "btn btn-primary px-3 py-2  fs-10 mt-3" %>
+      <%end%>
+      <%= link_to "Liste des offres", offers_path, class: "btn btn-primary px-3 py-2  fs-10 mt-3"%>
+    </div>
+
+    <% if Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last == nil %>
+      <%= simple_form_for ([:student, @offer, @savedoffer1]) do |f| %>
+        <div style="display:none">
+          <%= f.label :saved %>
+          <%= f.check_box :saved%>
+        </div>
+        <%= f.button :submit, value: "Sauvegarder", class: "btn btn-success"%>
+      <% end %>
+      <% elsif Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last != nil && Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last.saved == true %>
+        <%= simple_form_for ([:student, @offer, Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last]) do |f| %>
+        <div style="display:none">
+          <%= f.label :saved %>
+          <%= f.check_box :saved%>
+        </div>
+          <%= f.button :submit, value: "Retirer", class: "btn btn-success"%>
+        <% end %>
+      <% else Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last != nil && Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last.saved == false %>
+        <%= simple_form_for ([:student, @offer, Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last]) do |f| %>
+          <div style="display:none">
+            <%= f.label :saved %>
+            <%= f.check_box :saved%>
+          </div>
+          <%= f.button :submit, value: "Sauvegarder", class: "btn btn-success"%>
+        <% end %>
+    <% end %>
+ <% elsif company_signed_in? %>
+  <div class="container-form-applyn">
+      <div class="col pt-1" data-controller="popup">
+        <div class="d-flex">
+          <%= link_to "Liste des offres", offers_path, class: "btn btn-info",  style: "font-size:13px" %>
+          <% if @offer.company == current_company %>
+            <%= link_to "Voir les candidatures", company_offer_path, class: "btn btn-info",  style: "font-size:13px" %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+ <% else %>
   <div class="container-form-applyn">
       <div class="col pt-1" data-controller="popup">
         <div class="d-flex">
@@ -76,7 +123,7 @@
         </div>
       </div>
   </div>
-
+ <% end %>
 
 <style>
 .yeahh{
