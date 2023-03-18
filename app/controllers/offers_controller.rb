@@ -65,6 +65,9 @@ class OffersController < ApplicationController
     # @offer = Offer.find(params[:id])
     @offers = Offer.all
 
+    # @savedoffer2 = Savedoffer.where(:student_id => current_student.id, :offer_id => @offer.id).to_a.last
+    @savedoffer1 = Savedoffer.new
+
     set_meta_tags title: @offer.function,
                   reverse: true,
                   description: @offer.description,
