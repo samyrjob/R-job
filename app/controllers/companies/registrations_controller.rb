@@ -25,24 +25,24 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
 
 
-  def create
-    @company = Company.new(sign_up_params)
+  # def create
+  #   @company = Company.new(sign_up_params)
 
-    respond_to do |format|
-      if @company.save
-        # Tell the UserMailer to send a welcome email after save
-        CompanyMailer.with(company: @company).welcome_email.deliver_later
+  #   respond_to do |format|
+  #     if @company.save
+  #       # Tell the UserMailer to send a welcome email after save
+  #       CompanyMailer.with(company: @company).welcome_email.deliver_later
 
-        # format.html { redirect_to(@student, notice: 'Student was successfully created.') }
-        format.html { redirect_to new_company_session_path, notice: 'compte créé avec succès, vous pouvez vous connecter!' }
-        # format.html { redirect_to offers_path, notice: 'Your Account was successfully created' }
-        # format.json { render json: @student, status: :created, location: @student }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #       # format.html { redirect_to(@student, notice: 'Student was successfully created.') }
+  #       format.html { redirect_to new_company_session_path, notice: 'compte créé avec succès, vous pouvez vous connecter!' }
+  #       # format.html { redirect_to offers_path, notice: 'Your Account was successfully created' }
+  #       # format.json { render json: @student, status: :created, location: @student }
+  #     else
+  #       format.html { render action: 'new' }
+  #       format.json { render json: @company.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
 
   def update

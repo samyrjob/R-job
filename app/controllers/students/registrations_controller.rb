@@ -25,24 +25,24 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
     # end
 
-    def create
-      @student = Student.new(sign_up_params)
+    # def create
+    #   @student = Student.new(sign_up_params)
 
-      respond_to do |format|
-        if @student.save
-          # Tell the UserMailer to send a welcome email after save
-          StudentMailer.with(student: @student).welcome_email.deliver_later
-          # format.html { redirect_to(@student, notice: 'Student was successfully created.') }
-          format.html { redirect_to new_student_session_path, notice: 'compte créé avec succès, tu peux te connecter!' }
+    #   respond_to do |format|
+    #     if @student.save
+    #       # Tell the UserMailer to send a welcome email after save
+    #       StudentMailer.with(student: @student).welcome_email.deliver_later
+    #       # format.html { redirect_to(@student, notice: 'Student was successfully created.') }
+    #       format.html { redirect_to new_student_session_path, notice: 'compte créé avec succès, tu peux te connecter!' }
 
-          # format.json { render json: @student, status: :created, location: @student }
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @student.errors, status: :unprocessable_entity }
+    #       # format.json { render json: @student, status: :created, location: @student }
+    #     else
+    #       format.html { render action: 'new' }
+    #       format.json { render json: @student.errors, status: :unprocessable_entity }
 
-        end
-      end
-    end
+    #     end
+    #   end
+    # end
 
 
 
