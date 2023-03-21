@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Companies::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
 
@@ -24,6 +24,25 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # end
 
 
+
+  def create
+    @company = Company.new(sign_up_params)
+
+    respond_to do |format|
+      if @company.save
+        # Tell the UserMailer to send a welcome email after save
+        CompanyMailer.with(company: @company).welcome_email.deliver_later
+
+        # format.html { redirect_to(@student, notice: 'Student was successfully created.') }
+        format.html { redirect_to new_company_session_path, notice: 'compte créé avec succès, vous pouvez vous connecter!' }
+        # format.html { redirect_to offers_path, notice: 'Your Account was successfully created' }
+        # format.json { render json: @student, status: :created, location: @student }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 
   def update
@@ -50,7 +69,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def company_params
+  def sign_up_params
     params.require(:company).permit(:structure, :website, :sector, :name, :email, :photo, :password, :password_confirmation)
   end
 

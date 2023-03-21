@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p> Hello la team <%= @company.name %>,</p>
+
+    <p>Vous avez une nouvelle candidature pour votre offre de stage "<%= @application.offer.function %>"  :</p>
+
+    <p> Candidat : </p>
+
+
+    <h5><%= @application.student.first_name.capitalize %> <%= @application.student.last_name.upcase %></h5> <br>
+
+
+
+    <%if @application.description? %>
+      <p> Texte de motivation : </p>
+      <p>"<%= @application.description %>"</p>
+    <% end %>  <br>
+
+
+<br>
+    Connectez-vous à votre espace recruteur pour accéder à toutes les candidatures : <br>
+
+    <%= @url %>
+
+
+  </body>
+</html>

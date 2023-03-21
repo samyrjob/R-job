@@ -1,0 +1,15 @@
+Hello la team <%= @company.name %>,
+
+Vous avez une nouvelle candidature pour votre offre de stage "<%= @application.offer.function %>"  :
+
+Candidat :
+
+
+<%= @application.student.first_name %> <%= @application.student.last_name.capitalize %>
+
+
+
+<%if @application.description? %>
+  Texte de motivation :
+  <%= @application.description %>
+<% end %>

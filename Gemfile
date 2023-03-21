@@ -29,8 +29,7 @@ gem "jbuilder"
 
 gem 'friendly_id', '~> 5.4.0'
 gem 'meta-tags'
-
-
+# gem 'letter_opener', group: :development
 
 gem 'devise'
 gem 'devise_token_auth'

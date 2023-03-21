@@ -11,7 +11,7 @@
   <%= f.input :content, as: :rich_text_area, :label => "Description",  placeholder: "Missions/ Profile / Key details ...", input_html: { class: "DescriptionStyling" } %>
   <%= f.input :town, :label => "Ville"%>
   <div class="yeah2">
-    <%= f.input :salary, as: :float, :label => "Rémunération (mensuelle)" %>
+    <%= f.input :salary, as: :string, :label => "Rémunération (mensuelle)" %>
     <i class="fa-sharp fa-solid fa-euro-sign"></i>
   </div>
   <%= f.input :start_date, as: :date, :label => "Date de début" %>
