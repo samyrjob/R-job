@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Students::RegistrationsController < Devise::RegistrationsController
-  # before_action :sign_up_params, only: [:create]
+  before_action :sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
 
@@ -24,6 +24,27 @@ class Students::RegistrationsController < Devise::RegistrationsController
     #   end
 
     # end
+
+    def create
+      @student = Student.new(sign_up_params)
+
+      respond_to do |format|
+        if @student.save
+          # Tell the UserMailer to send a welcome email after save
+          StudentMailer.with(student: @student).welcome_email.deliver_later
+          # format.html { redirect_to(@student, notice: 'Student was successfully created.') }
+          format.html { redirect_to new_student_session_path, notice: 'compte créé avec succès, tu peux te connecter!' }
+
+          # format.json { render json: @student, status: :created, location: @student }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @student.errors, status: :unprocessable_entity }
+
+        end
+      end
+    end
+
+
 
   def update
     @student = current_student
@@ -52,9 +73,9 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
     protected
 
-    # def sign_up_params
-    #     params.require(:student).permit(:email, :first_name, :last_name, :photo, :profile, :school, :tongues, :password, :password_confirmation, :student_id)
-    # end
+    def sign_up_params
+        params.require(:student).permit(:email, :first_name, :last_name, :description, :profile, :school, :photo, :disponibility, :linkedin, :phone_number, :year, :mobility, :wanted_area, :password, :password_confirmation)
+    end
 
     def after_sign_up_path_for(resource)
       student_dashboard_path(resource)

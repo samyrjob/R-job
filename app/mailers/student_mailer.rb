@@ -4,7 +4,8 @@ class StudentMailer < ApplicationMailer
   def welcome_email
     @student = params[:student]
     @url  = 'https://www.traineenandplus.com/students/sign_in'
-    mail(to: @student.email, subject: 'Welcome to My Awesome Site')
+    attachments['Conditions.pdf'] = File.read('app/assets//Conditions.pdf')
+    mail(to: @student.email, subject: 'Bienvenue à Trainee +')
   end
 
 end

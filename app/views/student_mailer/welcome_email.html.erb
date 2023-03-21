@@ -3,14 +3,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @student.first_name %></h1>
+    <h1> Bienvenue à Trainee + <%= @student.first_name %></h1>
     <p>
-      You have successfully signed up to example.com,
-      your username is: <%= @student.email %>.<br>
+      Tu viens de t'inscrire avec succès avec ton adresse mail : <%= @student.email %> <br>
     </p>
+    <br>
+       <p>Tu trouveras également en pièce jointe les conditions d'utilisation générales de la plateforme.</p>
+    <br>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      Pour te connecter à ton espace étudiant : <%= @url %>
     </p>
-    <p>Thanks for joining and have a great day!</p>
+
   </body>
 </html>

@@ -7,8 +7,10 @@ class Student::ApplicationsController < ApplicationController
     @application = Application.new(application_params)
     @application.student = current_student # user est associé à la création du booking (renter vient de la db)
     @application.offer = @offer
+    company = @application.offer.company
 
     if @application.save
+      CandidateMailer.new_application(company, @application).deliver_now
       redirect_to student_offer_path(@offer), notice: "your application has been sent !"
     else
       render :new, status: :unprocessable_entity
@@ -16,7 +18,7 @@ class Student::ApplicationsController < ApplicationController
 
 
   end
-  
+
   def new
     @application = Application.new
     @offer = Offer.friendly.find(params[:offer_id])
