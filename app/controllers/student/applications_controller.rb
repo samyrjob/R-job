@@ -10,7 +10,7 @@ class Student::ApplicationsController < ApplicationController
     company = @application.offer.company
 
     if @application.save
-      # CandidateMailer.new_application(company, @application).deliver_now
+      CandidateMailer.new_application(company, @application).deliver_now
       redirect_to student_offer_path(@offer), notice: "your application has been sent !"
     else
       render :new, status: :unprocessable_entity
