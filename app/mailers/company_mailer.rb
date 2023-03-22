@@ -1,5 +1,5 @@
 class CompanyMailer < ApplicationMailer
-  default from: 'contact@traineenandplus.com'
+  default from: 'services_entreprises@traineenandplus.com'
 
   def welcome_email
     @company = params[:company]
