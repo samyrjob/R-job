@@ -20,12 +20,25 @@ Rails.application.initialize!
   #   :password       =>
   # }
 
-  ActionMailer::Base.smtp_settings = {
-    :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
-    :password =>  ENV['SENDGRID_API_KEY'], # This is the secret sendgrid API key which was issued during API key creation
-    :domain => 'traineenandplus.com',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
-  }
+  # ActionMailer::Base.smtp_settings = {
+  #   :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+  #   :password =>  ENV['SENDGRID_API_KEY'], # This is the secret sendgrid API key which was issued during API key creation
+  #   :domain => 'traineenandplus.com',
+  #   :address => 'smtp.sendgrid.net',
+  #   :port => 587,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
+
+  config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i'
+  # }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'contact@traineenandplus.com'}
+
+
+  
