@@ -1,5 +1,5 @@
 class StudentNotifierMailer < ApplicationMailer
-  default :from => 'contact@traineenandplus.com'
+  default :from => 'services_entreprises@traineenandplus.com'
 
   # send a signup email to the user, pass in the user object that   contains the user's email address
   def send_signup_email(student)
